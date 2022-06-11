@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:insert="/layout/head::head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:insert="/layout/header::header"> </header>
+
+<form th:action="@{/usuario/guardado}" th:object="${usuario}" method="post" class="row g-3" >
+  <div class="col-md-6">
+    <label for="dni" class="form-label">DNI</label>
+    <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
+  </div>
+  <div class="col-md-6">
+    <label for="nroTramite" class="form-label">NroTramite</label>
+    <input th:field="*{nroTramite}" type="number" class="form-control" id="nroTramite" required>
+  </div>
+
+
+   <div class="col-md-6">
+    <label for="email" class="form-label">E-MAIL</label>
+    <input th:field="*{email}" type="text" class="form-control" id="email" required >
+  </div>
+   <div class="col-md-6">
+   
+   <div class="form-check">
+  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="soltero" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Solter@
+  </label>
+</div>
+<div class="form-check">
+  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="casado" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Casad@
+  </label>
+</div>
+<!--  //hay q corregir lo de las llavaes por lo q va despues del . caundo pase al controler le asigno
+ el objeto entero a los atributos de ese form y hay q cambiarlo para q reciba el nombre de la provincia 
+ para q se lo asigne directamente
+<div class="form-group row">
+	<label for="provincia" class="col-md-6 col-form-label">provincia:</label>
+	<select id="provincia" th:field="*{provincias.legajo}">
+		<option th:each="docte:${docentes}" th:value="${provincias.legajo}" th:text="${.apellido}" th:selected="false"/>
+	 </select>
+</div>
+-->
+   
+   <div class="col-md-6">
+    <label for="telefono" class="form-label">Telefono </label>
+    <input th:field="*{Tel}" type="number" class="form-control" id="telefono" required>
+  </div>
+  
+  
+  
+    <label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
+    <input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}" required>
+  </div>
+ 
+ <div class="col-md-6">
+    <label for="contraseña" class="form-label">CONTRASEÑA</label>
+    <input th:field="*{contraseña}" type="text" class="form-control" id="contraseña" required >
+  </div>
+  
+
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">enviar</button>
+  </div>
+</form>
+</body>
+</html>
