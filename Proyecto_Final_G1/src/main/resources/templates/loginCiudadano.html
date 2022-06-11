@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:insert="/layout/head::head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:insert="/layout/header::header"> </header>
+<!-- EDITAR EL TH:ACTION A QUE HACE REFERENCIA -->
+<form th:action="@{/usuario/guardado}" th:object="${usuario}" method="post" class="row g-3" >
+  <div class="col-md-6">
+    <label for="dni" class="form-label">DNI</label>
+    <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
+  </div>
+
+<!--  //hay q corregir lo de las llavaes por lo q va despues del . caundo pase al controler le asigno
+ el objeto entero a los atributos de ese form y hay q cambiarlo para q reciba el nombre de la provincia 
+ para q se lo asigne directamente
+<div class="form-group row">
+	<label for="provincia" class="col-md-6 col-form-label">provincia:</label>
+	<select id="provincia" th:field="*{provincias.legajo}">
+		<option th:each="docte:${docentes}" th:value="${provincias.legajo}" th:text="${.apellido}" th:selected="false"/>
+	 </select>
+</div>
+-->
+ 
+ <div class="col-md-6">
+    <label for="contraseña" class="form-label">CONTRASEÑA</label>
+    <input th:field="*{contraseña}" type="text" class="form-control" id="contraseña" required >
+  </div>
+ 
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">INGRESAR</button>
+  </div>
+</form>
+</body>
+</html>
