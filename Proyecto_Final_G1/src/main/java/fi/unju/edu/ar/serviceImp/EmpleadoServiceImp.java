@@ -9,8 +9,9 @@ import fi.unju.edu.ar.service.IEmpleadoService;
 
 @Service
 public class EmpleadoServiceImp implements IEmpleadoService{
+	//agregue private
 	@Autowired
-	IEmpleadoDAO empleadoDaoImp;
+	private IEmpleadoDAO empleadoDaoImp;
 	@Override
 	public void guardarEmplado(Empleado empleado) {
 		// TODO Auto-generated method stub
