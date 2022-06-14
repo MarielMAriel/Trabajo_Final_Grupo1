@@ -7,7 +7,7 @@
 <body>
 <header th:insert="/layout/header::header"> </header>
 
-<form th:action="@{/usuario/guardado}" th:object="${usuario}" method="post" class="row g-3" >
+<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3" >
   <div class="col-md-6">
     <label for="dni" class="form-label">DNI</label>
     <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
@@ -59,8 +59,8 @@
   </div>
  
  <div class="col-md-6">
-    <label for="contraseña" class="form-label">CONTRASEÑA</label>
-    <input th:field="*{contraseña}" type="text" class="form-control" id="contraseña" required >
+    <label for="contraseï¿½a" class="form-label">CONTRASEï¿½A</label>
+    <input th:field="*{contraseï¿½a}" type="text" class="form-control" id="contraseï¿½a" required >
   </div>
   
 
