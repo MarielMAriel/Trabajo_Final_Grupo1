@@ -1,15 +1,37 @@
-package fi.unju.edu.ar.model;
+package fi.unju.edu.ar.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="empleados")
 public class Empleado {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "emp_id")
+	private Long id;
+	
+	@Column(name = "emp_dni" )
 	 private int dni;
+	
+	@Column(name = "emp_ntramite" )
 	 private int nTramite;
+	@Column(name = "emp_email" )
 	 private String email;
+	@Column(name = "emp_dni" )
 	 private String eCivil;
+	@Column(name = "emp_provincia" )
 	 private String provinica;
+	@Column(name = "emp_telefono" )
 	 private int tel;
+	@Column(name = "emp_fechnac")
 	 private LocalDate fnac;
+	@Column(name = "emp_contraseña" )
 	 private String contraseña;
 public Empleado() {
 	// TODO Auto-generated constructor stub
@@ -74,9 +96,23 @@ public String getContraseña() {
 public void setContraseña(String contraseña) {
 	this.contraseña = contraseña;
 }
+
+
+/**
+ * @return the id
+ */
+public Long getId() {
+	return id;
+}
+/**
+ * @param id the id to set
+ */
+public void setId(Long id) {
+	this.id = id;
+}
 @Override
 public String toString() {
-	return "Empleado [dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
+	return "Empleado [id=" + id + ", dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
 			+ ", provinica=" + provinica + ", tel=" + tel + ", fnac=" + fnac + ", contraseña=" + contraseña + "]";
 }
 

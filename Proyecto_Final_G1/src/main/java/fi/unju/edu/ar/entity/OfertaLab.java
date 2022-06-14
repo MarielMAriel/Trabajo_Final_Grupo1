@@ -1,4 +1,4 @@
-package fi.unju.edu.ar.model;
+package fi.unju.edu.ar.entity;
 
 public class OfertaLab {
 
