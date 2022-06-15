@@ -23,7 +23,7 @@ public class Empleado {
 	 private int nTramite;
 	@Column(name = "emp_email" )
 	 private String email;
-	@Column(name = "emp_dni" )
+	@Column(name = "emp_eCivil" )
 	 private String eCivil;
 	@Column(name = "emp_provincia" )
 	 private String provinica;
@@ -31,13 +31,13 @@ public class Empleado {
 	 private int tel;
 	@Column(name = "emp_fechnac")
 	 private LocalDate fnac;
-	@Column(name = "emp_contraseña" )
-	 private String contraseña;
+	@Column(name = "emp_contrasenia" )
+	 private String contrasenia;
 public Empleado() {
 	// TODO Auto-generated constructor stub
 }
 public Empleado(int dni, int nTramite, String email, String eCivil, String provinica, int tel, LocalDate fnac,
-		String contraseña) {
+		String contrasenia) {
 	super();
 	this.dni = dni;
 	this.nTramite = nTramite;
@@ -46,7 +46,7 @@ public Empleado(int dni, int nTramite, String email, String eCivil, String provi
 	this.provinica = provinica;
 	this.tel = tel;
 	this.fnac = fnac;
-	this.contraseña = contraseña;
+	this.contrasenia = contrasenia;
 }
 public int getDni() {
 	return dni;
@@ -90,11 +90,11 @@ public LocalDate getFnac() {
 public void setFnac(LocalDate fnac) {
 	this.fnac = fnac;
 }
-public String getContraseña() {
-	return contraseña;
+public String getContrasenia() {
+	return contrasenia;
 }
 public void setContraseña(String contraseña) {
-	this.contraseña = contraseña;
+	this.contrasenia = contraseña;
 }
 
 
@@ -113,7 +113,7 @@ public void setId(Long id) {
 @Override
 public String toString() {
 	return "Empleado [id=" + id + ", dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
-			+ ", provinica=" + provinica + ", tel=" + tel + ", fnac=" + fnac + ", contraseña=" + contraseña + "]";
+			+ ", provinica=" + provinica + ", tel=" + tel + ", fnac=" + fnac + ", contraseña=" + contrasenia + "]";
 }
 
 }
