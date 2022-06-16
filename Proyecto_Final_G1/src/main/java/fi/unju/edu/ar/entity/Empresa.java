@@ -1,16 +1,34 @@
 package fi.unju.edu.ar.entity;
 
-public class Empresa {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="empresa")
+public class Empresa {
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "empresa_cantV")
 	private int cantidadVacante;
+	@Column(name = "empresa_puestoR")
 	private String puestoRequerido;
-	private	String disponibiidadHoraria;
+	@Column(name = "empresa_disponibilidadH")
+	private	String disponibilidadHoraria;
+	@Column(name = "empresa_tareasP")
 	private String tareasPrincipales;
+	@Column(name = "empresa_datosC")
 	private String datosContacto;
+	@Column(name = "empresa_jornada")
 	private String jornada;
+	@Column(name = "empresa_requisitos")
 	private String requisitos;
+	@Column(name = "empresa_salario")
 	private int salario;
+	@Column(name = "empresa_beneficios")
 	private String beneficios;
+	@Column(name = "empresa_disponible")
 	private String  disponible;//(solo permanece el true si aún no se completaron las vacantes)
 	public Empresa() {
 		// TODO Auto-generated constructor stub
@@ -21,7 +39,7 @@ public class Empresa {
 		super();
 		this.cantidadVacante = cantidadVacante;
 		this.puestoRequerido = puestoRequerido;
-		this.disponibiidadHoraria = disponibiidadHoraria;
+		this.disponibilidadHoraria = disponibiidadHoraria;
 		this.tareasPrincipales = tareasPrincipales;
 		this.datosContacto = datosContacto;
 		this.jornada = jornada;
@@ -43,10 +61,10 @@ public class Empresa {
 		this.puestoRequerido = puestoRequerido;
 	}
 	public String getDisponibiidadHoraria() {
-		return disponibiidadHoraria;
+		return disponibilidadHoraria;
 	}
 	public void setDisponibiidadHoraria(String disponibiidadHoraria) {
-		this.disponibiidadHoraria = disponibiidadHoraria;
+		this.disponibilidadHoraria = disponibiidadHoraria;
 	}
 	public String getTareasPrincipales() {
 		return tareasPrincipales;
@@ -93,7 +111,7 @@ public class Empresa {
 	@Override
 	public String toString() {
 		return "Empresa [cantidadVacante=" + cantidadVacante + ", puestoRequerido=" + puestoRequerido
-				+ ", disponibiidadHoraria=" + disponibiidadHoraria + ", tareasPrincipales=" + tareasPrincipales
+				+ ", disponibiidadHoraria=" + disponibilidadHoraria + ", tareasPrincipales=" + tareasPrincipales
 				+ ", datosContacto=" + datosContacto + ", jornada=" + jornada + ", requisitos=" + requisitos
 				+ ", salario=" + salario + ", beneficios=" + beneficios + ", disponible=" + disponible + "]";
 	}
