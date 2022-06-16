@@ -4,12 +4,28 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="empresa")
+/**
+ * Annotation retention policy.  The constants of this enumerated class
+ * describe the various policies for retaining annotations.  They are used
+ * in conjunction with the {@link Retention} meta-annotation interface to
+ * specify how long annotations are to be retained.
+ *
+ * @author  Joshua Bloch
+ * @since 1.5
+ */
 public class Empresa {
+
+	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "empresa_id")
+	private Long id;
+	//el identificador de la tabla
+	 
 	@Column(name = "empresa_cantV")
 	private int cantidadVacante;
 	@Column(name = "empresa_puestoR")
@@ -32,6 +48,7 @@ public class Empresa {
 	private String  disponible;//(solo permanece el true si aún no se completaron las vacantes)
 	public Empresa() {
 		// TODO Auto-generated constructor stub
+		
 	}
 	public Empresa(int cantidadVacante, String puestoRequerido, String disponibiidadHoraria, String tareasPrincipales,
 			String datosContacto, String jornada, String requisitos, int salario, String beneficios,
