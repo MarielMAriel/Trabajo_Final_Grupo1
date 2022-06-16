@@ -14,17 +14,13 @@ import fi.unju.edu.ar.service.IEmpleadoService;
 public class UsuarioController {
 	@Autowired
 	private IEmpleadoService empleadoService;
-	private Empleado empleado =new Empleado() ;
 	
-	String provincias[] = {"Jujuy","Buenos Aires","Catamarca","Chaco","Chubut"
-			,"Córdoba","Córdoba","Entre Ríos","Formosa","La Pampa","La Rioja","Mendoza","Misiones","Neuquén"
-			,"Río Negro","Salta","San Juan","Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán"};
 	
 
 	@GetMapping("/NuevoUsu")
 	public ModelAndView getFormEmpleado() {
 		ModelAndView mav = new ModelAndView("nuevo_empleado");
-		mav.addObject("empleado", empleado);
+		mav.addObject("empleado", empleadoService.getEmpleado());
 		return mav;
 	}
 	@PostMapping("/guardarEmp")
@@ -33,4 +29,14 @@ public class UsuarioController {
 		ModelAndView mav=new  ModelAndView("index");
 		return mav;
 	}
+	
+	@GetMapping("/listEmpl")
+	public ModelAndView getListaEmpleados() {
+		ModelAndView mav = new ModelAndView("lista_empleado");
+		mav.addObject("empleados", empleadoService.getListaEmpleado());
+		return mav;
+	}
+	
+	
+	
 }

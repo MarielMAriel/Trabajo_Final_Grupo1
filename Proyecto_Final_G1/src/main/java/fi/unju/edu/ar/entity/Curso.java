@@ -2,15 +2,13 @@ package fi.unju.edu.ar.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cursos")
-
 public class Curso {
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
 	@Column(name = "curso_nombre")
 	private String nombreC;//nombre del curso
 	@Column(name = "curso_duracion")

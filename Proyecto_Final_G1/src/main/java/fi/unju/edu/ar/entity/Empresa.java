@@ -4,12 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="empresa")
 public class Empresa {
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
 	@Column(name = "empresa_cantV")
 	private int cantidadVacante;
 	@Column(name = "empresa_puestoR")

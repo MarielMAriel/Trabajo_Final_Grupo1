@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="empleados")
 public class Empleado {
@@ -30,6 +32,7 @@ public class Empleado {
 	@Column(name = "emp_telefono" )
 	 private int tel;
 	@Column(name = "emp_fechnac")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	 private LocalDate fnac;
 	@Column(name = "emp_contrasenia" )
 	 private String contrasenia;
