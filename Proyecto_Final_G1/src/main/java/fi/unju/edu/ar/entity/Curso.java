@@ -1,10 +1,25 @@
 package fi.unju.edu.ar.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="cursos")
+
 public class Curso {
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "curso_nombre")
 	private String nombreC;//nombre del curso
+	@Column(name = "curso_duracion")
 	private int duracion;
+	@Column(name = "curso_fechaI")
 	private int fechaInicio;
+	@Column(name = "curso_fechaF")
 	private int fechaFin;
+	@Column(name = "curso_categoriaC")
 	private String categoriaC;//categoria del curso(informatica,contable ,administrativa)
 	public Curso() {
 		// TODO Auto-generated constructor stub
