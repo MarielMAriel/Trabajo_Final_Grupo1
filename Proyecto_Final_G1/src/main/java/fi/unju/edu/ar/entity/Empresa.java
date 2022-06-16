@@ -20,12 +20,14 @@ import javax.persistence.Table;
  */
 public class Empresa {
 
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "empresa_id")
 	private Long id;
 	//el identificador de la tabla
 	 
+
 	@Column(name = "empresa_cantV")
 	private int cantidadVacante;
 	@Column(name = "empresa_puestoR")

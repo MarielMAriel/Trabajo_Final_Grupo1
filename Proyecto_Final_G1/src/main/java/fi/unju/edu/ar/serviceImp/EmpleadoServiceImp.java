@@ -1,5 +1,7 @@
 package fi.unju.edu.ar.serviceImp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,16 @@ public class EmpleadoServiceImp implements IEmpleadoService{
 	public void guardarEmplado(Empleado empleado) {
 		// TODO Auto-generated method stub
 		empleadoDaoImp.save(empleado);
+	}
+	@Override
+	public List<Empleado> getListaEmpleado() {
+		// TODO Auto-generated method stub
+		return empleadoDaoImp.obtenerEmpleado();
+	}
+	@Override
+	public Empleado getEmpleado() {
+		// TODO Auto-generated method stub
+		return new Empleado();
 	}
 	
 
