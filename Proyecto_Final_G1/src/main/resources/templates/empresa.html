@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:insert="/layout/head::head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:insert="/layout/header::header"> </header>
+
+<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3" >
+  <div class="col-md-6">
+    <label for="cantidadVacante" class="form-label">CANTIDAD DE VACANTES</label>
+    <input th:field="*{cantidadVacante}" type="number" class="form-control" id="cantidadVacante" required>
+  </div>
+   <div class="col-md-6">
+    <label for="puestoRequerido" class="form-label">PUESTOS REQUERIDOS</label>
+    <input th:field="*{puestoRequerido}" type="text" class="form-control" id="puestoRequerido" required >
+  </div>
+   <div class="col-md-6">
+    <label for="disponibilidadHoraria" class="form-label">DISPONIBILIDAD HORARIA</label>
+    <input th:field="*{disponibilidadHoraria}" type="text" class="form-control" id="disponibilidadHoraria" required >
+  </div>
+   <div class="col-md-6">
+    <label for="tareasPrincipales" class="form-label">TAREAS PRINCIPALES</label>
+    <input th:field="*{tareasPrincipales}" type="text" class="form-control" id="tareasPrincipales" required >
+  </div>
+   <div class="col-md-6">
+    <label for="datosContacto" class="form-label">DATOS DEL CONTACTO</label>
+    <input th:field="*{datosContacto}" type="text" class="form-control" id="datosContacto" required >
+  </div>
+   <div class="col-md-6">
+    <label for="jornada" class="form-label">JORNADA</label>
+    <input th:field="*{jornada}" type="text" class="form-control" id="jornada" required >
+  </div>
+   <div class="col-md-6">
+    <label for="requisitos" class="form-label">REQUISITOS</label>
+    <input th:field="*{requisitos}" type="text" class="form-control" id="requisitos" required >
+  </div>
+  <div class="col-md-6">
+    <label for="salario" class="form-label">SALARIO</label>
+    <input th:field="*{salario}" type="number" class="form-control" id="salario" required>
+  </div>
+
+
+   <div class="col-md-6">
+    <label for="beneficios" class="form-label">BENEFICIOS</label>
+    <input th:field="*{beneficios}" type="text" class="form-control" id="beneficios" required >
+  </div>
+  <div class="col-md-6">
+    <label for="disponible" class="form-label">DISPONIBLE</label>
+    <input th:field="*{disponible}" type="text" class="form-control" id="disponible" required >
+  </div>
+  
+
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">ENVIAR</button>
+  </div>
+</form>
+</body>
+
+</html>
