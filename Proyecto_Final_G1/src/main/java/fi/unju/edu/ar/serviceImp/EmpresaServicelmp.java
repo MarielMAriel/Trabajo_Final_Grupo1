@@ -16,5 +16,10 @@ public class EmpresaServicelmp implements IEmpresaService{
 
 		empresaDaoImp.save(empresa);
 	}
+	@Override
+	public Empresa getEmpresa() {
+		
+		return new Empresa();
+	}
 
 }

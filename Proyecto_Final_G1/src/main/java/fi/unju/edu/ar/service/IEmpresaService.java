@@ -4,5 +4,6 @@ package fi.unju.edu.ar.service;
 import fi.unju.edu.ar.entity.Empresa;
 
 public interface IEmpresaService {
-	 void guardarEmpresa(Empresa empresa);
+	 public void guardarEmpresa(Empresa empresa);
+	 public Empresa getEmpresa();
 }
