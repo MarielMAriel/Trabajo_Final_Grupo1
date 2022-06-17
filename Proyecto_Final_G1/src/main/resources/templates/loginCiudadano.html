@@ -10,8 +10,10 @@
 <form th:action="@{/usuario/guardado}" th:object="${usuario}" method="post" class="row g-3" >
   <div class="col-md-6">
     <label for="dni" class="form-label">DNI</label>
-    <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
+    <!-- AGREGADO DE ID NOMBRE -->
+    <input th:field="*{dni}" type="number" class="form-control" id="nombre" id="dni" required>
   </div>
+ 
 
 <!--  //hay q corregir lo de las llavaes por lo q va despues del . caundo pase al controler le asigno
  el objeto entero a los atributos de ese form y hay q cambiarlo para q reciba el nombre de la provincia 
