@@ -1,5 +1,7 @@
 package fi.unju.edu.ar.entity;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,132 +9,244 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
-@Table(name="empresa")
-/**
- * Annotation retention policy.  The constants of this enumerated class
- * describe the various policies for retaining annotations.  They are used
- * in conjunction with the {@link Retention} meta-annotation interface to
- * specify how long annotations are to be retained.
- *
- * @author  Joshua Bloch
- * @since 1.5
- */
+@Table(name = "empresa")
 public class Empresa {
 
-
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "empresa_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "empr_id")
 	private Long id;
-	//el identificador de la tabla
-	 
+	// el identificador de la tabla
+	@Column(name = "empr_contrasenia")
+	private String contrasenia;
+	@Column(name = "empr_cuit")
+	private String cuit;
+	// el nombre proviene del nombre del socio/s se da en sociedades o por acciones
+	@Column(name = "empr_rSocial")
+	private String razonSocial;
+	@Column(name = "empr_nombre")
+	private String nombre;
+	@Column(name = "empr_finicio")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate finicio;
+	@Column(name = "empr_email")
+	private String email;
+	@Column(name = "empr_telefono")
+	private String telefono;
+	// ciudad barrio calle y num
+	@Column(name = "empr_domicilio")
+	private String domicilio;
+	@Column(name = "empr_provincia")
+	private String provincia;
+	@Column(name = "empr_pagina")
+	private String pagina;
+	@Column(name = "empr_descripcion")
+	private String descripcion;// (solo permanece el true si aún no se completaron las vacantes)
 
-	@Column(name = "empresa_cantV")
-	private int cantidadVacante;
-	@Column(name = "empresa_puestoR")
-	private String puestoRequerido;
-	@Column(name = "empresa_disponibilidadH")
-	private	String disponibilidadHoraria;
-	@Column(name = "empresa_tareasP")
-	private String tareasPrincipales;
-	@Column(name = "empresa_datosC")
-	private String datosContacto;
-	@Column(name = "empresa_jornada")
-	private String jornada;
-	@Column(name = "empresa_requisitos")
-	private String requisitos;
-	@Column(name = "empresa_salario")
-	private int salario;
-	@Column(name = "empresa_beneficios")
-	private String beneficios;
-	@Column(name = "empresa_disponible")
-	private String  disponible;//(solo permanece el true si aún no se completaron las vacantes)
+	/**
+	 * 
+	 * */
 	public Empresa() {
 		// TODO Auto-generated constructor stub
-		
 	}
-	public Empresa(int cantidadVacante, String puestoRequerido, String disponibiidadHoraria, String tareasPrincipales,
-			String datosContacto, String jornada, String requisitos, int salario, String beneficios,
-			String disponible) {
+
+	public Empresa(String cuit, String contrasenia, String razonSocial, String nombre, LocalDate finicio, String email,
+			String telefono, String domicilio, String provincia, String pagina, String descripcion) {
 		super();
-		this.cantidadVacante = cantidadVacante;
-		this.puestoRequerido = puestoRequerido;
-		this.disponibilidadHoraria = disponibiidadHoraria;
-		this.tareasPrincipales = tareasPrincipales;
-		this.datosContacto = datosContacto;
-		this.jornada = jornada;
-		this.requisitos = requisitos;
-		this.salario = salario;
-		this.beneficios = beneficios;
-		this.disponible = disponible;
+		this.cuit = cuit;
+		this.contrasenia = contrasenia;
+		this.razonSocial = razonSocial;
+		this.nombre = nombre;
+		this.finicio = finicio;
+		this.email = email;
+		this.telefono = telefono;
+		this.domicilio = domicilio;
+		this.provincia = provincia;
+		this.pagina = pagina;
+		this.descripcion = descripcion;
 	}
-	public int getCantidadVacante() {
-		return cantidadVacante;
+
+	/**
+	 * @return the cuit
+	 */
+	public String getCuit() {
+		return cuit;
 	}
-	public void setCantidadVacante(int cantidadVacante) {
-		this.cantidadVacante = cantidadVacante;
+
+	/**
+	 * @param cuit the cuit to set
+	 */
+	public void setCuit(String cuit) {
+		this.cuit = cuit;
 	}
-	public String getPuestoRequerido() {
-		return puestoRequerido;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
 	}
-	public void setPuestoRequerido(String puestoRequerido) {
-		this.puestoRequerido = puestoRequerido;
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
-	public String getDisponibiidadHoraria() {
-		return disponibilidadHoraria;
+
+	/**
+	 * @return the contrasenia
+	 */
+	public String getContrasenia() {
+		return contrasenia;
 	}
-	public void setDisponibiidadHoraria(String disponibiidadHoraria) {
-		this.disponibilidadHoraria = disponibiidadHoraria;
+
+	/**
+	 * @param contrasenia the contrasenia to set
+	 */
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
 	}
-	public String getTareasPrincipales() {
-		return tareasPrincipales;
+
+	/**
+	 * @return the razonSocial
+	 */
+	public String getRazonSocial() {
+		return razonSocial;
 	}
-	public void setTareasPrincipales(String tareasPrincipales) {
-		this.tareasPrincipales = tareasPrincipales;
+
+	/**
+	 * @param razonSocial the razonSocial to set
+	 */
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
 	}
-	public String getDatosContacto() {
-		return datosContacto;
+
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
 	}
-	public void setDatosContacto(String datosContacto) {
-		this.datosContacto = datosContacto;
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	public String getJornada() {
-		return jornada;
+
+	/**
+	 * @return the finicio
+	 */
+	public LocalDate getFinicio() {
+		return finicio;
 	}
-	public void setJornada(String jornada) {
-		this.jornada = jornada;
+
+	/**
+	 * @param finicio the finicio to set
+	 */
+	public void setFinicio(LocalDate finicio) {
+		this.finicio = finicio;
 	}
-	public String getRequisitos() {
-		return requisitos;
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
 	}
-	public void setRequisitos(String requisitos) {
-		this.requisitos = requisitos;
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public int getSalario() {
-		return salario;
+
+	/**
+	 * @return the telefono
+	 */
+	public String getTelefono() {
+		return telefono;
 	}
-	public void setSalario(int salario) {
-		this.salario = salario;
+
+	/**
+	 * @param telefono the telefono to set
+	 */
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
-	public String getBeneficios() {
-		return beneficios;
+
+	/**
+	 * @return the domicilio
+	 */
+	public String getDomicilio() {
+		return domicilio;
 	}
-	public void setBeneficios(String beneficios) {
-		this.beneficios = beneficios;
+
+	/**
+	 * @param domicilio the domicilio to set
+	 */
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
 	}
-	public String getDisponible() {
-		return disponible;
+
+	/**
+	 * @return the provincia
+	 */
+	public String getProvincia() {
+		return provincia;
 	}
-	public void setDisponible(String disponible) {
-		this.disponible = disponible;
+
+	/**
+	 * @param provincia the provincia to set
+	 */
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
 	}
+
+	/**
+	 * @return the pagina
+	 */
+	public String getPagina() {
+		return pagina;
+	}
+
+	/**
+	 * @param pagina the pagina to set
+	 */
+	public void setPagina(String pagina) {
+		this.pagina = pagina;
+	}
+
+	/**
+	 * @return the descripcion
+	 */
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	/**
+	 * @param descripcion the descripcion to set
+	 */
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	/**
+	 * 
+	 * 
+	 * */
 	@Override
 	public String toString() {
-		return "Empresa [cantidadVacante=" + cantidadVacante + ", puestoRequerido=" + puestoRequerido
-				+ ", disponibiidadHoraria=" + disponibilidadHoraria + ", tareasPrincipales=" + tareasPrincipales
-				+ ", datosContacto=" + datosContacto + ", jornada=" + jornada + ", requisitos=" + requisitos
-				+ ", salario=" + salario + ", beneficios=" + beneficios + ", disponible=" + disponible + "]";
+		return "Empresa [id=" + id + ", contrasenia=" + contrasenia + ", cuit=" + cuit + ", razonSocial=" + razonSocial
+				+ ", nombre=" + nombre + ", finicio=" + finicio + ", email=" + email + ", telefono=" + telefono
+				+ ", domicilio=" + domicilio + ", provincia=" + provincia + ", pagina=" + pagina + ", descripcion="
+				+ descripcion + "]";
 	}
 
 }
