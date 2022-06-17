@@ -7,7 +7,7 @@
 <body>
 <header th:insert="/layout/header::header"> </header>
 
-<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3" >
+<form th:action="@{/guardarEmpresa}" th:object="${empleado}" method="post" class="row g-3" >
   <div class="col-md-6">
     <label for="cantidadVacante" class="form-label">CANTIDAD DE VACANTES</label>
     <input th:field="*{cantidadVacante}" type="number" class="form-control" id="cantidadVacante" required>
