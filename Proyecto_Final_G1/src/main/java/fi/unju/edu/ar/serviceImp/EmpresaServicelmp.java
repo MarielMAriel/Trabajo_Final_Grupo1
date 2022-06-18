@@ -21,5 +21,19 @@ public class EmpresaServicelmp implements IEmpresaService{
 		
 		return new Empresa();
 	}
+	@Override
+	public Empresa buscarEmpresa(String cuit, String contrasenia) {
+		// TODO Auto-generated method stub
+		return empresaDaoImp.findByCuitAndContrasenia(cuit, contrasenia);
+	}
+	@Override
+	public boolean existeEmpresa(String cuit, String contrasenia) {
+		
+		if(buscarEmpresa(cuit, contrasenia)==null) {
+			return false;
+		}
+		return true;
+	}
+	
 
 }

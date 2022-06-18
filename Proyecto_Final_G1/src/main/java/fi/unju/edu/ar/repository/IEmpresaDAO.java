@@ -7,4 +7,5 @@ import fi.unju.edu.ar.entity.Empresa;
 @Repository
 public interface IEmpresaDAO extends JpaRepository<Empresa, Long >{
 
+	public Empresa findByCuitAndContrasenia(String cuit, String contrasenia);
 }

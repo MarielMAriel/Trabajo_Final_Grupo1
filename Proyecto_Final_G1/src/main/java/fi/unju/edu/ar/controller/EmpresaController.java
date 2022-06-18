@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,13 +32,31 @@ public class EmpresaController {
 	@PostMapping("/guardarEmpresa")
 	public ModelAndView guardarEmpresa (@Valid Empresa empresa) {
 		empresaService.guardarEmpresa(empresa);
-		ModelAndView mav=new ModelAndView("index");
+		ModelAndView mav=new ModelAndView("login_empresa");
+		mav.addObject("login",empresaService.getEmpresa());
 		return mav;
 	}
 
 	@GetMapping("/logEmpr")
 	public ModelAndView getLogeo() {
 		ModelAndView mav = new ModelAndView("login_empresa");
+		mav.addObject("login", empresaService.getEmpresa());
+		return mav;
+	}
+	@PostMapping("/indexEmpr")
+	public ModelAndView getIndexEmpresa(@ModelAttribute("login")Empresa unaEmpresa) {
+		
+		//
+		if(empresaService.existeEmpresa(unaEmpresa.getCuit(),unaEmpresa.getContrasenia())==false) {
+			//si no existe redirige al formulario para registrarse
+			ModelAndView mav =  new ModelAndView("nuevo_empresa");
+			mav.addObject("empresa", empresaService.getEmpresa());
+			mav.addObject("provincias", provincias);
+			return mav;
+		}
+		unaEmpresa=empresaService.buscarEmpresa(unaEmpresa.getCuit(),unaEmpresa.getContrasenia());
+		ModelAndView mav = new ModelAndView("index_empresa");
+		mav.addObject("empresActivo",unaEmpresa);
 		return mav;
 	}
 }

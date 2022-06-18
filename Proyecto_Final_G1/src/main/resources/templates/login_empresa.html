@@ -1,23 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head th:insert="/layout/head::head">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
 </head>
+
 <body>
-<header th:insert="/layout/header::header"> </header>
-<br>
-<div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-  <label for="floatingInput">Cuit</label>
-</div>
-<div class="form-floating">
-  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-  <label for="floatingPassword">Contrasenia</label>
-</div>
-<br>
-<a th:href="@{/inicio}" id="editarConcursante" class="btn btn-warning">Entrar</a>
-<a th:href="@{/NuevoEmpr}" id="eliminarConcursante" class="btn btn-danger">registrarme</a>
-              	
+	<header th:insert="/layout/header::header"> </header>
+
+	<form th:action="@{/indexEmpr}" th:object="${login}"  class="row g-3">
+		<div class="form-floating mb-3">
+			<input th:field="*{cuit}" type="text" class="form-control" id="floatingInput" placeholder="000000000">
+			<label for="floatingInput">Cuit</label>
+		</div>
+		<div class="form-floating" th:object="${contrasenia}">
+			<input th:field="*{contrasenia}"  type="password" class="form-control" id="floatingPassword"
+				placeholder="Password">
+			<label for="floatingPassword">Contrasenia</label>
+		</div>
+		<br>
+		<div class="col-12">
+			<button type="submit" class="btn btn-primary">Ingresar</button>
+		</div>
+	</form>
+	<br>
+		<a th:href="@{/NuevoEmpr}" id="eliminarConcursante" class="btn btn-danger">registrarme</a>
 </body>
+
 </html>
