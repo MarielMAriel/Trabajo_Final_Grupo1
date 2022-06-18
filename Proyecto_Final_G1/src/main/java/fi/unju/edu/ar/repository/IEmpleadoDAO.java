@@ -13,4 +13,6 @@ import fi.unju.edu.ar.entity.Empleado;
 public interface IEmpleadoDAO extends JpaRepository<Empleado, Long >{
 	@Query("from Empleado e order by e.dni")
 	public List<Empleado> obtenerEmpleado();
+	
+	
 }
