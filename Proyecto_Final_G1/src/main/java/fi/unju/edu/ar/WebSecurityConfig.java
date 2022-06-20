@@ -9,56 +9,56 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-
-
-import fi.unju.edu.ar.serviceImp.LoginUsuarioCServiceImp;
+import fi.unju.edu.ar.serviceImp.loginServiceImp;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	String[] resourse = new String[] {
+			"/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/webjars/**"
+	};
 
-	@Autowired
-	private AutenticacionSuccessHandler autenticacion;
-	
-	String[] resources = new String[]{
-            "/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/webjars/**"
-    };
-	
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {//realiza peticion de tipo http
+	protected void configure(HttpSecurity http) throws Exception {
 		http
-			.authorizeRequests()
-				.antMatchers(resources).permitAll()//esta linea nos permite acceder a ciertos recursos con los q estamos trabajando,ej. include si vamos a fragmentar el codigo html thymelife en distintas partes
-				.antMatchers("/", "/home").permitAll()//esto es para acceder a los requerimientos slash o slash home
-				.anyRequest().authenticated()//los demas requerimientos necesitan autentificacion
-				.and()
-			.formLogin()
-				.loginPage("/login")
-				.permitAll()
-				.successHandler(autenticacion)
-				.failureUrl("/login?error=true")
-				.usernameParameter("dni")
-				.passwordParameter("password")				
-				.and()
-			.logout()
-				.permitAll();
-				//.logoutSuccessUrl("/login?logout");
-		http.csrf().disable();
+		.authorizeRequests()
+			.antMatchers(resourse).permitAll()
+			.antMatchers("/", "/inicio","/NuevoEmpr","/guardarEmpresa").permitAll()
+			.anyRequest().authenticated()
+			.and()
+		.formLogin()
+			.loginPage("/logEmpr")
+			.permitAll()
+			.defaultSuccessUrl("/indexEmpr")
+			.failureUrl("/logEmpr?error=true")
+			.usernameParameter("cuit")
+			.usernameParameter("contrasenia")
+			.and()
+		.logout()
+			.permitAll()
+			.logoutSuccessUrl("/logEmpr?logout");
 	}
+	
 	BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-		bCryptPasswordEncoder = new BCryptPasswordEncoder(4);
-        return bCryptPasswordEncoder;
-    }
-    
-    @Autowired
-    LoginUsuarioCServiceImp userDetailsService;
-    //userDetailsServicevoy a incorporar al usuario ciudadano q voy a cargar en la secion
-    
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }
+	
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		bCryptPasswordEncoder=new BCryptPasswordEncoder(4);
+		return bCryptPasswordEncoder;
+	}
+	@Autowired
+	loginServiceImp empresauserDetailsService;
+	//este metodo esta erroneo
+	/*@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(empresauserDetailsService).passwordEncoder(passwordEncoder());		
+	}*/
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(empresauserDetailsService).passwordEncoder(passwordEncoder());		
+	}	
+	
+	
+	
 }

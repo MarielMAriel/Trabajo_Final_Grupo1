@@ -19,7 +19,7 @@ public class Empleado {
 	private Long id;
 	
 	@Column(name = "emp_dni" )
-	 private int dni;
+	 private String dni;
 	
 	@Column(name = "emp_ntramite" )
 	 private int nTramite;
@@ -39,7 +39,7 @@ public class Empleado {
 public Empleado() {
 	// TODO Auto-generated constructor stub
 }
-public Empleado(int dni, int nTramite, String email, String eCivil, String provinica, int tel, LocalDate fnac,
+public Empleado(String dni, int nTramite, String email, String eCivil, String provinica, int tel, LocalDate fnac,
 		String contrasenia) {
 	super();
 	this.dni = dni;
@@ -51,10 +51,10 @@ public Empleado(int dni, int nTramite, String email, String eCivil, String provi
 	this.fnac = fnac;
 	this.contrasenia = contrasenia;
 }
-public int getDni() {
+public String getDni() {
 	return dni;
 }
-public void setDni(int dni) {
+public void setDni(String dni) {
 	this.dni = dni;
 }
 public int getnTramite() {

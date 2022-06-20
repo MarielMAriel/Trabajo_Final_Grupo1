@@ -1,6 +1,7 @@
 package fi.unju.edu.ar.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,6 +14,5 @@ import fi.unju.edu.ar.entity.Empleado;
 public interface IEmpleadoDAO extends JpaRepository<Empleado, Long >{
 	@Query("from Empleado e order by e.dni")
 	public List<Empleado> obtenerEmpleado();
-	
 	
 }

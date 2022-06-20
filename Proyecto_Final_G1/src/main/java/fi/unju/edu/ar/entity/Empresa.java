@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -44,13 +45,16 @@ public class Empresa {
 	@Column(name = "empr_pagina")
 	private String pagina;
 	@Column(name = "empr_descripcion")
-	private String descripcion;// (solo permanece el true si aún no se completaron las vacantes)
+	private String descripcion;
+	@Column(name ="empr_tipo")
+	private String tipo;
 
 	/**
 	 * 
 	 * */
 	public Empresa() {
 		// TODO Auto-generated constructor stub
+		this.setTipo("empresa");
 	}
 
 	public Empresa(String cuit, String contrasenia, String razonSocial, String nombre, LocalDate finicio, String email,
@@ -247,6 +251,14 @@ public class Empresa {
 				+ ", nombre=" + nombre + ", finicio=" + finicio + ", email=" + email + ", telefono=" + telefono
 				+ ", domicilio=" + domicilio + ", provincia=" + provincia + ", pagina=" + pagina + ", descripcion="
 				+ descripcion + "]";
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
 }

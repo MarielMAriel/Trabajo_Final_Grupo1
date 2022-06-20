@@ -31,7 +31,7 @@ public class EmpresaController {
 	
 	@PostMapping("/guardarEmpresa")
 	public ModelAndView guardarEmpresa (@Valid Empresa empresa) {
-		empresaService.guardarEmpresa(empresa);
+		empresaService.crear(empresa);
 		ModelAndView mav=new ModelAndView("login_empresa");
 		mav.addObject("login",empresaService.getEmpresa());
 		return mav;
@@ -43,20 +43,9 @@ public class EmpresaController {
 		mav.addObject("login", empresaService.getEmpresa());
 		return mav;
 	}
-	@PostMapping("/indexEmpr")
-	public ModelAndView getIndexEmpresa(@ModelAttribute("login")Empresa unaEmpresa) {
-		
-		//
-		if(empresaService.existeEmpresa(unaEmpresa.getCuit(),unaEmpresa.getContrasenia())==false) {
-			//si no existe redirige al formulario para registrarse
-			ModelAndView mav =  new ModelAndView("nuevo_empresa");
-			mav.addObject("empresa", empresaService.getEmpresa());
-			mav.addObject("provincias", provincias);
-			return mav;
-		}
-		unaEmpresa=empresaService.buscarEmpresa(unaEmpresa.getCuit(),unaEmpresa.getContrasenia());
+	@PostMapping("/login")
+	public ModelAndView getIndexEmpresa() {
 		ModelAndView mav = new ModelAndView("index_empresa");
-		mav.addObject("empresActivo",unaEmpresa);
 		return mav;
 	}
 }
