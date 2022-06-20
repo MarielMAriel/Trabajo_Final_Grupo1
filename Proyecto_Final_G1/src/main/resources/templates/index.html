@@ -6,7 +6,6 @@
 </head>
 
 <body class="bg-dark">
-<header th:insert="/layout/header::header"> </header>
     <div class="container col-12 m-5">
         <h4 class="display-4 text-white">�Buscas trabajo en Argentina? Registrate y aplica a los empleos desde hoy de manera f�cil, r�pida y gratis. �Nuevas ofertas cada d�a!''''</h4>
         <div class="text-center"> 
@@ -14,6 +13,8 @@
         <img alt="imagen1" src="/imagen/radio.gif" title="Facultad de Ingenieria" width="1100" height="460">
         </div>  
     </div>
+    <a id="editarCurso" class="btn btn-warning"> Busco Trabajo o Capacitacion</a>
+    <a th:href="@{/loginEmpresa}" id="editarCurso" class="btn btn-warning">Soy una empresa</a>
     <footer th:fragment="footer"> </footer>
 </body>
 </html>

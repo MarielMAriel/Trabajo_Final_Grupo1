@@ -7,17 +7,17 @@
 </head>
 
 <body>
-	<header th:insert="/layout/header::header"> </header>
+	
 
-	<form th:action="@{/indexEmpr}" th:object="${login}"  class="row g-3">
+	<form th:action="@{/login}" th:object="${empresaDelForm}"  class="row g-3">
 		<div class="form-floating mb-3">
-			<input th:field="*{cuit}" type="text" class="form-control" id="floatingInput" placeholder="000000000">
-			<label for="floatingInput">Cuit</label>
+			<input type="text" class="form-control" id="cuit" placeholder="ingrese cuit" name="cuit">
+			<label for="cuit">Cuit</label>
 		</div>
-		<div class="form-floating" th:object="${contrasenia}">
-			<input th:field="*{contrasenia}"  type="password" class="form-control" id="floatingPassword"
-				placeholder="Password">
-			<label for="floatingPassword">Contrasenia</label>
+		<div class="form-floating">
+			<input type="password" class="form-control" id="contrasenia"
+				placeholder="Password" name="contrasenia">
+			<label for="contrasenia">Contrasenia</label>
 		</div>
 		<br>
 		<div class="col-12">

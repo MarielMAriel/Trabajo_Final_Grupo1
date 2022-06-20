@@ -1,7 +1,10 @@
 package fi.unju.edu.ar.serviceImp;
 
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fi.unju.edu.ar.entity.Empresa;
@@ -21,19 +24,17 @@ public class EmpresaServicelmp implements IEmpresaService{
 		
 		return new Empresa();
 	}
+	
+
 	@Override
-	public Empresa buscarEmpresa(String cuit, String contrasenia) {
+	public void crear(Empresa unaEmpresa) {
 		// TODO Auto-generated method stub
-		return empresaDaoImp.findByCuitAndContrasenia(cuit, contrasenia);
+		String pw = unaEmpresa.getContrasenia();
+		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
+		unaEmpresa.setContrasenia(bCryptPasswordEncoder.encode(pw));
+		empresaDaoImp.save(unaEmpresa);
 	}
-	@Override
-	public boolean existeEmpresa(String cuit, String contrasenia) {
-		
-		if(buscarEmpresa(cuit, contrasenia)==null) {
-			return false;
-		}
-		return true;
-	}
+	
 	
 
 }
