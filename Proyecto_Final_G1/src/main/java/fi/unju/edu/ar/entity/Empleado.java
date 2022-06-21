@@ -36,8 +36,11 @@ public class Empleado {
 	 private LocalDate fnac;
 	@Column(name = "emp_contrasenia" )
 	 private String contrasenia;
+	@Column(name = "emp_tipo" )
+	 private String tipo;
 public Empleado() {
 	// TODO Auto-generated constructor stub
+	this.tipo="empleado";
 }
 public Empleado(String dni, int nTramite, String email, String eCivil, String provinica, int tel, LocalDate fnac,
 		String contrasenia) {
@@ -49,6 +52,26 @@ public Empleado(String dni, int nTramite, String email, String eCivil, String pr
 	this.provinica = provinica;
 	this.tel = tel;
 	this.fnac = fnac;
+	this.contrasenia = contrasenia;
+}
+
+
+/**
+ * @return the tipo
+ */
+public String getTipo() {
+	return tipo;
+}
+/**
+ * @param tipo the tipo to set
+ */
+public void setTipo(String tipo) {
+	this.tipo = tipo;
+}
+/**
+ * @param contrasenia the contrasenia to set
+ */
+public void setContrasenia(String contrasenia) {
 	this.contrasenia = contrasenia;
 }
 public String getDni() {
@@ -116,8 +139,10 @@ public void setId(Long id) {
 @Override
 public String toString() {
 	return "Empleado [id=" + id + ", dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
-			+ ", provinica=" + provinica + ", tel=" + tel + ", fnac=" + fnac + ", contraseña=" + contrasenia + "]";
+			+ ", provinica=" + provinica + ", tel=" + tel + ", fnac=" + fnac + ", contrasenia=" + contrasenia
+			+ ", tipo=" + tipo + "]";
 }
+
 
 }
 

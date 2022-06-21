@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 			.antMatchers(resourse).permitAll()
-			.antMatchers("/", "/inicio","/NuevoEmpr","/guardarEmpresa").permitAll()
+			.antMatchers("/", "/inicio","/NuevoEmpr","/guardarEmpresa","/NuevoUsu","/guardarEmp").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
@@ -48,15 +48,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return bCryptPasswordEncoder;
 	}
 	@Autowired
-	loginServiceImp empresauserDetailsService;
+	loginServiceImp userDetailService;
 	//este metodo esta erroneo
-	/*@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(empresauserDetailsService).passwordEncoder(passwordEncoder());		
-	}*/
+	//@Autowired
+	//public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	//	auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());		
+	//}
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(empresauserDetailsService).passwordEncoder(passwordEncoder());		
+		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());		
 	}	
 	
 	

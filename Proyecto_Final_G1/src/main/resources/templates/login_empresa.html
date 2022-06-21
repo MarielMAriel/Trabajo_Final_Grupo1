@@ -11,7 +11,7 @@
 
 	<form th:action="@{/login}" th:object="${empresaDelForm}"  class="row g-3">
 		<div class="form-floating mb-3">
-			<input type="text" class="form-control" id="cuit" placeholder="ingrese cuit" name="cuit">
+			<input type="text" class="form-control" id="cuit" placeholder="ingrese cuit o dni" name="cuit">
 			<label for="cuit">Cuit</label>
 		</div>
 		<div class="form-floating">
@@ -25,7 +25,8 @@
 		</div>
 	</form>
 	<br>
-		<a th:href="@{/NuevoEmpr}" id="eliminarConcursante" class="btn btn-danger">registrarme</a>
+		<a th:href="@{/NuevoEmpr}" id="eliminarConcursante" class="btn btn-danger">registrarme como empresa</a>
+		<a th:href="@{/NuevoUsu}" id="eliminarConcursante" class="btn btn-danger">registrarme como ciudadano</a>
 </body>
 
 </html>

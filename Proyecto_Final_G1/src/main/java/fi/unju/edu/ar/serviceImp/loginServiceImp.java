@@ -12,22 +12,23 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import fi.unju.edu.ar.entity.Empresa;
-import fi.unju.edu.ar.repository.IEmpresaDAO;
+
+import fi.unju.edu.ar.entity.Usuario;
+import fi.unju.edu.ar.repository.IUsuarioDao;
 
 @Service
 public class loginServiceImp implements UserDetailsService{
 	@Autowired
-	IEmpresaDAO iEmpresa;
+	IUsuarioDao iUsuario;
 	
 	@Override
-	public UserDetails loadUserByUsername(String cuit) throws UsernameNotFoundException {//user detail sirve para recuperar para guardar  
-		Empresa empresaEncontrado = iEmpresa.findByCuit(cuit).orElseThrow(()->new UsernameNotFoundException("login invalido"));
+	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {//user detail sirve para recuperar para guardar  
+		Usuario usuarioEncontrado = iUsuario.findById(id).orElseThrow(()->new UsernameNotFoundException("login invalido"));
 		
 		List<GrantedAuthority> typos= new ArrayList<>();
-		GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(empresaEncontrado.getTipo());
+		GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(usuarioEncontrado.getTipo());
 		typos.add(grantedAuthority);
-		UserDetails user =(UserDetails)new User(cuit, empresaEncontrado.getContrasenia(), typos);
+		UserDetails user =(UserDetails)new User(id, usuarioEncontrado.getContrasenia(), typos);
 		return user;
 	}
 	
