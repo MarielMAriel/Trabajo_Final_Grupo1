@@ -5,12 +5,14 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import fi.unju.edu.ar.entity.Empresa;
+import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.service.IEmpresaService;
+import fi.unju.edu.ar.service.IUsuarioService;
 @Controller
 
 public class EmpresaController {
@@ -19,7 +21,8 @@ public class EmpresaController {
 			"Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán"};
 	@Autowired//inyecto una instancia del servicio de la empresa empresaservice
 	private IEmpresaService empresaService;
-	
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 	@GetMapping("/NuevoEmpr")
 	public ModelAndView getFormEmpresa() {
@@ -31,7 +34,9 @@ public class EmpresaController {
 	
 	@PostMapping("/guardarEmpresa")
 	public ModelAndView guardarEmpresa (@Valid Empresa empresa) {
+		Usuario usuario=usuarioService.setearUsuario(empresa);
 		empresaService.crear(empresa);
+		usuarioService.crear(usuario);
 		ModelAndView mav=new ModelAndView("login_empresa");
 		mav.addObject("login",empresaService.getEmpresa());
 		return mav;

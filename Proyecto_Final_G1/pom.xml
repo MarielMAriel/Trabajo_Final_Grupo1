@@ -48,7 +48,11 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+	<!-- dependencias agregadas para el uso de las notaciones de validacion-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+		</dependency>
 		<!-- dependencias agregadas para el uso de las notaciones de validacion-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

@@ -11,12 +11,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 //import fi.edu.unju.fi.model.Usuario;
 import fi.unju.edu.ar.entity.Empleado;
+import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.service.IEmpleadoService;
+import fi.unju.edu.ar.service.IUsuarioService;
 @Controller
 public class UsuarioController {
 	@Autowired
 	private IEmpleadoService empleadoService;
-	
+	@Autowired
+	private IUsuarioService usuarioService;
 	
 
 	@GetMapping("/NuevoUsu")
@@ -27,7 +30,9 @@ public class UsuarioController {
 	}
 	@PostMapping("/guardarEmp")
 	public ModelAndView guardarEmplNuevo(@Valid Empleado empleado) {
+		Usuario usuario = usuarioService.setearUsuarioi(empleado);
 		empleadoService.guardarEmplado(empleado);
+		usuarioService.crear(usuario);
 		ModelAndView mav=new  ModelAndView("index");
 		return mav;
 	}

@@ -3,6 +3,7 @@ package fi.unju.edu.ar.serviceImp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import fi.unju.edu.ar.entity.Empleado;
@@ -16,7 +17,9 @@ public class EmpleadoServiceImp implements IEmpleadoService{
 	private IEmpleadoDAO empleadoDaoImp;
 	@Override
 	public void guardarEmplado(Empleado empleado) {
-		// TODO Auto-generated method stub
+		String pw = empleado.getContrasenia();
+		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
+		empleado.setContrasenia(bCryptPasswordEncoder.encode(pw));
 		empleadoDaoImp.save(empleado);
 	}
 	@Override
