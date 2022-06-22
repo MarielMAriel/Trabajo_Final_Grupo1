@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:insert="/layout/head::head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<header th:insert="/layout/header::header"> </header>
+<!-- CAMBIAR EL GUARDAR -->
+<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3" >
+  <div class="col-md-6">
+    <label for="dni" class="form-label">DNI</label>
+    <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
+     <div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+  </div>
+  <div class="col-md-6">
+    <label for="nroTramite" class="form-label">NroTramite</label>
+    <input th:field="*{nTramite}" type="number" class="form-control" id="nroTramite" required>
+     <div class="text-danger" th:if="${#fields.hasErrors('nTramite')}" th:errors="*{nTramite}"></div>
+  </div>
+
+
+   <div class="col-md-6">
+    <label for="email" class="form-label">E-MAIL</label>
+    <input th:field="*{email}" type="text" class="form-control" id="email" required >
+     <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>    
+  </div>
+   <div class="col-md-6">
+   
+   <div class="form-check">
+  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="soltero" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">
+    Solter@
+  </label>
+</div>
+<div class="form-check">
+  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="casado" id="flexCheckChecked" checked>
+  <label class="form-check-label" for="flexCheckChecked">
+    Casad@
+  </label>
+</div>
+<!--  //hay q corregir lo de las llavaes por lo q va despues del . caundo pase al controler le asigno
+ el objeto entero a los atributos de ese form y hay q cambiarlo para q reciba el nombre de la provincia 
+ para q se lo asigne directamente-->
+<label for="provincia" class="col-md-6 col-form-label">provincia:</label>
+<div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
+	<select class="editTxt" name="delegacion">
+      <option disabled selected>Seleccione su provincia</option>
+      <option> Buenos Aires </option>
+      <option> Catamarca </option>
+      <option> Chaco </option>
+      <option> Chubut </option>
+      <option> Ciudad Autónoma de Buenos Aires </option>
+      <option> Córdoba </option>
+      <option> Corrientes </option>
+      <option> Entre Ríos </option>
+      <option> Formosa </option>
+      <option> Jujuy </option>
+      <option> La Pampa </option>
+      <option> La Rioja </option>
+      <option> Mendoza </option>
+      <option> Misiones </option>
+      <option> Neuquén </option>
+      <option> Río Negro </option>
+      <option> Salta </option>
+      <option> San Juan </option>
+      <option> San Luis </option>
+      <option> Santa Cruz </option>
+      <option> Santa Fe </option>
+      <option> Santiago del Estero </option>
+      <option> Tierra del Fuego </option>
+      <option> Tucumán </option>
+      
+    </select> 
+   
+   <div class="col-md-6">
+    <label for="telefono" class="form-label">Telefono </label>
+    <input th:field="*{Tel}" type="number" class="form-control" id="telefono" required>
+     <div class="text-danger" th:if="${#fields.hasErrors('Tel')}" th:errors="*{Tel}"></div>
+  </div>
+  
+  
+  
+    <label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
+    <input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}" required>
+     <div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>
+  </div>
+ 
+ <div class="col-md-6">
+    <label for="contrasenia" class="form-label">CONTRASEï¿½A</label>
+    <input th:field="*{contrasenia}" type="text" class="form-control" id="contrasenia" required >
+     <div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
+  </div>
+  
+
+ 
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">ENVIAR</button>
+  </div>
+</form>
+</body>
+</html>
