@@ -12,36 +12,48 @@
 		<div class="col-md-6">
 			<label for="nombre" class="form-label">Nombre Comercial</label>
 			<input th:field="*{nombre}" type="text" class="form-control" id="nombre" required>
+			 <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 		</div>
 		<div class="col-md-6">
 			<label for="cuit" class="form-label">CUIT</label>
 			<input th:field="*{cuit}" type="text" class="form-control" id="cuit" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('cuit')}" th:errors="*{cuit}"></div>
+		
 		</div>
 		<div class="col-md-6">
 			<label for="contrasenia" class="form-label">Contrasenia</label>
 			<input th:field="*{contrasenia}" type="text" class="form-control" id="contrasenia" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
 		</div>
 		<div class="col-md-6">
 			<label for="razon" class="form-label">Razon Social</label>
 			<input th:field="*{razonSocial}" type="text" class="form-control" id="razon" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('razonSocial')}" th:errors="*{razonSocial}"></div>
+		
 		</div>
 		<div class="col-md-6">
 			<label for="inicioActividad" class="form-label">Inicio de Actividad</label>
 			<input th:field="*{finicio}" type="date" class="form-control" id="inicioActividad"th:value="*{finicio}" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('finicio')}" th:errors="*{finicio}"></div>
 		</div>
 		<div class="col-md-6">
 			<label for="email" class="form-label">Email</label>
 			<input th:field="*{email}" type="email" class="form-control" id="email" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+		
 		</div>
 		<div class="col-md-6">
 			<label for="telefono" class="form-label">Telefono</label>
 			<input th:field="*{telefono}" type="text" class="form-control" id="telefono" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
 		</div>
 		<!-- TRATAR DE CAMBIAR LA FORMA DE CARGAR EL DOMICILIO-->
 		<div class="col-md-6">
 			<label for="domicilio" class="form-label">Domicilio</label>
 			<input th:field="*{domicilio}" type="text" class="form-control" id="domicilio" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('domicilio')}" th:errors="*{domicilio}"></div>
 		</div>
+		<!-- COMO LE PONEMOS LA VALIDACION EN OPVIONES MUTIPLE CHOICE -->
 		<div class="form-group row">
 			<label for="provincias" class="col-md-6 col-form-label">Provincias:</label>
 			<select id="provincias" th:field="*{provincia}">
@@ -51,10 +63,12 @@
 		<div class="col-md-6">
 			<label for="pagina" class="form-label">Pagina Web</label>
 			<input th:field="*{pagina}" type="text" class="form-control" id="pagina" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('pagina')}" th:errors="*{pagina}"></div>
 		</div>
 		<div class="col-md-6">
 			<label for="descripcion" class="form-label">Descripcion</label>
 			<input th:field="*{descripcion}" type="text" class="form-control" id="descripcion" required>
+		     <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 		</div>
 
 
