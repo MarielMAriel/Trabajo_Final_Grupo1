@@ -3,41 +3,45 @@ package fi.unju.edu.ar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import fi.unju.edu.ar.serviceImp.loginServiceImp;
 
 @Configuration
-@EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig {
+	
+	@Autowired
+	private AutenticacionSaccessHandler autenticacion;
 	
 	String[] resourse = new String[] {
 			"/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**","/webjars/**"
 	};
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http
-		.authorizeRequests()
+	@Bean
+	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
 			.antMatchers(resourse).permitAll()
 			.antMatchers("/", "/inicio","/NuevoEmpr","/guardarEmpresa","/NuevoUsu","/guardarEmp").permitAll()
 			.anyRequest().authenticated()
 			.and()	
 		.formLogin()
-			.loginPage("/logEmpr")
-			.permitAll()
-			.defaultSuccessUrl("/indexEmpr")
+			.loginPage("/logEmpr").permitAll()
+			.successHandler(autenticacion)
 			.failureUrl("/logEmpr?error=true")
-			.usernameParameter("cuit")
+			.usernameParameter("id")
 			.usernameParameter("contrasenia")
 			.and()
-		.logout()
-			.permitAll()
-			.logoutSuccessUrl("/logEmpr?logout");
+		.logout().permitAll();
+		http.headers().frameOptions().sameOrigin();
+
+		return http.build();
 	}
 	
 	BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -48,16 +52,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		return bCryptPasswordEncoder;
 	}
 	@Autowired
-	loginServiceImp userDetailService;
-	//este metodo esta erroneo
-	//@Autowired
-	//public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-	//	auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());		
-	//}
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());		
-	}	
+	loginServiceImp userDetailsService;
+	
+	@Bean
+	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+			throws Exception {
+		return authenticationConfiguration.getAuthenticationManager();
+	}
 	
 	
 	

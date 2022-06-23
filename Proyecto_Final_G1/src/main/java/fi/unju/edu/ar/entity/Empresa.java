@@ -8,66 +8,77 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 //import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 //import javax.validation.constraints.NotNull;
 //import javax.validation.constraints.Past;
 //import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 //import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "empresa")
 public class Empresa {
-
+	//el id se genera automaticamente desde el sistema 
+	//en el no se aplican validaciones 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "empr_id")
-	@Min(value=1,message = "La ID debe ser mayor a 1")
-	//preguntar cuantos caracteres puede tener la id
 	private Long id;
 	
 	// el identificador de la tabla
+	@Size(min=7,message = "Su contraseña de almenos 7 caracteres")
 	@Column(name = "empr_contrasenia")
-	//@Min(value=100000000,message = "Su contraseña de almenos 9 caracteres")
 	private String contrasenia;
-	@Column(name = "empr_cuit")//como poner la vilidacion el el cuit ,ya q no acepta los 11 numero
-	//@NotEmpty 
+	
+	@NotEmpty
+	@Column(name = "empr_cuit")//como poner la vilidacion el el cuit ,ya q no acepta los 11 numero 
 	private String cuit;
 	// el nombre proviene del nombre del socio/s se da en sociedades o por acciones
-	@Column(name = "empr_rSocial")
-	//@NotEmpty 
+	@NotEmpty
+	@Column(name = "empr_rSocial") 
 	private String razonSocial;
-	@Column(name = "empr_nombre")
-	//@NotEmpty 
+	
+	@NotEmpty
+	@Column(name = "empr_nombre") 
 	private String nombre;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotNull @Past (message = "Debe ingresar su fecha de inicio de actividad")//consultar si tambien ponemos fin de activiadad	
 	@Column(name = "empr_finicio")
-	//@DateTimeFormat(pattern="yyyy-MM-dd")
-//	@NotNull @Past (message = "Debe ingresar su fecha de inicio de actividad")//consultar si tambien ponemos fin de activiadad
 	private LocalDate finicio;
+	
+	@NotEmpty @Email (message = "Ingrese un e-mail valido")
 	@Column(name = "empr_email")
-	//@NotEmpty @Email (message = "Ingrese un e-mail valido")
 	private String email;
+	@Size(min=7,max=10,message = "Su numero de telefono celular debe ser correcto")
 	@Column(name = "empr_telefono")
-	//@Min(value=1000000000,message = "Su numero de telefono celular debe ser correcto")
 	private String telefono;
 	// ciudad barrio calle y num
+	@NotEmpty
 	@Column(name = "empr_domicilio")
-	//@NotEmpty
 	private String domicilio;
 	// CONSULTAR PROVINCIA EN VALIDACION
-	//@NotEmpty(message = "Debe elegir su provincia")
+	
+	@NotEmpty(message = "Debe elegir su provincia")
 	@Column(name = "empr_provincia")
 	private String provincia;
+	
+	@NotEmpty
 	@Column(name = "empr_pagina")
-	//@NotEmpty
 	private String pagina;
-	@Column(name = "empr_descripcion")
-	//@NotEmpty 
+	@NotEmpty
+	@Column(name = "empr_descripcion") 
 	private String descripcion;
 	@Column(name ="empr_tipo")
-	@NotEmpty private String tipo;
+	private String tipo;
 
 	/**
 	 * 

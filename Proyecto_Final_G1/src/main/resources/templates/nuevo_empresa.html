@@ -56,10 +56,9 @@
 		<!-- COMO LE PONEMOS LA VALIDACION EN OPVIONES MUTIPLE CHOICE -->
 		<div class="form-group row">
 			<label for="provincias" class="col-md-6 col-form-label">Provincias:</label>
-		<input th:field="*{provincia}" type="text" class="form-control" id="provincia" >
-<!-- 			<select id="provincias" th:field="*{provincia}"> -->
-<!-- 				<option th:each="prov:${provincias}" th:value="${prov}" th:text="${prov}" th:selected="false" /> -->
-<!-- 			</select> -->
+			<select id="provincias" th:field="*{provincia}"> 
+				<option th:each="prov:${provincias}" th:value="${prov}" th:text="${prov}" th:selected="false" />
+ 			</select>
 		</div>
 		<div class="col-md-6">
 			<label for="pagina" class="form-label">Pagina Web</label>
