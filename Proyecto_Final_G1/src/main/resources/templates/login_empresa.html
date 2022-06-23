@@ -8,8 +8,8 @@
 
 <body>
 	
-
-	<form th:action="@{/login}" th:object="${empresaDelForm}"  class="row g-3">
+<!-- SE SACO EL THOBJET -->
+	<form th:action="@{/login}"  method="POST"  class="row g-3">
 		<div class="form-floating mb-3">
 			<input type="text" class="form-control" id="cuit" placeholder="ingrese cuit o dni" name="cuit">
 			<label for="cuit">Cuit</label>

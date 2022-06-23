@@ -7,4 +7,5 @@ public interface IEmpresaService {
 	 public void guardarEmpresa(Empresa empresa);
 	 public Empresa getEmpresa();
 	 public void crear (Empresa unaEmpresa);
+	 public Empresa findByCuit(String cuit);
 }
