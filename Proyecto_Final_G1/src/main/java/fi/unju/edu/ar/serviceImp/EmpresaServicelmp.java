@@ -34,6 +34,11 @@ public class EmpresaServicelmp implements IEmpresaService{
 		unaEmpresa.setContrasenia(bCryptPasswordEncoder.encode(pw));
 		empresaDaoImp.save(unaEmpresa);
 	}
+	@Override
+	public Empresa findByCuit(String cuit) {
+		// TODO Auto-generated method stub
+		return empresaDaoImp.findByCuit(cuit);
+	}
 	
 	
 

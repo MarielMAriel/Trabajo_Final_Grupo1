@@ -6,12 +6,14 @@
 </head>
 <body>
 <header th:insert="/layout/header::header"> </header>
-<!-- EDITAR EL TH:ACTION A QUE HACE REFERENCIA -->
-<form th:action="@{/usuario/guardado}" th:object="${usuario}" method="post" class="row g-3" >
+<!-- EDITAR EL TH:ACTION A QUE HACE REFERENCIA
+th fiel sacado y el thobjet -->
+
+<form th:action="@{/usuario/guardado}"  method="post" class="row g-3" >
   <div class="col-md-6">
     <label for="dni" class="form-label">DNI</label>
     <!-- AGREGADO DE ID NOMBRE -->
-    <input th:field="*{dni}" type="number" class="form-control" id="nombre" id="dni" required>
+    <input  type="number" class="form-control" id="nombre" name="dni" id="dni" required>
   </div>
  
 
@@ -22,8 +24,9 @@
 	
  
  <div class="col-md-6">
-    <label for="contraseña" class="form-label">CONTRASEÑA</label>
-    <input th:field="*{contraseña}" type="text" class="form-control" id="contraseña" required >
+    <label for="contrasenia" class="form-label">CONTRASEÑA</label>
+    <!-- se necesita el atributo name para q spring segurity reocnozca los campos -->
+    <input  type="text" class="form-control" id="contrasenia" name="contrasenia" required >
   </div>
  
  

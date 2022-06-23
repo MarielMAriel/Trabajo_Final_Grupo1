@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import fi.unju.edu.ar.entity.Empresa;
 import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.service.IEmpresaService;
 import fi.unju.edu.ar.service.IUsuarioService;
+import fi.unju.edu.ar.serviceImp.loginServiceImp;
 @Controller
 
 public class EmpresaController {
@@ -23,6 +27,8 @@ public class EmpresaController {
 	private IEmpresaService empresaService;
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	private static final Log LOGGER = LogFactory.getLog(loginServiceImp.class);
 	
 	@GetMapping("/NuevoEmpr")
 	public ModelAndView getFormEmpresa() {
@@ -43,10 +49,14 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/logEmpr")
-	public ModelAndView getLogeo() {
-		ModelAndView mav = new ModelAndView("login_empresa");
-		mav.addObject("login", empresaService.getEmpresa());
-		return mav;
+	public String getLogeo() {
+//		ModelAndView mav = new ModelAndView("login_empresa");
+//		mav.addObject("login", empresaService.getEmpresa());
+//		return mav;
+		
+		LOGGER.info("AAAAAAAAAAAAAAAAAAA");
+		return "login_empresa";
+		
 	}
 	@PostMapping("/login")
 	public ModelAndView getIndexEmpresa() {

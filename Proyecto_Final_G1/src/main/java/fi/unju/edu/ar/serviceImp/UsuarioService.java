@@ -50,8 +50,4 @@ public class UsuarioService implements IUsuarioService{
 		return usu;
 	}
 
-
-
-
-
 }
