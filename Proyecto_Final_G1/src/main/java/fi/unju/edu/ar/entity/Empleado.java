@@ -4,63 +4,71 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-//import javax.validation.constraints.Email;
-//import javax.validation.constraints.Max;
-//import javax.validation.constraints.Min;
-//import javax.validation.constraints.NotEmpty;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Past;
-//import javax.validation.constraints.Size;
-//
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 //import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="empleados")
 public class Empleado {
 	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	@Column(name = "emp_id")
-//	@Min(value=1,message = "La ID debe ser mayor a 1")
-//	//preguntar cuantos caracteres puede tener la id
-//	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "emp_id")
+	private Long id;
 	
+	//Size permite especificar la cantidad de caracteres que puede tomar un dni
+	//
+	@Size(min =7,max = 9,message="El empleado debe ingresar el dni ej:12000800")
 	@Column(name = "emp_dni" )
-	//SE CUENTAN LOS DNI MAYORES QUE 20M y MENORES DE 45M
-	//@Size(min =20000000,max = 45000000,message = "El empleado debe ser mayor de edad")
 	 private String dni;
-	//@Max(value=1000000000,message = "El Nro. de Tramite debe ser mayor a 1.000.000.000")
+	
+	@Size(min=10 ,max=13,message = "El Nro. de Tramite debe ser mayor a 1.000.000.000")
 	@Column(name = "emp_ntramite" )
-	 private int nTramite;
+	 private String nTramite;
+	
+	@NotEmpty@Email (message = "Ingrese un e-mail valido")
 	@Column(name = "emp_email" )
-	//@NotEmpty @Email (message = "Ingrese un e-mail valido")
 	 private String email;
-	//@NotEmpty(message = "Su estado civil debe estar completo")
+	
+	@NotEmpty(message = "Su estado civil debe estar completo")
 	@Column(name = "emp_eCivil" )
 	 private String eCivil;
 	// CONSULTAR PROVINCIA EN VALIDACION
-	//@NotEmpty(message = "Debe elegir su provincia")
+	@NotEmpty(message = "Provincia no puede estar vacio")
 	@Column(name = "emp_provincia" )
 	 private String provincia;
+	
+	@Size(min=7,message = "Su numero de telefono celular debe ser correcto")
 	@Column(name = "emp_telefono" )
-	//@Min(value=1000000000,message = "Su numero de telefono celular debe ser correcto")
-	 private int tel;
+	 private String tel;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotNull @Past (message = "Debe ingresar su fecha de nacimiento")
 	@Column(name = "emp_fechnac")
-	//@NotNull @Past (message = "Debe ingresar su fecha de nacimiento")
-	//@DateTimeFormat(pattern="yyyy-MM-dd")
 	 private LocalDate fnac;
-	@Column(name = "emp_contrasenia" )
-	//@Min(value=100000000,message = "Su contraseña de almenos 9 caracteres")
+	
+	@Size(min=7,message = "Su contraseña de almenos 7 caracteres")
+	@Column(name = "emp_contrasenia" )	
 	 private String contrasenia;
+	
 	@Column(name = "emp_tipo" )
 	 private String tipo;
 public Empleado() {
 	// TODO Auto-generated constructor stub
 	this.tipo="empleado";
 }
-public Empleado(String dni, int nTramite, String email, String eCivil, String provincia, int tel, LocalDate fnac,
+public Empleado(String dni, String nTramite, String email, String eCivil, String provincia, String tel, LocalDate fnac,
 		String contrasenia) {
 	super();
 	this.dni = dni;
@@ -104,10 +112,10 @@ public String getDni() {
 public void setDni(String dni) {
 	this.dni = dni;
 }
-public int getnTramite() {
+public String getnTramite() {
 	return nTramite;
 }
-public void setnTramite(int nTramite) {
+public void setnTramite(String nTramite) {
 	this.nTramite = nTramite;
 }
 public String getEmail() {
@@ -123,10 +131,10 @@ public void seteCivil(String eCivil) {
 	this.eCivil = eCivil;
 }
 
-public int getTel() {
+public String getTel() {
 	return tel;
 }
-public void setTel(int tel) {
+public void setTel(String tel) {
 	this.tel = tel;
 }
 public LocalDate getFnac() {
@@ -146,15 +154,15 @@ public void setContraseña(String contraseña) {
 /**
  * @return the id
  */
-//public Long getId() {
-//	return id;
-//}
+public Long getId() {
+	return id;
+}
 /**
  * @param id the id to set
  */
-//public void setId(Long id) {
-//	this.id = id;
-//}
+public void setId(Long id) {
+	this.id = id;
+}
 @Override
 public String toString() {
 	return "Empleado [ dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
