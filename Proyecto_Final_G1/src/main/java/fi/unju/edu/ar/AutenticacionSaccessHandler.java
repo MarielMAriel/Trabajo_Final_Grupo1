@@ -40,7 +40,7 @@ public class AutenticacionSaccessHandler implements AuthenticationSuccessHandler
 			
 		}
 		if(tipoEmpresa) {
-			redirectStrategy.sendRedirect(request, response,"/login");
+			redirectStrategy.sendRedirect(request, response,"/sitioEmpresa");
 		}else {
 			if(tipoEmpledo) {
 				redirectStrategy.sendRedirect(request, response,"/indexEmpl" );

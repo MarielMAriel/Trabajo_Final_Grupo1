@@ -22,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="empleados")
 public class Empleado {
+	//NOTA HERNAN DEBO AGREGAR UN ATRIBUTO CON EL NOMBRE DEL EMPLEADO
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "emp_id")
