@@ -15,8 +15,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import fi.unju.edu.ar.entity.Empresa;
+import fi.unju.edu.ar.entity.OfertaLab;
 import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.service.IEmpresaService;
+import fi.unju.edu.ar.service.IOfertaService;
 import fi.unju.edu.ar.service.IUsuarioService;
 import fi.unju.edu.ar.serviceImp.loginServiceImp;
 @Controller
@@ -29,6 +31,8 @@ public class EmpresaController {
 	private IEmpresaService empresaService;
 	@Autowired
 	private IUsuarioService usuarioService;
+	@Autowired
+	private IOfertaService iOfertaService;
 	
 	private static final Log LOGGER = LogFactory.getLog(loginServiceImp.class);
 	
@@ -56,16 +60,35 @@ public class EmpresaController {
 		return mav;
 	}
 
-	@GetMapping("/logEmpr")
-	public ModelAndView getLogeo() {
-		ModelAndView mav = new ModelAndView("login_empresa");
-		mav.addObject("login", empresaService.getEmpresa());
-		LOGGER.info("se solicito la ventana para ingresar al sistema");
-		return mav;
-	}
-	@PostMapping("/login")
+
+	
+	@GetMapping("/sitioEmpresa")
 	public ModelAndView getIndexEmpresa() {
 		ModelAndView mav = new ModelAndView("index_empresa");
+		return mav;
+	}
+	
+	//metodo para redirigir al formulario de carga de ofertas laborales
+	@GetMapping("/nuevaOferta")
+	public ModelAndView getFormOfertas() {
+		ModelAndView mav = new  ModelAndView("formulario_Oferta");
+		mav.addObject("ofertaLab", iOfertaService.getOferta());
+		return mav;
+		}
+	//metodo para guardar el formulario en la base de datos 
+	@PostMapping("/guardarOferta")
+	public ModelAndView guardarOferta(@Validated @ModelAttribute OfertaLab ofertaLab,BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			LOGGER.info("no se cumplen las validaciones "+ofertaLab);
+			ModelAndView mav = new ModelAndView("redirect:/nuevaOferta");
+			return mav;
+		}
+		ModelAndView mav = new ModelAndView("redirect:/sitioEmpresa");
+		//trato de agregar la oferta en la lista de ofertas de la primer empresa
+		empresaService.findByCuit("2122232425").getOfertas().add(ofertaLab);
+		
+		iOfertaService.guardar(ofertaLab);
+		LOGGER.info("se agrego con exito una nueva oferta laboral "+ofertaLab);
 		return mav;
 	}
 }

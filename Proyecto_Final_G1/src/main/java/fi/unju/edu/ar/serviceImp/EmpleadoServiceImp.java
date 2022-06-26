@@ -17,9 +17,9 @@ public class EmpleadoServiceImp implements IEmpleadoService{
 	private IEmpleadoDAO empleadoDaoImp;
 	@Override
 	public void guardarEmplado(Empleado empleado) {
-		String pw = empleado.getContrasenia();
-		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
-		empleado.setContrasenia(bCryptPasswordEncoder.encode(pw));
+		//String pw = empleado.getContrasenia();
+		//BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
+		//empleado.setContrasenia(bCryptPasswordEncoder.encode(pw));
 		empleadoDaoImp.save(empleado);
 	}
 	@Override

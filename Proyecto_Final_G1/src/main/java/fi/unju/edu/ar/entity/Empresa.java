@@ -1,27 +1,24 @@
 package fi.unju.edu.ar.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-//import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Past;
-//import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-//import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "empresa")
@@ -79,6 +76,11 @@ public class Empresa {
 	private String descripcion;
 	@Column(name ="empr_tipo")
 	private String tipo;
+	
+	
+	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+	private List<OfertaLab> ofertas;
+	
 
 	/**
 	 * 
@@ -118,19 +120,6 @@ public class Empresa {
 		this.cuit = cuit;
 	}
 
-	/**
-	 * @return the id
-	 */
-//	public Long getId() {
-//		return id;
-//	}
-//
-//	/**
-//	 * @param id the id to set
-//	 */
-//	public void setId(Long id) {
-//		this.id = id;
-//	}
 
 	/**
 	 * @return the contrasenia
@@ -271,6 +260,44 @@ public class Empresa {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the ofertas
+	 */
+	public List<OfertaLab> getOfertas() {
+		return ofertas;
+	}
+
+	/**
+	 * @param ofertas the ofertas to set
+	 */
+	public void setOfertas(List<OfertaLab> ofertas) {
+		this.ofertas = ofertas;
+	}
 
 	/**
 	 * 
@@ -284,12 +311,6 @@ public class Empresa {
 				+ descripcion + "]";
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
 
 }

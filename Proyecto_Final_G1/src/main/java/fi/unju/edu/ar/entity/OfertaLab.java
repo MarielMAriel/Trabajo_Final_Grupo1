@@ -1,26 +1,80 @@
 package fi.unju.edu.ar.entity;
 
-public class OfertaLab {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
-	private String cantidadVac;//cantidad de vacantes
+
+@Entity
+@Table(name="ofertas")
+public class OfertaLab {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="empr_id")
+	private Empresa empresa;
+	
+	@NotNull
+	@Column(name="ofe_vacante")
+	private int cantidadVac;//cantidad de vacantes
+	
+	
+	@NotNull
+	@Column(name="ofe_puesto")
 	private String puestoReq;//puesto requerido
+	
+	@NotNull
+	@Column(name="ofe_informacion")
 	private String resumenPuesto;//resumen del puesto
+	
+	@NotNull
+	@Column(name="ofe_diponibilidad")
 	private String disponibilidadH;//disponibilidad horaria
+	
+	@NotNull
+	@Column(name="ofe_tareas")
 	private String tareasPrin;//tareas principales
+	
+	@NotNull
+	@Column(name="ofe_contacto")
 	private String datosContac;//datos del contacto????????revisar y editar 
+	
+	@NotNull
+	@Column(name="ofe_jornada")
 	private int jornada;
+	
+	@NotNull
+	@Column(name="ofe_requisitos")
 	private String requisitos;
+	
+	@NotNull
+	@Column(name="ofe_salario")
 	private int salario;
+	
+	@NotNull
+	@Column(name="ofe_beneficio")
 	private String beneficio;
-	private String disponible;//solo si esta disponible o no esta disponible
+	
+	@Column(name="ofe_disponible")
+	private boolean disponible;//solo si esta disponible o no esta disponible
+	
 	
 	public OfertaLab() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OfertaLab(String cantidadVac, String puestoReq, String resumenPuesto, String disponibilidadH,
+	public OfertaLab(int cantidadVac, String puestoReq, String resumenPuesto, String disponibilidadH,
 			String tareasPrin, String datosContac, int jornada, String requisitos, int salario, String beneficio,
-			String disponible) {
+			boolean disponible) {
 		super();
 		this.cantidadVac = cantidadVac;
 		this.puestoReq = puestoReq;
@@ -35,11 +89,25 @@ public class OfertaLab {
 		this.disponible = disponible;
 	}
 
-	public String getCantidadVac() {
+	/**
+	 * @return the empresa
+	 */
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	/**
+	 * @param empresa the empresa to set
+	 */
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
+	public int getCantidadVac() {
 		return cantidadVac;
 	}
 
-	public void setCantidadVac(String cantidadVac) {
+	public void setCantidadVac(int cantidadVac) {
 		this.cantidadVac = cantidadVac;
 	}
 
@@ -115,12 +183,26 @@ public class OfertaLab {
 		this.beneficio = beneficio;
 	}
 
-	public String getDisponible() {
+	public boolean getDisponible() {
 		return disponible;
 	}
 
-	public void setDisponible(String disponible) {
+	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	@Override

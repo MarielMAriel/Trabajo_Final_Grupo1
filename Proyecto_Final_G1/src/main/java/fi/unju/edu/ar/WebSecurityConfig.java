@@ -29,7 +29,8 @@ public class WebSecurityConfig {
 		http.authorizeRequests()
 			.antMatchers(resourse).permitAll()
 			.antMatchers("/", "/inicio","/NuevoEmpr","/guardarEmpresa","/NuevoUsu","/guardarEmp").permitAll()
-			.anyRequest().authenticated()
+			//anule este punto para poder ir probendo otras funcionalidades
+			//.anyRequest().authenticated()
 			.and()	
 		.formLogin()
 			.loginPage("/logEmpr").permitAll()

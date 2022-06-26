@@ -29,9 +29,9 @@ public class EmpresaServicelmp implements IEmpresaService{
 	@Override
 	public void crear(Empresa unaEmpresa) {
 		// TODO Auto-generated method stub
-		String pw = unaEmpresa.getContrasenia();
-		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
-		unaEmpresa.setContrasenia(bCryptPasswordEncoder.encode(pw));
+		//String pw = unaEmpresa.getContrasenia();
+		//BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(4);
+		//unaEmpresa.setContrasenia(bCryptPasswordEncoder.encode(pw));
 		empresaDaoImp.save(unaEmpresa);
 	}
 	@Override
