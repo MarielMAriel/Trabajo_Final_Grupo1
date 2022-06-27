@@ -9,10 +9,10 @@
 <body>
 	
 <!-- SE SACO EL THOBJET -->
-	<form th:action="@{/login}" th:object="${usuarioDelForm}" method="POST"  class="row g-3">
+	<form th:action="@{/logEmpr}" th:object="${usuarioDelForm}" method="POST"  class="row g-3">
 		<div class="form-floating mb-3">
-			<input type="text" class="form-control" id="cuit" placeholder="ingrese cuit o dni" name="id">
-			<label for="cuit">Cuit</label>
+			<input type="text" class="form-control" id="id" placeholder="ingrese cuit o dni" name="id">
+			<label for="id">Cuit o Dni</label>
 		</div>
 		<div class="form-floating">
 			<input type="password" class="form-control" id="contrasenia"

@@ -85,8 +85,9 @@ public class EmpresaController {
 		}
 		ModelAndView mav = new ModelAndView("redirect:/sitioEmpresa");
 		//trato de agregar la oferta en la lista de ofertas de la primer empresa
-		empresaService.findByCuit("2122232425").getOfertas().add(ofertaLab);
-		
+		//empresaService.findByCuit("2122232425").getOfertas().add(ofertaLab);
+		Empresa unemp = empresaService.findByCuit("2122232425");
+		ofertaLab.setEmpresa(unemp);
 		iOfertaService.guardar(ofertaLab);
 		LOGGER.info("se agrego con exito una nueva oferta laboral "+ofertaLab);
 		return mav;

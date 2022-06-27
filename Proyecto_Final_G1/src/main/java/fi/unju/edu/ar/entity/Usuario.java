@@ -14,8 +14,8 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "usu_key")
 	private Long key;
-	@Column(name="usu_id")
-	private String id;//puede tomar el valor de cuit o dni depenndiendo del tipo de usuario
+	@Column(name="usu_identificador")
+	private String identificador;//puede tomar el valor de cuit o dni depenndiendo del tipo de usuario
 	@Column(name="usu_tipo")
 	private String tipo;
 	@Column(name="usu_contrasenia")
@@ -28,7 +28,7 @@ public class Usuario {
 	
 	public Usuario( String id, String tipo, String contrasenia) {
 		super();
-		this.id = id;
+		this.identificador = id;
 		this.tipo = tipo;
 		this.contrasenia = contrasenia;
 	}
@@ -54,15 +54,15 @@ public class Usuario {
 	/**
 	 * @return the id
 	 */
-	public String getId() {
-		return id;
+	public String getIdentificador() {
+		return identificador;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id) {
-		this.id = id;
+	public void setIdentificador(String id) {
+		this.identificador= id;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [key=" + key + ", id=" + id + ", tipo=" + tipo + ", contrasenia=" + contrasenia + "]";
+		return "Usuario [key=" + key + ", id=" + identificador + ", tipo=" + tipo + ", contrasenia=" + contrasenia + "]";
 	}
 	
 	
