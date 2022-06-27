@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -90,6 +92,15 @@ public class EmpresaController {
 		ofertaLab.setEmpresa(unemp);
 		iOfertaService.guardar(ofertaLab);
 		LOGGER.info("se agrego con exito una nueva oferta laboral "+ofertaLab);
+		return mav;
+	}
+	
+	//devuelve lista de ofertas 
+	@GetMapping("/listaPropuesta")
+	public ModelAndView getListaOfertas() {
+		ModelAndView mav = new ModelAndView("lista_ofertas");
+		Empresa empresa=empresaService.findByCuit("2122232425");
+		mav.addObject("ofertas", empresa.getOfertas());
 		return mav;
 	}
 }
