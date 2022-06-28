@@ -34,7 +34,7 @@ public class UsuarioService implements IUsuarioService{
 	@Override
 	public Usuario setearUsuario(Empresa empresa) {
 		Usuario usu = new Usuario();
-		usu.setId(empresa.getCuit());
+		usu.setIdentificador(empresa.getCuit());
 		usu.setContrasenia(empresa.getContrasenia());
 		usu.setTipo(empresa.getTipo());
 		return usu;
@@ -44,7 +44,7 @@ public class UsuarioService implements IUsuarioService{
 	@Override
 	public Usuario setearUsuarioi(Empleado empleado) {
 		Usuario usu = new Usuario();
-		usu.setId(empleado.getDni());
+		usu.setIdentificador(empleado.getDni());
 		usu.setContrasenia(empleado.getContrasenia());
 		usu.setTipo(empleado.getTipo());
 		return usu;

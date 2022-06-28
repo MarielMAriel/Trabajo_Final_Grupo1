@@ -9,7 +9,7 @@ import fi.unju.edu.ar.entity.Usuario;
 
 @Repository
 public interface IUsuarioDao extends JpaRepository<Usuario, Long>{
-	public Optional<Usuario> findById(String id);
+	public Optional<Usuario> findByIdentificador(String id);
 	
 
 }

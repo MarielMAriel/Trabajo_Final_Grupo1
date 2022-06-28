@@ -37,7 +37,7 @@ public class WebSecurityConfig {
 			.successHandler(autenticacion)
 			.failureUrl("/logEmpr?error=true")
 			.usernameParameter("id")
-			.usernameParameter("contrasenia")
+			.passwordParameter("contrasenia")
 			.and()
 		.logout().permitAll();
 		http.headers().frameOptions().sameOrigin();

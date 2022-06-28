@@ -38,8 +38,8 @@ public class loginServiceImp implements UserDetailsService{
 	
 	@Override
 	public UserDetails loadUserByUsername(String id) throws UsernameNotFoundException {//user detail sirve para recuperar para guardar  
-		Usuario usuarioEncontrado = usuarioDAO.findById(id).orElseThrow(()->new UsernameNotFoundException("login invalido"));
-		
+		Usuario usuarioEncontrado = usuarioDAO.findByIdentificador(id).orElseThrow(()->new UsernameNotFoundException("login invalido"));
+		LOGGER.info(usuarioEncontrado);
 
 		List<GrantedAuthority> tipos= new ArrayList<>();
 		GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(usuarioEncontrado.getTipo());
