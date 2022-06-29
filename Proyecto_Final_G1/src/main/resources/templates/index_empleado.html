@@ -1,19 +1,72 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head th:insert="/layout/head::head">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>Ciudadanos</title>
 </head>
 
 <body class="bg-dark">
-<!-- CONSULTAR -->
-<header th:insert="/layout/header_empleado::header_empleado"> </header>
-    <div class="container col-12 m-5">
-        <h4 class="display-4 text-white">BIENVENID@!</h4>
-        <!-- MOSTRAR NOMBRE DEL USUARIO -->
-        <div class="text-center">           
-        <img alt="imagen1" src="/imagen/radio.gif" title="Facultad de Ingenieria" width="1100" height="460">
-        </div>  
-    </div>
+	<header th:insert="/layouts/header::header"></header>
+	<div>
+		<div class="row bg-warning">
+			<h1 class="display-2">
+				<img src="https://portalempleo.gob.ar/images/ciudadanos.svg" alt=""
+					width="90" height="90" /> Ciudadanas/os
+			</h1>
+		</div>
+		<div class="container bg-white mt-5">
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+					<img src="https://portalempleo.gob.ar/images/svg/reloj.svg" alt=""
+						width="100" height="100" />
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Mi perfil laboral</h1>
+						<p>Armá tu CV: carga tus estudios, experiencia laboral,
+							idiomas, cursos. Podés editarlo, modificarlo la cantidad de veces
+							que lo necesites.</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="button" class="btn btn-outline-warning  w-100">Continuar</button>
+				</div>
+			</div>
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+					<img src="https://portalempleo.gob.ar/images/svg/descargar.svg"
+						alt="" width="110" height="110" />
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Obten tu corriculum</h1>
+						<p>Descargá el CV para imprimir</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="button" class="btn btn-outline-warning  w-100">Descargar</button>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+					<img src="https://portalempleo.gob.ar/images/svg/lupa.svg" alt=""
+						width="100" height="100" />
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Buscar empleo</h1>
+						<p>Postulate a ofertas laborales publicadas por empresas</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="button" class="btn btn-outline-warning  w-100">Buscar
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 </body>
+
 </html>

@@ -1,21 +1,58 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head th:insert="/layout/head::head">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+<title>Empleadores</title>
 </head>
 
 <body class="bg-dark">
-<!-- CONSULTAR HEADER A EMPRESA O HEADER EMPRESA A HEADER EMPRESA-->
-<header th:insert="/layout/header_empresa::header_empresa"> </header>
-    <div class="container col-12 m-5">
-        <h4 class="display-4 text-white">BIENVENID@!</h4>
-        
-        <!-- MOSTRAR NOMBRE DE LA EMPRESA -->
-        <div class="text-center">           
-        <!-- imagen sin destino -->
-        
-        </div>  
-    </div>
+	<header th:insert="/layout/header::header_empresa"></header>
+	<div>
+		<div class="row bg-danger">
+			<h1 class="display-2">
+				<img src="https://portalempleo.gob.ar/images/ciudadanos.svg" alt=""
+					width="90" height="90" /> Empleadoras/es
+			</h1>
+		</div>
+
+		<div class="container bg-white mt-5">
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+					<img src="https://cdn-icons-png.flaticon.com/512/1836/1836338.png"
+						alt="" width="100" height="100" />
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Crear oferta laboral</h1>
+						<p>Armá tu CV: carga tus estudios, experiencia laboral,
+							idiomas, cursos. Podés editarlo, modificarlo la cantidad de veces
+							que lo necesites.</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="button" class="btn btn-outline-danger w-100">Continuar</button>
+				</div>
+			</div>
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+					<img src="https://portalempleo.gob.ar/images/svg/lupa.svg" alt=""
+						width="100" height="100" />
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Buscar perfiles laborales</h1>
+						<p>Aqui podra bucar postulantes a empleos o puesto requeridos.</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="button" class="btn btn-outline-danger  w-100">Buscar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
