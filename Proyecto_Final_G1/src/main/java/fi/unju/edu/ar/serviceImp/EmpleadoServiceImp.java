@@ -32,6 +32,11 @@ public class EmpleadoServiceImp implements IEmpleadoService{
 		// TODO Auto-generated method stub
 		return new Empleado();
 	}
+	@Override
+	public List<Empleado> getListaProvincia(String provincia) {
+		// TODO Auto-generated method stub
+		return empleadoDaoImp.findByProvincia(provincia);
+	}
 	
 
 }

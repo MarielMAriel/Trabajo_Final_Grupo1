@@ -15,4 +15,7 @@ public interface IEmpleadoDAO extends JpaRepository<Empleado, Long >{
 	@Query("from Empleado e order by e.dni")
 	public List<Empleado> obtenerEmpleado();
 	
+	
+	public List<Empleado> findByProvincia(String provincia);
+	
 }
