@@ -4,6 +4,7 @@ package fi.unju.edu.ar.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +47,13 @@ public class EmpresaController {
 		mav.addObject("provincias", provincias);
 		return mav;
 	}
+//	VERIFICAR LOGIN DE REDIRECCION A FORMULARIO DE OFERTA DE TRABAJO
+	@GetMapping("/lista_ofertas")
+	public String getOfertaform(Model model) {
+		model.addAttribute("ofertas", iOfertaService.getOferta());
+		return "ofertas";
+	}
+
 	
 	@PostMapping("/guardarEmpresa")
 	public ModelAndView guardarEmpresa (@Validated @ModelAttribute Empresa empresa,BindingResult bindingResult) {
