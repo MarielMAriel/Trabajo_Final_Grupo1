@@ -1,6 +1,8 @@
 package fi.unju.edu.ar.serviceImp;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,12 @@ public class OfertaServiceImp implements IOfertaService{
 		// TODO Auto-generated method stub
 		ofertaDao.save(oferta);
 		
+	}
+
+	@Override
+	public List<OfertaLab> getlistaOfertaLab() {
+		// TODO Auto-generated method stub
+		return ofertaDao.ofertasEmpr();
 	}
 
 }

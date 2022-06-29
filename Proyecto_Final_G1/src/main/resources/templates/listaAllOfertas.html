@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeleaf.org">
+<head th:insert="/layout/head::head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<body>
+
+		<div>
+			<section>
+				<h1>Perfiles de Ciudadanos registrados en la pagina</h1>
+
+				<form th:action="@{/listaEmpresa}" th:object="${busqueda}" method="post"  class="d-flex" role="search">
+					<input name="valor" class="form-control me-2" type="search" placeholder="ingrese una palabra indicando el perfil que buscas" aria-label="Search">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+				<table class="table">
+					<tbody>
+						<thead>
+							<tr>
+
+                <th>VACANTES</th>
+                <th>PUESTO</th>
+                <th>RESUMEN</th>
+                <th>DISPONIBILIDAD</th>
+                <th>TAREAS</th>
+                <th>CONTACTO</th>
+                <th>JORNADA EN HS</th>
+                <th>REQUISITOS</th>
+                <th>SALARIO</th>
+                <th>BENEFICIO</th>
+                </tr>
+            </thead>
+            <tbody>
+              <tr th:each="oferta:${ofertas}">
+                <td th:text="${oferta.cantidadVac}"></td>
+                <td th:text="${oferta.puestoReq}"></td>
+                <td th:text="${oferta.resumenPuesto}"></td>
+                <td th:text="${oferta.disponibilidadH}"></td>
+                <td th:text="${oferta.tareasPrin}"></td>
+                <td th:text="${oferta.datosContac}"></td>
+                <td th:text="${oferta.jornada}"></td>
+                <td th:text="${oferta.requisitos}"></td>
+                <td th:text="${oferta.salario}"></td>
+                <td th:text="${oferta.beneficio}"></td>
+                <td>
+
+                 </td>
+               </tr> 
+            </tbody>
+          </table>
+      
+         </section>
+ </div>
+</body>
+</html>

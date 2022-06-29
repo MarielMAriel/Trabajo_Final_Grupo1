@@ -3,6 +3,8 @@ package fi.unju.edu.ar.serviceImp;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -38,6 +40,11 @@ public class EmpresaServicelmp implements IEmpresaService{
 	public Empresa findByCuit(String cuit) {
 		// TODO Auto-generated method stub
 		return empresaDaoImp.findByCuit(cuit);
+	}
+	@Override
+	public List<Empresa> getListaEmpresas() {
+		
+		return empresaDaoImp.obtenerEmpresa();
 	}
 	
 	
