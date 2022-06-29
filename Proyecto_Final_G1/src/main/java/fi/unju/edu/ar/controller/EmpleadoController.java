@@ -62,12 +62,7 @@ public class EmpleadoController {
 		mav.addObject("usuario", usuar);
 		return mav;
 	*/
-	@GetMapping("/listEmpl")
-	public ModelAndView getListaEmpleados() {
-		ModelAndView mav = new ModelAndView("lista_empleado");
-		mav.addObject("empleados", empleadoService.getListaEmpleado());
-		return mav;
-	}
+
 	@GetMapping("/indexEmpl")
 	public ModelAndView getIndezEmpleados() {
 		ModelAndView mav = new ModelAndView("index_empleado");
