@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -69,7 +69,8 @@ public class Empleado {
 	
 	@Column(name = "emp_tipo" )
 	 private String tipo;
-	@OneToOne(mappedBy = "Cv", cascade = CascadeType.ALL)
+	@OneToOne
+	@JoinColumn(name = "emp_cv")
 	private Cv cv;
 //	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
 //	private List<OfertaLab> ofertas;
