@@ -2,15 +2,17 @@ package fi.unju.edu.ar.entity;
 
 import java.time.LocalDate;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -25,6 +27,7 @@ public class Empleado {
 	//NOTA HERNAN DEBO AGREGAR UN ATRIBUTO CON EL NOMBRE DEL EMPLEADO
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//REVISAR JOINCOLUMN EN CV.JAVA
 	@Column(name = "emp_id")
 	private Long id;
 	
@@ -58,6 +61,7 @@ public class Empleado {
 	@NotNull @Past (message = "Debe ingresar su fecha de nacimiento")
 	@Column(name = "emp_fechnac")
 	 private LocalDate fnac;
+
 	
 	@Size(min=7,message = "Su contraseña de almenos 7 caracteres")
 	@Column(name = "emp_contrasenia" )	
@@ -65,6 +69,12 @@ public class Empleado {
 	
 	@Column(name = "emp_tipo" )
 	 private String tipo;
+	@OneToOne(mappedBy = "Cv", cascade = CascadeType.ALL)
+	private Cv cv;
+//	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
+//	private List<OfertaLab> ofertas;
+//	
+	
 public Empleado() {
 	// TODO Auto-generated constructor stub
 	this.tipo="empleado";
@@ -164,12 +174,19 @@ public Long getId() {
 public void setId(Long id) {
 	this.id = id;
 }
+public Cv getCv() {
+	return cv;
+}
+public void setCv(Cv cv) {
+	this.cv = cv;
+}
 @Override
 public String toString() {
 	return "Empleado [ dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
 			+ ", provinica=" + provincia + ", tel=" + tel + ", fnac=" + fnac + ", contrasenia=" + contrasenia
 			+ ", tipo=" + tipo + "]";
 }
+
 
 
 }
