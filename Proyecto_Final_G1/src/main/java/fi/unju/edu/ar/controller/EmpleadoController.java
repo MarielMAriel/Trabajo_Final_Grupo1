@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import fi.unju.edu.ar.entity.Buscar;
@@ -75,7 +76,7 @@ public class EmpleadoController {
 		return mav;
 	*/
 
-	@GetMapping("/indexEmpl")
+	@RequestMapping("/indexEmpl")
 	public ModelAndView getIndezEmpleados() {
 		ModelAndView mav = new ModelAndView("index_empleado");
 		return mav;

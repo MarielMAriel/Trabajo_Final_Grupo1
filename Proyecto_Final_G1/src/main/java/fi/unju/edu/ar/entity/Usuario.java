@@ -12,8 +12,8 @@ import javax.persistence.Table;
 public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "usu_key")
-	private Long key;
+	@Column(name = "usu_id")
+	private Long id;
 	@Column(name="usu_identificador")
 	private String identificador;//puede tomar el valor de cuit o dni depenndiendo del tipo de usuario
 	@Column(name="usu_tipo")
@@ -26,9 +26,9 @@ public class Usuario {
 	}
 	 
 	
-	public Usuario( String id, String tipo, String contrasenia) {
+	public Usuario( String identificador, String tipo, String contrasenia) {
 		super();
-		this.identificador = id;
+		this.identificador = identificador;
 		this.tipo = tipo;
 		this.contrasenia = contrasenia;
 	}
@@ -37,17 +37,17 @@ public class Usuario {
 	/**
 	 * @return the key
 	 */
-	public Long getKey() {
+	public Long getId() {
 		
-		return key;
+		return id;
 	}
 
 
 	/**
 	 * @param key the key to set
 	 */
-	public void setKey(Long key) {
-		this.key = key;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
@@ -61,8 +61,8 @@ public class Usuario {
 	/**
 	 * @param id the id to set
 	 */
-	public void setIdentificador(String id) {
-		this.identificador= id;
+	public void setIdentificador(String identificador) {
+		this.identificador= identificador;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [key=" + key + ", id=" + identificador + ", tipo=" + tipo + ", contrasenia=" + contrasenia + "]";
+		return "Usuario [key=" + identificador + ", id=" + identificador + ", tipo=" + tipo + ", contrasenia=" + contrasenia + "]";
 	}
 	
 	
