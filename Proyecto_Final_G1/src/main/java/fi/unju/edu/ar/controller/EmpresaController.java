@@ -10,6 +10,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
@@ -28,7 +29,7 @@ import fi.unju.edu.ar.service.IEmpleadoService;
 import fi.unju.edu.ar.service.IEmpresaService;
 import fi.unju.edu.ar.service.IOfertaService;
 import fi.unju.edu.ar.service.IUsuarioService;
-import fi.unju.edu.ar.serviceImp.loginServiceImp;
+import fi.unju.edu.ar.serviceImp.LoginServiceImp;
 @Controller
 
 public class EmpresaController {
@@ -44,7 +45,7 @@ public class EmpresaController {
 	@Autowired
 	private IEmpleadoService empleadoService;
 	
-	private static final Log LOGGER = LogFactory.getLog(loginServiceImp.class);
+	private static final Log LOGGER = LogFactory.getLog(LoginServiceImp.class);
 	
 	@GetMapping("/NuevoEmpr")
 	public ModelAndView getFormEmpresa() {
@@ -72,14 +73,14 @@ public class EmpresaController {
 		Usuario usuario=usuarioService.setearUsuario(empresa);
 		empresaService.crear(empresa);
 		usuarioService.crear(usuario);
-		ModelAndView mav=new ModelAndView("redirect:/logEmpr");
+		ModelAndView mav=new ModelAndView("login_empresa");
 		LOGGER.info("se agrego con exito un nuevo registro a la BD");
 		return mav;
 	}
 
 
 	
-	@GetMapping("/sitioEmpresa")
+	@RequestMapping("/sitioEmpresa")
 	public ModelAndView getIndexEmpresa() {
 		ModelAndView mav = new ModelAndView("index_empresa");
 		return mav;

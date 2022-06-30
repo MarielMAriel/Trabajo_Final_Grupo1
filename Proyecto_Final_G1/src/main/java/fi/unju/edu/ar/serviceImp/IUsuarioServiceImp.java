@@ -12,7 +12,7 @@ import fi.unju.edu.ar.repository.IUsuarioDao;
 import fi.unju.edu.ar.service.IUsuarioService;
 
 @Service
-public class UsuarioService implements IUsuarioService{
+public class IUsuarioServiceImp implements IUsuarioService{
 	@Autowired
 	private IUsuarioDao usuarioDaoImp;
 
