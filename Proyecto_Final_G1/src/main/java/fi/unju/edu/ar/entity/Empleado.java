@@ -72,6 +72,10 @@ public class Empleado {
 	@OneToOne
 	@JoinColumn(name = "emp_cv")
 	private Cv cv;
+	
+	@NotEmpty
+	@Column(name="emp_profecion")
+	private String profecion;
 //	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
 //	private List<OfertaLab> ofertas;
 //	
@@ -80,9 +84,20 @@ public Empleado() {
 	// TODO Auto-generated constructor stub
 	this.tipo="empleado";
 }
-public Empleado(String dni, String nTramite, String email, String eCivil, String provincia, String tel, LocalDate fnac,
-		String contrasenia) {
+
+
+
+public Empleado(Long id, @Size(min = 7, max = 9, message = "El empleado debe ingresar el dni ej:12000800") String dni,
+		@Size(min = 10, max = 13, message = "El Nro. de Tramite debe ser mayor a 1.000.000.000") String nTramite,
+		@NotEmpty @Email(message = "Ingrese un e-mail valido") String email,
+		@NotEmpty(message = "Su estado civil debe estar completo") String eCivil,
+		@NotEmpty(message = "Provincia no puede estar vacio") String provincia,
+		@Size(min = 7, message = "Su numero de telefono celular debe ser correcto") String tel,
+		@NotNull @Past(message = "Debe ingresar su fecha de nacimiento") LocalDate fnac,
+		@Size(min = 7, message = "Su contraseña de almenos 7 caracteres") String contrasenia, String tipo, Cv cv,
+		String profecion) {
 	super();
+	this.id = id;
 	this.dni = dni;
 	this.nTramite = nTramite;
 	this.email = email;
@@ -91,7 +106,29 @@ public Empleado(String dni, String nTramite, String email, String eCivil, String
 	this.tel = tel;
 	this.fnac = fnac;
 	this.contrasenia = contrasenia;
+	this.tipo = tipo;
+	this.cv = cv;
+	this.profecion = profecion;
 }
+
+
+
+/**
+ * @return the profecion
+ */
+public String getProfecion() {
+	return profecion;
+}
+
+
+
+/**
+ * @param profecion the profecion to set
+ */
+public void setProfecion(String profecion) {
+	this.profecion = profecion;
+}
+
 
 
 public String getProvincia() {
@@ -183,9 +220,9 @@ public void setCv(Cv cv) {
 }
 @Override
 public String toString() {
-	return "Empleado [ dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
-			+ ", provinica=" + provincia + ", tel=" + tel + ", fnac=" + fnac + ", contrasenia=" + contrasenia
-			+ ", tipo=" + tipo + "]";
+	return "Empleado [id=" + id + ", dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
+			+ ", provincia=" + provincia + ", tel=" + tel + ", fnac=" + fnac + ", contrasenia=" + contrasenia
+			+ ", tipo=" + tipo + ", cv=" + cv + ", profecion=" + profecion + "]";
 }
 
 

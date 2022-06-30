@@ -17,10 +17,14 @@
 		</div>
 		<div class="col-md-6">
 			<label for="nroTramite" class="form-label">NroTramite</label>
-			<input th:field="*{nTramite}" type="text" class="form-control" id="nroTramite" >
+			<input th:field="*{nTramite}" type="text" class="form-control" id="nroTramite">
 			<div class="text-danger" th:if="${#fields.hasErrors('nTramite')}" th:errors="*{nTramite}"></div>
 		</div>
-
+		<div class="col-md-6">
+			<label for="profecion" class="form-label">Profecion</label>
+			<input th:field="*{profecion}" type="text" class="form-control" id="profecion">
+			<div class="text-danger" th:if="${#fields.hasErrors('profecion')}" th:errors="*{profecion}"></div>
+		</div>
 
 		<div class="col-md-6">
 			<label for="email" class="form-label">E-MAIL</label>
@@ -57,9 +61,9 @@
 				<div class="text-danger" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></div>
 			</div>
 			<div class="col-md-6">
-			<label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
-			<input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}">
-			<div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>
+				<label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
+				<input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}">
+				<div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>
 			</div>
 		</div>
 
