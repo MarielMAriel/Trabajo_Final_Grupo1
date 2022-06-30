@@ -9,5 +9,6 @@ public interface IEmpleadoService {
 	public void guardarEmplado(Empleado empleado);
 	public List<Empleado>getListaEmpleado();
 	public List<Empleado>getListaProvincia(String provincia);
+	public List<Empleado>getListaProfecion(String profecion);
 		
 }

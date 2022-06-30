@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -48,8 +49,8 @@ public class EmpresaController {
 	@Autowired
 	private IEmpleadoService empleadoService;
 	
-	
-	
+	//en este atributo se guarda la empresa que esta activa en secion
+	private Empresa activoEmpresa=new Empresa();
 	private static final Log LOGGER = LogFactory.getLog(LoginServiceImp.class);
 	
 	
@@ -87,8 +88,11 @@ public class EmpresaController {
 
 	//respuesta del login
 	@RequestMapping("/sitioEmpresa")
-	public ModelAndView getIndexEmpresa(){
+	public ModelAndView getIndexEmpresa(Authentication authentication){
 		
+		activoEmpresa=empresaService.findByCuit(authentication.getName());
+		//el loger info lo estoy usando para coorroborar que realmente estoy sobre la empresa que se logueo
+		LOGGER.info(activoEmpresa);
 		ModelAndView mav = new ModelAndView("index_empresa");
 		return mav;
 	}
@@ -109,10 +113,7 @@ public class EmpresaController {
 			return mav;
 		}
 		ModelAndView mav = new ModelAndView("redirect:/sitioEmpresa");
-		//trato de agregar la oferta en la lista de ofertas de la primer empresa
-		//empresaService.findByCuit("2122232425").getOfertas().add(ofertaLab);
-		Empresa unemp = empresaService.findByCuit("2122232425");
-		ofertaLab.setEmpresa(unemp);
+		ofertaLab.setEmpresa(activoEmpresa);
 		iOfertaService.guardar(ofertaLab);
 		LOGGER.info("se agrego con exito una nueva oferta laboral "+ofertaLab);
 		return mav;
@@ -122,8 +123,8 @@ public class EmpresaController {
 	@GetMapping("/listaPropuesta")
 	public ModelAndView getListaOfertas() {
 		ModelAndView mav = new ModelAndView("lista_ofertas");
-		Empresa empresa=empresaService.findByCuit("2122232425");
-		mav.addObject("ofertas", empresa.getOfertas());
+		
+		mav.addObject("ofertas", activoEmpresa.getOfertas());
 		return mav;
 	}
 	//es la opcion que le permite ver los perfiles
@@ -135,20 +136,33 @@ public class EmpresaController {
 		mav.addObject("busqueda", buscar);
 		return mav;
 	}
-	//metodo post mapping de respuesta a la busqueda echa
+	//metodo post mapping de respuesta a la busqueda realizada por la provincia o por la profecion
 	@PostMapping("/listaPostulantes")
 	public ModelAndView getBusqueda(@ModelAttribute Buscar buscar) {
+		List<Empleado> selXProvincia= empleadoService.getListaProvincia(buscar.getValor());
+		List<Empleado> selXProfecion= empleadoService.getListaProfecion(buscar.getValor());
 		System.out.println(buscar.getValor());
 		if(buscar.getValor().equals("")) {
 			ModelAndView mav = new  ModelAndView("redirect:/listaPostulantes");
 			return mav;
+			//buscar si existe el parametro en alguna de las tablas si pasa el if devuelvo la lista correspondiente
+		}else {
+			if(selXProvincia.size()!=0) {
+				ModelAndView mav = new  ModelAndView("lista_empleado");
+				mav.addObject("empleados", selXProvincia);
+				mav.addObject("busqueda", buscar);
+				return mav;
+			}else {
+				if(selXProfecion.size()!=0) {
+					ModelAndView mav = new  ModelAndView("lista_empleado");
+					mav.addObject("empleados", selXProfecion);
+					mav.addObject("busqueda", buscar);
+					return mav;
+				}
+			}
+			
 		}
-		//buscar si existe el parametro en alguna de las tablas si pasa el if devuelvo la lista correspondiente
-		
-		System.out.println(buscar.getValor());
-		ModelAndView mav = new  ModelAndView("lista_empleado");
-		mav.addObject("empleados", empleadoService.getListaProvincia(buscar.getValor()));
-		mav.addObject("busqueda", buscar);
+		ModelAndView mav = new  ModelAndView("redirect:/listaPostulantes");
 		return mav;
 	}
 }

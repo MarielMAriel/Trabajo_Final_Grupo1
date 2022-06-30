@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Entity
 @Table(name="ofertas")
@@ -19,6 +21,7 @@ public class OfertaLab {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="empr_id")
 	private Empresa empresa;

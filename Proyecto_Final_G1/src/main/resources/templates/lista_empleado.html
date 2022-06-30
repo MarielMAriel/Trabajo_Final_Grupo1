@@ -25,6 +25,7 @@
 								<th>EMAIL</th>
 								<th>ESTADO CIVIL</th>
 								<th>PROVINCIA</th>
+								<th>PROFECION</th>
 								<th>TELEFONO</th>
 								<th>FECHA NACIMIEMTO</th>
 							</tr>
@@ -36,6 +37,7 @@
 							<td th:text="${empleado.email}"></td>
 							<td th:text="${empleado.eCivil}"></td>
 							<td th:text="${empleado.provincia}"></td>
+							<td th:text="${empleado.profecion}"></td>
 							<td th:text="${empleado.tel}"></td>
 							<td th:text="${#temporals.format(empleado.fnac, 'dd-MM-yyyy')}"></td>
 
