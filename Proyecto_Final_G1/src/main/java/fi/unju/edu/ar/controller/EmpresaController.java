@@ -3,6 +3,9 @@ package fi.unju.edu.ar.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +48,10 @@ public class EmpresaController {
 	@Autowired
 	private IEmpleadoService empleadoService;
 	
+	
+	
 	private static final Log LOGGER = LogFactory.getLog(LoginServiceImp.class);
+	
 	
 	@GetMapping("/NuevoEmpr")
 	public ModelAndView getFormEmpresa() {
@@ -62,7 +68,7 @@ public class EmpresaController {
 		return "ofertas";
 	}
 
-	
+	//guardamos una usuario empresa
 	@PostMapping("/guardarEmpresa")
 	public ModelAndView guardarEmpresa (@Validated @ModelAttribute Empresa empresa,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -79,9 +85,10 @@ public class EmpresaController {
 	}
 
 
-	
+	//respuesta del login
 	@RequestMapping("/sitioEmpresa")
-	public ModelAndView getIndexEmpresa() {
+	public ModelAndView getIndexEmpresa(){
+		
 		ModelAndView mav = new ModelAndView("index_empresa");
 		return mav;
 	}

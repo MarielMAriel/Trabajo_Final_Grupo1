@@ -17,12 +17,6 @@ public class Cv {
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 private Long id;
-@OneToOne ( fetch = FetchType.LAZY) 
-//REVISAR JOINCOLUMN
-@JoinColumn (name ="emp_id")
-	private Empleado empleado;
-
-
 	private String datosId ;//datos de identidad
 
  @Column (name = "cv_educacion")
@@ -88,12 +82,7 @@ private Long id;
 	public void setDatosAdi(String datosAdi) {
 		this.datosAdi = datosAdi;
 	}
-	public Empleado getEmpleado() {
-		return empleado;
-	}
-	public void setEmpleado(Empleado empleado) {
-		this.empleado = empleado;
-	}
+
 
 	@Override
 	public String toString() {
