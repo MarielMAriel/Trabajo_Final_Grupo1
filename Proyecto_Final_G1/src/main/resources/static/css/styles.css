@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap');
+
+
+.registro aside {
+    width:15%;
+    padding: 20px;
+    padding-left: 30px;
+    margin-left: 15px;
+    float: right;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* label{ */
+/*     font-size: 50px; */
+/*     font-weight: bold; */
+/*     font-family: 'Raleway', sans-serif; */
+/* } */
+
+header {
+    font-size: 30px;
+    font-family: 'Raleway', sans-serif;
+}
+
+/* footer{ */
+/*     font-weight: 100; */
+/* } */
+
+
+
+/* menu */
+
+/* .menu{ */
+/*     list-style: none; */
+/*     padding: 0; */
+/*     background: #092327; */
+/*     width: 100%; */
+/*     margin: auto; */
+/* } */
+
+
+.menu li a{
+    text-decoration: none;
+    color:white;
+    padding: 20px;
+    display: block;
+    cursor:pointer;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+}
+
+.menu li{
+    display: inline-block;
+    text-align: center;
+}
+
+.menu li a:hover{
+    background: green ;
+}
+/* fin menu */
+
+
+
+
+footer {
+text-align: center;
+font-size: 25px;
+font-family: 'Raleway', sans-serif;
+margin: auto;
+}
+
+
+  /* Registro Cv - Nuevo Ciudadano - Nueva Empresa ----------------------------*/
+
+  
+.registro {
+    width: 450px;
+    background: #092327;
+    padding: 30px;
+    margin: auto;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.registro .editTxt{
+    width: 95%;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid green;
+    font-family: 'Raleway', sans-serif; 
+    font-weight: 500;
+}
+
+.registro .btn{
+    width: 95%;
+    border: none;
+    font-family: 'Raleway', sans-serif; 
+    font-weight: 600;
+    padding: 14px;
+    margin: 10px;
+}
+

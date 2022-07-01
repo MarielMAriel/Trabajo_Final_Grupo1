@@ -1,49 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 
-<head th:insert="/layout/head::head">
+<head th:include="/layout/head::head">
 <meta charset="UTF-8" />
 <title>Cv</title>
-<link rel="stylesheet" th:href="@{/style.css}">
+
 </head>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap');
-form {
-	width: 450px;
-	background: #092327;
-	padding: 30px;
-	margin: auto;
-	margin-top: 50px;
-	font-family: 'Raleway', sans-serif;
-	color: white;
-	box-shadow: 7px 13px 37px #000;
-}
-
-.editTxt {
-	width: 95%;
-	padding: 10px;
-	border-radius: 4px;
-	margin-bottom: 20px;
-	border: 1px solid green;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 500;
-}
-
-.btn {
-	width: 95%;
-	border: none;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 600;
-	padding: 14px;
-	margin: 10px;
-}
-</style>
-
 
 <body>
 	<form th:action="@{/empleado/registrarCV}" th:object="${cv}"
-		method="post">
+		method="post" class=registro>
 		
 	  <input th:field="*{nombre}" class="editTxt" type="text" name="nombreCi" placeholder="Ingrese su Nombre/s"> 
 

@@ -9,7 +9,7 @@
 <body>
 	<header th:insert="/layout/header::header"> </header>
 
-	<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3">
+	<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class=registro>
 		<div class="col-md-6">
 			<label for="dni" class="form-label">DNI</label>
 			<input th:field="*{dni}" type="text" class="form-control" id="dni" required>
