@@ -1,7 +1,5 @@
 package fi.unju.edu.ar.controller;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,30 +17,26 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-
-import fi.unju.edu.ar.entity.Buscar;
 import fi.unju.edu.ar.entity.Empleado;
-import fi.unju.edu.ar.entity.Empresa;
 import fi.unju.edu.ar.entity.OfertaLab;
 import fi.unju.edu.ar.entity.Usuario;
-import fi.unju.edu.ar.repository.IOfertaDao;
 import fi.unju.edu.ar.service.IEmpleadoService;
-import fi.unju.edu.ar.service.IEmpresaService;
 import fi.unju.edu.ar.service.IOfertaService;
 import fi.unju.edu.ar.service.IUsuarioService;
+
 @Controller
 public class EmpleadoController {
 	String provincias[]= {"  ","Buenos Aires" ,"Ciudad Autónoma de Buenos Aires","Catamarca","Chaco","Chubut","Córdoba","Corrientes","Entre Ríos","Formosa",
 			"Jujuy","La Pampa","La Rioja","Mendoza","Misiones","Neuquén","Río Negro",
 			"Salta","San Juan","San Luis","Santa Cruz","Santa Fe","Santiago del Estero","Tierra del Fuego","Tucumán"};
 	
+	String estados[]= {" ","Soltero","Casado","Separado","Divorcio","Viudo"};
+	
 	private static final Log LOGGER = LogFactory.getLog(EmpleadoController.class);
 	@Autowired
 	private IEmpleadoService empleadoService;
 	@Autowired
 	private IUsuarioService usuarioService;
-	@Autowired
-	private IEmpresaService empresaService;
 	@Autowired
 	private IOfertaService ofertaService;
 
@@ -54,6 +48,7 @@ public class EmpleadoController {
 		ModelAndView mav = new ModelAndView("nuevo_empleado");
 		mav.addObject("empleado", empleadoService.getEmpleado());
 		mav.addObject("provincias", provincias);
+		mav.addObject("estados", estados);
 		return mav;
 	}
 	@PostMapping("/guardarEmp")

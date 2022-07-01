@@ -18,9 +18,7 @@ public interface IEmpleadoDAO extends JpaRepository<Empleado, Long >{
 	
 	
 	public List<Empleado> findByProvincia(String provincia);
-	
 	public List<Empleado> findByProfecion(String profecion);
-	
 	public Empleado findByDni(String dni);
 	
 }
