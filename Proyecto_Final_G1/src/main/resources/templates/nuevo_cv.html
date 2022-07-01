@@ -1,102 +1,90 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head th:insert="/layout/head::head">
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+<title>Cv</title>
+<link rel="stylesheet" th:href="@{/style.css}">
 </head>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap');
+form {
+	width: 450px;
+	background: #092327;
+	padding: 30px;
+	margin: auto;
+	margin-top: 50px;
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	box-shadow: 7px 13px 37px #000;
+}
+
+.editTxt {
+	width: 95%;
+	padding: 10px;
+	border-radius: 4px;
+	margin-bottom: 20px;
+	border: 1px solid green;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 500;
+}
+
+.btn {
+	width: 95%;
+	border: none;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	padding: 14px;
+	margin: 10px;
+}
+</style>
+
+
 <body>
-<header th:insert="/layout/header::header"> </header>
-<!-- CAMBIAR EL GUARDAR -->
-<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="row g-3" >
-  <div class="col-md-6">
-    <label for="dni" class="form-label">DNI</label>
-    <input th:field="*{dni}" type="number" class="form-control" id="dni" required>
-     <div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
-  </div>
-  <div class="col-md-6">
-    <label for="nroTramite" class="form-label">NroTramite</label>
-    <input th:field="*{nTramite}" type="number" class="form-control" id="nroTramite" required>
-     <div class="text-danger" th:if="${#fields.hasErrors('nTramite')}" th:errors="*{nTramite}"></div>
-  </div>
+	<form th:action="@{/empleado/registrarCV}" th:object="${cv}"
+		method="post">
+		
+	  <input class="editTxt" type="text" name="nombreCi" placeholder="Ingrese su Nombre/s"> 
 
+<!-- 		<label for="nombreCi" class="form-label">nombre</label> -->
 
-   <div class="col-md-6">
-    <label for="email" class="form-label">E-MAIL</label>
-    <input th:field="*{email}" type="text" class="form-control" id="email" required >
-     <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>    
-  </div>
-   <div class="col-md-6">
-   
-   <div class="form-check">
-  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="soltero" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    Solter@
-  </label>
-</div>
-<div class="form-check">
-  <input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="casado" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
-    Casad@
-  </label>
-</div>
-<!--  //hay q corregir lo de las llavaes por lo q va despues del . caundo pase al controler le asigno
- el objeto entero a los atributos de ese form y hay q cambiarlo para q reciba el nombre de la provincia 
- para q se lo asigne directamente-->
-<label for="provincia" class="col-md-6 col-form-label">provincia:</label>
-<div class="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
-	<select class="editTxt" name="delegacion">
-      <option disabled selected>Seleccione su provincia</option>
-      <option> Buenos Aires </option>
-      <option> Catamarca </option>
-      <option> Chaco </option>
-      <option> Chubut </option>
-      <option> Ciudad Autónoma de Buenos Aires </option>
-      <option> Córdoba </option>
-      <option> Corrientes </option>
-      <option> Entre Ríos </option>
-      <option> Formosa </option>
-      <option> Jujuy </option>
-      <option> La Pampa </option>
-      <option> La Rioja </option>
-      <option> Mendoza </option>
-      <option> Misiones </option>
-      <option> Neuquén </option>
-      <option> Río Negro </option>
-      <option> Salta </option>
-      <option> San Juan </option>
-      <option> San Luis </option>
-      <option> Santa Cruz </option>
-      <option> Santa Fe </option>
-      <option> Santiago del Estero </option>
-      <option> Tierra del Fuego </option>
-      <option> Tucumán </option>
-      
-    </select> 
-   
-   <div class="col-md-6">
-    <label for="telefono" class="form-label">Telefono </label>
-    <input th:field="*{Tel}" type="number" class="form-control" id="telefono" required>
-     <div class="text-danger" th:if="${#fields.hasErrors('Tel')}" th:errors="*{Tel}"></div>
-  </div>
-  
-  
-  
-    <label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
-    <input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}" required>
-     <div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>
-  </div>
- 
- <div class="col-md-6">
-    <label for="contrasenia" class="form-label">CONTRASEï¿½A</label>
-    <input th:field="*{contrasenia}" type="text" class="form-control" id="contrasenia" required >
-     <div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
-  </div>
-  
-
- 
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">ENVIAR</button>
-  </div>
-</form>
+			<input class="editTxt" type="text" name="apellidoCi" placeholder="Ingrese su Apellido/s"> 
+			<input class="editTxt" type="number" name="dniCi" placeholder="Ingrese su DNI">
+			 <input class="editTxt"type="tel" name="celCi" placeholder="Ingrese su telefono*">
+			 
+		<div>
+			<p>
+				Fecha de Nacimiento <input class="editTxt" type="date"
+					name="nacimientoCi">
+			</p>
+		</div>
+		
+			<input class="editTxt" type="text" name="experienciaCi"
+				placeholder="Ingrese su experiencia laboral"> 
+				
+			<input class="editTxt" type="text" name="educaionCi"
+				placeholder="Ingrese sus nieveles cursados"> 
+				
+			<input class="editTxt" type="text" name="idiomasCi"
+				placeholder="Ingrese idiomas que maneja"> 
+			
+			<input class="editTxt" type="text" name="imformaticaCi"
+				placeholder="Â¿Tiene conocimientos en informaticas? Escribrir cuales"> 
+							
+			
+			<input class="editTxt"
+			type="text" name="informacionCi"
+			placeholder="Ingrese informacion complementaria "> 
+			
+			<input
+			class="editTxt" type="text" name="datosCi"
+			placeholder="Ingrese datos adicionales"> 
+			
+			<input class="btn bg-white" type="submit" value="Enviar"> 
+			
+			<input class="btn bg-white" type="reset" value="Borrar">
+	</form>
 </body>
+
 </html>
