@@ -1,16 +1,13 @@
 package fi.unju.edu.ar.entity;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+
 @Entity
 @Table(name = "cv")
 public class Cv {
@@ -19,76 +16,203 @@ public class Cv {
 private Long id;
 	private String datosId ;//datos de identidad
 
- @Column (name = "cv_educacion")
-	private String educacion;
- @Column (name = "cv_idiomas")
-	private String idiomas;
- @Column (name = "cv_conInf")
-	private String conInf;//conocimientos informaticos
- @Column (name = "cv_infCompl")
-	private String infCompl;//informacion complementaria
- @Column (name = "cv_datosAdi")
-	private String datosAdi;//datos adicionales
+	
+	
+	 @Column (name = "cv_nombre")
+		private String nombre;	
+	 
+	 @Column (name = "cv_apellido")
+		private String apellido; 
+	 
+	 @Column (name = "cv_DNI")
+		private String dni;
+	 
+	 @Column (name = "cv_telefono")
+		private String telefono;
+	 
+	 @Column (name = "cv_nacimiento")
+		private String nacimiento;
+	 
+	 @Column (name = "cv_laboral")
+		private String laboral;
+	 
+	 @Column (name = "cv_educacion")
+		private String educacion;
+	 
+	 @Column (name = "cv_idiomas")
+		private String idiomas;
+	 
+	 @Column (name = "cv_ConocimientosInformaticos")
+		private String informatica;
+	 
+	 @Column (name = "cv_InformacionComplementaria")
+		private String complementaria;
+	 
+	 @Column (name = "cv_DatosAdicionales")
+		private String adicionales;
 	
 
 
 	public Cv() {
 		// TODO Auto-generated constructor stub
 	}
-	public Cv(String datosId, String educacion, String idiomas, String conInf, String infCompl, String datosAdi) {
+
+
+	public Cv(Long id, String datosId, String nombre, String apellido, String dni, String telefono, String nacimiento,
+			String laboral, String educacion, String idiomas, String informatica, String complementaria,
+			String adicionales) {
 		super();
+		this.id = id;
 		this.datosId = datosId;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.telefono = telefono;
+		this.nacimiento = nacimiento;
+		this.laboral = laboral;
 		this.educacion = educacion;
 		this.idiomas = idiomas;
-		this.conInf = conInf;
-		this.infCompl = infCompl;
-		this.datosAdi = datosAdi;
+		this.informatica = informatica;
+		this.complementaria = complementaria;
+		this.adicionales = adicionales;
 	}
-	
+
+	public Long getId() {
+		return id;
+	}
+
 
 	public String getDatosId() {
 		return datosId;
 	}
-	public void setDatosId(String datosId) {
-		this.datosId = datosId;
+
+
+	public String getNombre() {
+		return nombre;
 	}
+
+
+	public String getApellido() {
+		return apellido;
+	}
+
+
+	public String getDni() {
+		return dni;
+	}
+
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+
+	public String getNacimiento() {
+		return nacimiento;
+	}
+
+
+	public String getLaboral() {
+		return laboral;
+	}
+
+
 	public String getEducacion() {
 		return educacion;
 	}
-	public void setEducacion(String educacion) {
-		this.educacion = educacion;
-	}
+
+
 	public String getIdiomas() {
 		return idiomas;
 	}
+
+
+	public String getInformatica() {
+		return informatica;
+	}
+
+
+	public String getComplementaria() {
+		return complementaria;
+	}
+
+
+	public String getAdicionales() {
+		return adicionales;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public void setDatosId(String datosId) {
+		this.datosId = datosId;
+	}
+
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+
+	public void setNacimiento(String nacimiento) {
+		this.nacimiento = nacimiento;
+	}
+
+
+	public void setLaboral(String laboral) {
+		this.laboral = laboral;
+	}
+
+
+	public void setEducacion(String educacion) {
+		this.educacion = educacion;
+	}
+
+
 	public void setIdiomas(String idiomas) {
 		this.idiomas = idiomas;
 	}
-	public String getConInf() {
-		return conInf;
+
+
+	public void setInformatica(String informatica) {
+		this.informatica = informatica;
 	}
-	public void setConInf(String conInf) {
-		this.conInf = conInf;
+
+
+	public void setComplementaria(String complementaria) {
+		this.complementaria = complementaria;
 	}
-	public String getInfCompl() {
-		return infCompl;
-	}
-	public void setInfCompl(String infCompl) {
-		this.infCompl = infCompl;
-	}
-	public String getDatosAdi() {
-		return datosAdi;
-	}
-	public void setDatosAdi(String datosAdi) {
-		this.datosAdi = datosAdi;
+
+
+	public void setAdicionales(String adicionales) {
+		this.adicionales = adicionales;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Cv [datosId=" + datosId + ", educacion=" + educacion + ", idiomas=" + idiomas + ", conInf=" + conInf
-				+ ", infCompl=" + infCompl + ", datosAdi=" + datosAdi + "]";
+		return "Cv [id=" + id + ", datosId=" + datosId + ", nombre=" + nombre + ", apellido=" + apellido + ", dni="
+				+ dni + ", telefono=" + telefono + ", nacimiento=" + nacimiento + ", laboral=" + laboral
+				+ ", educacion=" + educacion + ", idiomas=" + idiomas + ", informatica=" + informatica
+				+ ", complementaria=" + complementaria + ", adicionales=" + adicionales + "]";
 	}
 
-	
 }

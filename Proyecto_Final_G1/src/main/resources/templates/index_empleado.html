@@ -29,7 +29,10 @@
 					</div>
 				</div>
 				<div class="col-3 align-self-center">
-					<button type="button" class="btn btn-outline-warning  w-100">Continuar</button>
+					<a th:href="@{/nuevoCv}">
+						<button type="button" class="btn btn-outline-warning  w-100">Continuar</button>
+					</a>
+
 				</div>
 			</div>
 			<div class="row justify-content-center mb-4">
@@ -44,7 +47,11 @@
 					</div>
 				</div>
 				<div class="col-3 align-self-center">
-					<button type="button" class="btn btn-outline-warning  w-100">Descargar</button>
+					<!-- 				  agregar la referencia -->
+					<a>
+						<button type="button" class="btn btn-outline-warning  w-100">Descargar</button>
+					</a>
+
 				</div>
 			</div>
 
@@ -60,8 +67,11 @@
 					</div>
 				</div>
 				<div class="col-3 align-self-center">
-					<button type="button" class="btn btn-outline-warning  w-100">Buscar
-					</button>
+					<a th:href="@{/empleado/buscar}">
+						<button type="button" class="btn btn-outline-warning  w-100">Buscar
+						</button>
+					</a>
+
 				</div>
 			</div>
 
