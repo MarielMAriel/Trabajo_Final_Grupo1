@@ -27,7 +27,7 @@ public class WebSecurityConfig {
 	protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers(resourse).permitAll()
-			.antMatchers("/", "/home","/NuevoEmpr","/guardarEmpresa","/NuevoUsu","/guardarEmp","/empleado/registrarCV","/empleado","/nuevoCv").permitAll()
+			.antMatchers("/", "/home","/NuevoEmpr","/guardarEmpresa","/NuevoUsu","/guardarEmp").permitAll()
 			//anule este punto para poder ir probendo otras funcionalidades
 			.anyRequest().authenticated()
 			.and()	
