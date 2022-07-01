@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.entity.OfertaLab;
 import fi.unju.edu.ar.repository.IOfertaDao;
 import fi.unju.edu.ar.service.IOfertaService;
@@ -60,6 +61,7 @@ public class OfertaServiceImp implements IOfertaService{
 		// TODO Auto-generated method stub
 		ofertaDao.deleteById(id);
 	}
+
 
 
 

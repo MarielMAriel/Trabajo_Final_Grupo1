@@ -1,6 +1,7 @@
 package fi.unju.edu.ar.serviceImp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -41,6 +42,11 @@ public class EmpleadoServiceImp implements IEmpleadoService{
 	public List<Empleado> getListaProfecion(String profecion) {
 		// TODO Auto-generated method stub
 		return empleadoDaoImp.findByProfecion(profecion);
+	}
+	@Override
+	public Empleado buscar(String dni) {
+		// TODO Auto-generated method stub
+		return empleadoDaoImp.findByDni(dni);
 	}
 	
 

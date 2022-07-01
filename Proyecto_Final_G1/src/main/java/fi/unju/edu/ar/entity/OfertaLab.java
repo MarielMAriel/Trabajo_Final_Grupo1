@@ -1,5 +1,9 @@
 package fi.unju.edu.ar.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,7 +11,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -19,13 +26,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class OfertaLab {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ofe_id")
 	private Long id;
 	
 	@Autowired
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="empr_id")
 	private Empresa empresa;
+	//agrego la relacion entre empleado y oferta laboral
 	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name="ofertas_empleados", joinColumns=@JoinColumn(referencedColumnName = "ofe_id"),
+				inverseJoinColumns=@JoinColumn(referencedColumnName = "emp_id"))
+	private List<Empleado> postulados=new ArrayList<Empleado>();
 	@NotNull
 	@Column(name="ofe_vacante")
 	private int cantidadVac;//cantidad de vacantes
@@ -75,10 +88,16 @@ public class OfertaLab {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OfertaLab(int cantidadVac, String puestoReq, String resumenPuesto, String disponibilidadH,
-			String tareasPrin, String datosContac, int jornada, String requisitos, int salario, String beneficio,
-			boolean disponible) {
+	
+
+	public OfertaLab(Long id, Empresa empresa, List<Empleado> postulados, @NotNull int cantidadVac,
+			@NotNull String puestoReq, @NotNull String resumenPuesto, @NotNull String disponibilidadH,
+			@NotNull String tareasPrin, @NotNull String datosContac, @NotNull int jornada, @NotNull String requisitos,
+			@NotNull int salario, @NotNull String beneficio, boolean disponible) {
 		super();
+		this.id = id;
+		this.empresa = empresa;
+		this.postulados = postulados;
 		this.cantidadVac = cantidadVac;
 		this.puestoReq = puestoReq;
 		this.resumenPuesto = resumenPuesto;
@@ -91,6 +110,8 @@ public class OfertaLab {
 		this.beneficio = beneficio;
 		this.disponible = disponible;
 	}
+
+
 
 	/**
 	 * @return the empresa
@@ -207,14 +228,33 @@ public class OfertaLab {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+
+	/**
+	 * @return the postulados
+	 */
+	public List<Empleado> getPostulados() {
+		return postulados;
+	}
+
+	/**
+	 * @param postulados the postulados to set
+	 */
+	public void setPostulados(List<Empleado> postulados) {
+		this.postulados = postulados;
+	}
 
 	@Override
 	public String toString() {
-		return "OfertaLab [cantidadVac=" + cantidadVac + ", puestoReq=" + puestoReq + ", resumenPuesto=" + resumenPuesto
-				+ ", disponibilidadH=" + disponibilidadH + ", tareasPrin=" + tareasPrin + ", datosContac=" + datosContac
-				+ ", jornada=" + jornada + ", requisitos=" + requisitos + ", salario=" + salario + ", beneficio="
-				+ beneficio + ", disponible=" + disponible + "]";
+		return "OfertaLab [id=" + id + ", empresa=" + empresa + ", postulados=" + postulados + ", cantidadVac="
+				+ cantidadVac + ", puestoReq=" + puestoReq + ", resumenPuesto=" + resumenPuesto + ", disponibilidadH="
+				+ disponibilidadH + ", tareasPrin=" + tareasPrin + ", datosContac=" + datosContac + ", jornada="
+				+ jornada + ", requisitos=" + requisitos + ", salario=" + salario + ", beneficio=" + beneficio
+				+ ", disponible=" + disponible + "]";
 	}
+
+	
+	
 	
 	
 

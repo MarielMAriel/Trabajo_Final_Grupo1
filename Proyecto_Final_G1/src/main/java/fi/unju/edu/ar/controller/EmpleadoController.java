@@ -8,11 +8,13 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +46,8 @@ public class EmpleadoController {
 	@Autowired
 	private IOfertaService ofertaService;
 
+	
+	private Empleado activoEmpleado=new Empleado();
 	@GetMapping("/NuevoUsu")
 	public ModelAndView getFormEmpleado() {
 		LOGGER.info("se esta registrando una nueva entidad empleado");
@@ -75,16 +79,18 @@ public class EmpleadoController {
 		mav.addObject("usuario", usuar);
 		return mav;
 	*/
-
+	//esta es la respuesta del loggin
+	
 	@RequestMapping("/indexEmpl")
-	public ModelAndView getIndezEmpleados() {
+	public ModelAndView getIndezEmpleados(Authentication authentication) {
+		activoEmpleado=empleadoService.buscar(authentication.getName());
 		ModelAndView mav = new ModelAndView("index_empleado");
 		return mav;
 	}	
 	
 
 	
-	//es la opcion que le permite ver los perfiles de las  empresas
+	//es la opcion que le permite ver las ofertas laborales de las  empresas
 	@GetMapping("/ofertasLaborales")
 	public ModelAndView getAllOfertas() {
 		ModelAndView mav = new  ModelAndView("listaAllOfertas");
@@ -94,5 +100,23 @@ public class EmpleadoController {
 		return mav;
 	}
 	
+	//metodo para postularse a una oferta laboral
+	@GetMapping("/postularse/{id}")
+	public ModelAndView getPostularse(@PathVariable Long id) {
+		List<OfertaLab>ofertas=ofertaService.getlistaOfertaLab();
+		List<Empleado> empleados=new ArrayList<Empleado>();
+		OfertaLab off=new OfertaLab();
+		for (OfertaLab ofer : ofertas) {
+			if(ofer.getId()==id) {
+				empleados=ofer.getPostulados();
+				off=ofer;
+			}
+		}
+		empleados.add(activoEmpleado);
+		off.setPostulados(empleados);
+		ofertaService.guardar(off);
+		ModelAndView mav = new ModelAndView("index_empleado");
+		return mav;
+	}
 	
 }
