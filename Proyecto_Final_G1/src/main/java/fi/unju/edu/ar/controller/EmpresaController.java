@@ -3,22 +3,21 @@ package fi.unju.edu.ar.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
+
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -34,6 +33,7 @@ import fi.unju.edu.ar.service.IEmpresaService;
 import fi.unju.edu.ar.service.IOfertaService;
 import fi.unju.edu.ar.service.IUsuarioService;
 import fi.unju.edu.ar.serviceImp.LoginServiceImp;
+
 @Controller
 
 public class EmpresaController {
@@ -104,7 +104,7 @@ public class EmpresaController {
 		mav.addObject("ofertaLab", iOfertaService.getOferta());
 		return mav;
 		}
-	//metodo para guardar el formulario en la base de datos 
+	//metodo para guardar el formulario de oferta cargada en la base de datos 
 	@PostMapping("/guardarOferta")
 	public ModelAndView guardarOferta(@Validated @ModelAttribute OfertaLab ofertaLab,BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
@@ -119,7 +119,7 @@ public class EmpresaController {
 		return mav;
 	}
 	
-	//devuelve lista de ofertas 
+	//devuelve lista de ofertas que agrego ese usuario
 	@GetMapping("/listaPropuesta")
 	public ModelAndView getListaOfertas() {
 		ModelAndView mav = new ModelAndView("lista_ofertas");
@@ -165,4 +165,43 @@ public class EmpresaController {
 		ModelAndView mav = new  ModelAndView("redirect:/listaPostulantes");
 		return mav;
 	}
+	
+	//metodo para editar las ofertas laborales
+	//por el momento el boton de reeditar no funciona
+	@GetMapping("/editar/{id}")
+	public ModelAndView getEditarAlumnoPage(@PathVariable Long id) {
+		List<OfertaLab> ofertas = activoEmpresa.getOfertas();
+		OfertaLab lab=new OfertaLab();
+		for (OfertaLab ofertaLab2 : ofertas) {
+			if (ofertaLab2.getId()==id) {
+				lab=ofertaLab2;
+			}
+		}
+		ModelAndView mav = new ModelAndView("formulario_Oferta");
+		mav.addObject("ofertaLab",lab);
+		return mav;
+		
+	}
+	@GetMapping("/eliminar/{id}")
+	public ModelAndView borrar(@PathVariable Long id) {
+		int i=0;
+		int k=0;
+		List<OfertaLab> of=activoEmpresa.getOfertas();
+		for (OfertaLab ofertaLab : of) {	
+			if(ofertaLab.getId()==id) {
+				i=k;
+			}
+			k++;
+		}
+		of.remove(i);
+		iOfertaService.borrar(id);
+		for (OfertaLab ofertaLab : of) {
+			iOfertaService.guardar(ofertaLab);
+		}
+		
+		activoEmpresa.setOfertas(of);
+		ModelAndView mav = new ModelAndView("redirect:/listaPropuesta");
+		return mav;
+	}
+
 }

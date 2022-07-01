@@ -39,7 +39,9 @@
                 <td th:text="${oferta.salario}"></td>
                 <td th:text="${oferta.beneficio}"></td>
                 <td>
-                 <a  id="editarConcursante" class="btn btn-warning">mas info</a>
+                 <a th:href="@{/postulados}" id="editarConcursante" class="btn btn-warning">POSTULADOS</a>
+                 <a  th:href="@{/editar/}+${oferta.id}" id="editarConcursante" class="btn btn-warning">EDITAR</a>
+                 <a th:href="@{/eliminar/}+${oferta.id}" id="editarConcursante" class="btn btn-warning">BORRAR</a>
                  </td>
                </tr> 
             </tbody>

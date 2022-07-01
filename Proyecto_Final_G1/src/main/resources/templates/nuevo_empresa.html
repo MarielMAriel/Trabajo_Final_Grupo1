@@ -10,6 +10,7 @@
 	<header th:insert="/layout/header::header"> </header>
 	<form th:action="@{/guardarEmpresa}" th:object="${empresa}" method="post" class="row g-3">
 		<div class="col-md-6">
+			<input th:field="*{id}" type="hidden" >
 			<label for="nombre" class="form-label">Nombre Comercial</label>
 			<input th:field="*{nombre}" type="text" class="form-control" id="nombre" >
 			 <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
