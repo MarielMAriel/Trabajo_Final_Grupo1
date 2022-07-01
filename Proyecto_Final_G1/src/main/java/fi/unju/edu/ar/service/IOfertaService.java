@@ -3,6 +3,7 @@ package fi.unju.edu.ar.service;
 import java.util.List;
 import java.util.Optional;
 
+import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.entity.OfertaLab;
 
 public interface IOfertaService {
@@ -12,4 +13,5 @@ public interface IOfertaService {
 	public Optional<OfertaLab> buscarOferta(Long id);
 	public void modificarOferta(OfertaLab oferta);
 	public void borrar(Long id);
+	
 }

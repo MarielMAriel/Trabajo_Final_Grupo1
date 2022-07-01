@@ -10,7 +10,7 @@
 
 		<div>
 			<section>
-				<h1>Perfiles de Ciudadanos registrados en la pagina</h1>
+				<h1>Ofertas Laborales</h1>
 
 				<form th:action="@{/listaEmpresa}" th:object="${busqueda}" method="post"  class="d-flex" role="search">
 					<input name="valor" class="form-control me-2" type="search" placeholder="ingrese una palabra indicando el perfil que buscas" aria-label="Search">
@@ -46,7 +46,7 @@
                 <td th:text="${oferta.salario}"></td>
                 <td th:text="${oferta.beneficio}"></td>
                 <td>
-
+				<a th:href="@{/postularse/}+${oferta.id}" class="btn btn-warning">postularme</a>
                  </td>
                </tr> 
             </tbody>

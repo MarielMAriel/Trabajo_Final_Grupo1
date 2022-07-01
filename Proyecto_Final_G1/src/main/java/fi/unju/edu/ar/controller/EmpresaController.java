@@ -17,8 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -203,5 +204,19 @@ public class EmpresaController {
 		ModelAndView mav = new ModelAndView("redirect:/listaPropuesta");
 		return mav;
 	}
-
+	
+	//metodo de vista de postulados 
+	@GetMapping("/postulados/{id}")
+	public ModelAndView getPostulados(@PathVariable Long id) {
+		List<Empleado> postl=new ArrayList<Empleado>();
+		List<OfertaLab> ofertas = activoEmpresa.getOfertas();
+		for (OfertaLab ofertaLab : ofertas) {
+			if(ofertaLab.getId()==id) {
+				postl=ofertaLab.getPostulados();
+			}
+		}
+		ModelAndView mav = new ModelAndView("postulados");
+		mav.addObject("empleados", postl);
+		return mav;
+	}
 }

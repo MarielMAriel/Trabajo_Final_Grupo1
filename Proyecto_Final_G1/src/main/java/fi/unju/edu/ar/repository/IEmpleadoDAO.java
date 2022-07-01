@@ -2,6 +2,7 @@ package fi.unju.edu.ar.repository;
 
 import java.util.List;
 //import java.util.Optional;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,7 @@ public interface IEmpleadoDAO extends JpaRepository<Empleado, Long >{
 	public List<Empleado> findByProvincia(String provincia);
 	
 	public List<Empleado> findByProfecion(String profecion);
+	
+	public Empleado findByDni(String dni);
 	
 }
