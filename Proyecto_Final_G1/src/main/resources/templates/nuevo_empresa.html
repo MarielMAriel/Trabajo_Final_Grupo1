@@ -6,9 +6,9 @@
 	<title>Empleador</title>
 </head>
 
-<body>
+<body class="bg-dark">
 	<header th:insert="/layout/header::header"> </header>
-	<form th:action="@{/guardarEmpresa}" th:object="${empresa}" method="post" class=registro>
+	<form th:action="@{/guardarEmpresa}" th:object="${empresa}" method="post" class="registroEmp">
 		
     <input th:field="*{id}" type="hidden" >
     
@@ -64,16 +64,13 @@
     <input th:field="*{descripcion}" class="editTxt" type="text" name="descripcionEmp" placeholder="Describir su empresa">
      <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
      
-     
-    <p><input type="checkbox" name="terminos">
-      Acepta los termino y condiciones</p>
-
 
     <!-- Botones -->
-    <input class="btn bg-white" type="submit" value="Enviar">
-    <input class="btn bg-white" type="reset" value="Borrar">
+    <input class="btn btn-success" type="submit" value="Enviar">
+    <input class="btn btn-danger" type="reset" value="Borrar">
 		
 	</form>
-</body>
+	<footer th:insert="/layout/footer::footer"></footer>
+	</body>
 
 </html>

@@ -2,83 +2,63 @@
 <html xmlns:th="http://thymeleaf.org">
 
 <head th:insert="/layout/head::head">
-	<meta charset="ISO-8859-1">
-	<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Empleado</title>
 </head>
 
-<body>
+<body class="bg-dark">
 	<header th:insert="/layout/header::header"> </header>
 
-	<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class=registro>
-		<div class="col-md-6">
-			<label for="dni" class="form-label">DNI</label>
-			<input th:field="*{dni}" type="text" class="form-control" id="dni" required>
-			<div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
-		</div>
-		<div class="col-md-6">
-			<label for="nroTramite" class="form-label">NroTramite</label>
-			<input th:field="*{nTramite}" type="text" class="form-control" id="nroTramite">
-			<div class="text-danger" th:if="${#fields.hasErrors('nTramite')}" th:errors="*{nTramite}"></div>
-		</div>
-		<div class="col-md-6">
-			<label for="profecion" class="form-label">Profecion</label>
-			<input th:field="*{profecion}" type="text" class="form-control" id="profecion">
-			<div class="text-danger" th:if="${#fields.hasErrors('profecion')}" th:errors="*{profecion}"></div>
-		</div>
-
-		<div class="col-md-6">
-			<label for="email" class="form-label">E-MAIL</label>
-			<input th:field="*{email}" type="text" class="form-control" id="email" required>
-			<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-		</div>
-		<div class="col-md-6">
-
-			<div class="form-check">
-				<input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="soltero"
-					id="flexCheckDefault">
-				<label class="form-check-label" for="flexCheckDefault">
-					Solter@
-				</label>
-			</div>
-			<div class="form-check">
-				<input th:field="*{eCivil}" class="form-check-input" type="checkbox" value="casado"
-					id="flexCheckChecked" checked>
-				<label class="form-check-label" for="flexCheckChecked">
-					Casad@
-				</label>
-			</div>
-
-			<div class="form-group row">
-				<label for="provincias" class="col-md-6 col-form-label">Provincias:</label>
-				<select id="provincias" th:field="*{provincia}"> -->
-					<option th:each="prov:${provincias}" th:value="${prov}" th:text="${prov}" th:selected="false" />
-				</select>
-			</div>
-
-			<div class="col-md-6">
-				<label for="tel" class="form-label">Telefono </label>
-				<input th:field="*{tel}" type="text" class="form-control" id="tel">
-				<div class="text-danger" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></div>
-			</div>
-			<div class="col-md-6">
-				<label for="nacimiento" class="form-label">FECHA DE NACIMIENTO</label>
-				<input th:field="*{fnac}" type="date" class="form-control" id="nacimiento" th:value="*{fnac}">
-				<div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>
-			</div>
-		</div>
-
-		<div class="col-md-6">
-			<label for="contrasenia" class="form-label">CONTRASE�A</label>
-			<input th:field="*{contrasenia}" type="text" class="form-control" id="contrasenia" required>
-			<div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
-		</div>
+	<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="registroCi">
+	
+	<input th:field="*{dni}" class="editTxt" type="number" name="dniCi" placeholder="Ingrese su DNI">
+	<div class="text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+	
+    <input th:field="*{nTramite}" class="editTxt " type="number" name="tramiteCi" placeholder="Numero de tramite del DNI">
+    <div class="text-danger" th:if="${#fields.hasErrors('nTramite')}" th:errors="*{nTramite}"></div>
+    
+    <input th:field="*{profecion}" class="editTxt" type="text" name="profecionCi" placeholder="Ingrese su Profecion">
+    <div class="text-danger" th:if="${#fields.hasErrors('profecion')}" th:errors="*{profecion}"></div>
+    
+    <input th:field="*{email}" class="editTxt" type="email" name="correoCi" placeholder="Ingrese su correo Electronico">
+    <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    
+    
+    <!-- #select -->
+    <p>Estado civil
+    <select th:field="*{eCivil}" class="editTxt" name="estadoCi">
+      <option th:each="civil:${estados}" th:value="${civil}" th:text="${civil}" th:selected="false"></option>
+    </select>
+    </p>
 
 
+    <div>
+     <p>Seleccione su provincia
+    <select th:field="*{provincia}" class="editTxt" name="provinciaCi">
+      <option th:each="prov:${provincias}" th:value="${prov}" th:text="${prov}" th:selected="false"></option>
+    </select>
+     </p>
+    </div>
+    <!-- #endSelect -->
 
-		<div class="col-12">
-			<button type="submit" class="btn btn-primary">ENVIAR</button>
-		</div>
+     <div>
+          <p>Fecha de nacimiento
+            <input th:field="*{fnac}" th:value="*{fnac}" class="editTxt" type="date" name="nacimientoCi" >
+          </p>      
+          <div class="text-danger" th:if="${#fields.hasErrors('fnac')}" th:errors="*{fnac}"></div>   
+      </div>
+      
+    <input th:field="*{tel}" class="editTxt" type="tel" name="telefonoCi" placeholder="Ingrese su telefono">
+    <div class="text-danger" th:if="${#fields.hasErrors('tel')}" th:errors="*{tel}"></div>
+    
+    <input th:field="*{contrasenia}" class="editTxt" type="password" name="passwordCi" placeholder="Contraseña">
+    <div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
+
+    <!-- Botones -->
+    <input class="btn btn-success" type="submit" value="Enviar">
+    <input class="btn btn-danger" type="reset" value="Borrar">
 	</form>
+	<footer th:insert="/layout/footer::footer"></footer>
 </body>
 
 </html>
