@@ -14,7 +14,7 @@ public class Cv {
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 private Long id;
-	private String datosId ;//datos de identidad
+
 
 	
 	
@@ -58,12 +58,11 @@ private Long id;
 	}
 
 
-	public Cv(Long id, String datosId, String nombre, String apellido, String dni, String telefono, String nacimiento,
+	public Cv(Long id, String nombre, String apellido, String dni, String telefono, String nacimiento,
 			String laboral, String educacion, String idiomas, String informatica, String complementaria,
 			String adicionales) {
 		super();
 		this.id = id;
-		this.datosId = datosId;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -79,11 +78,6 @@ private Long id;
 
 	public Long getId() {
 		return id;
-	}
-
-
-	public String getDatosId() {
-		return datosId;
 	}
 
 
@@ -147,11 +141,6 @@ private Long id;
 	}
 
 
-	public void setDatosId(String datosId) {
-		this.datosId = datosId;
-	}
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -209,7 +198,7 @@ private Long id;
 
 	@Override
 	public String toString() {
-		return "Cv [id=" + id + ", datosId=" + datosId + ", nombre=" + nombre + ", apellido=" + apellido + ", dni="
+		return "Cv [id=" + id + ", datosId=" + ", nombre=" + nombre + ", apellido=" + apellido + ", dni="
 				+ dni + ", telefono=" + telefono + ", nacimiento=" + nacimiento + ", laboral=" + laboral
 				+ ", educacion=" + educacion + ", idiomas=" + idiomas + ", informatica=" + informatica
 				+ ", complementaria=" + complementaria + ", adicionales=" + adicionales + "]";
