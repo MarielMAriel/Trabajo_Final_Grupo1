@@ -76,6 +76,9 @@ public class Empleado {
 	@NotEmpty
 	@Column(name="emp_profecion")
 	private String profecion;
+	
+	@Column(name="emp_sel")
+	private boolean sel;
 //	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
 //	private List<OfertaLab> ofertas;
 //	
@@ -87,6 +90,7 @@ public Empleado() {
 
 
 
+
 public Empleado(Long id, @Size(min = 7, max = 9, message = "El empleado debe ingresar el dni ej:12000800") String dni,
 		@Size(min = 10, max = 13, message = "El Nro. de Tramite debe ser mayor a 1.000.000.000") String nTramite,
 		@NotEmpty @Email(message = "Ingrese un e-mail valido") String email,
@@ -95,7 +99,7 @@ public Empleado(Long id, @Size(min = 7, max = 9, message = "El empleado debe ing
 		@Size(min = 7, message = "Su numero de telefono celular debe ser correcto") String tel,
 		@NotNull @Past(message = "Debe ingresar su fecha de nacimiento") LocalDate fnac,
 		@Size(min = 7, message = "Su contraseña de almenos 7 caracteres") String contrasenia, String tipo, Cv cv,
-		String profecion) {
+		@NotEmpty String profecion, boolean sel) {
 	super();
 	this.id = id;
 	this.dni = dni;
@@ -109,7 +113,9 @@ public Empleado(Long id, @Size(min = 7, max = 9, message = "El empleado debe ing
 	this.tipo = tipo;
 	this.cv = cv;
 	this.profecion = profecion;
+	this.sel = sel;
 }
+
 
 
 
@@ -218,12 +224,37 @@ public Cv getCv() {
 public void setCv(Cv cv) {
 	this.cv = cv;
 }
+
+
+
+
+/**
+ * @return the sel
+ */
+public boolean isSel() {
+	return sel;
+}
+
+
+
+
+/**
+ * @param sel the sel to set
+ */
+public void setSel(boolean sel) {
+	this.sel = sel;
+}
+
+
+
+
 @Override
 public String toString() {
 	return "Empleado [id=" + id + ", dni=" + dni + ", nTramite=" + nTramite + ", email=" + email + ", eCivil=" + eCivil
 			+ ", provincia=" + provincia + ", tel=" + tel + ", fnac=" + fnac + ", contrasenia=" + contrasenia
-			+ ", tipo=" + tipo + ", cv=" + cv + ", profecion=" + profecion + "]";
+			+ ", tipo=" + tipo + ", cv=" + cv + ", profecion=" + profecion + ", sel=" + sel + "]";
 }
+
 
 
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -168,7 +169,6 @@ public class EmpresaController {
 	}
 	
 	//metodo para editar las ofertas laborales
-	//por el momento el boton de reeditar no funciona
 	@GetMapping("/editar/{id}")
 	public ModelAndView getEditarAlumnoPage(@PathVariable Long id) {
 		List<OfertaLab> ofertas = activoEmpresa.getOfertas();
@@ -219,4 +219,35 @@ public class EmpresaController {
 		mav.addObject("empleados", postl);
 		return mav;
 	}
+	
+	//solo debo cambiar el estado de la variable selec del empleado
+	@GetMapping("/seleccionar/{dni}")
+	public ModelAndView getListSeleccionados(@PathVariable String dni) {
+		Empleado empleado=empleadoService.buscar(dni);
+		empleado.setSel(true);
+		empleadoService.guardarEmplado(empleado);
+		ModelAndView mav=new ModelAndView("index_empresa");
+		return mav;
+		}
+		
+	@GetMapping("/listaAprobados")
+	public ModelAndView getAprobados() {
+		//obtengo la lista de las ogertas
+		List<OfertaLab> ofer=activoEmpresa.getOfertas();
+		List<Empleado> emps=new ArrayList<>();
+		List<Empleado> apr=new ArrayList<>();
+		for (OfertaLab ofertaLab : ofer) {
+			emps=ofertaLab.getPostulados();
+			for (Empleado empleado : emps) {
+				if(empleado.isSel()==true) {
+					apr.add(empleado);
+				}
+			}
+		}
+		ModelAndView mav = new ModelAndView("aprobados");
+		mav.addObject("empleados", apr);
+		return mav;
+	}
+		
+	
 }

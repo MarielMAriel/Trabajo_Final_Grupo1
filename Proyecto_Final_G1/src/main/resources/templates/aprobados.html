@@ -10,7 +10,7 @@
 
 		<div>
 			<section>
-				<h1>Perfiles Postulados a la oferta</h1>
+				<h1>Perfiles Aprobados</h1>
 				<table class="table">
 					<tbody>
 						<thead>
@@ -35,9 +35,7 @@
 							<td th:text="${empleado.profecion}"></td>
 							<td th:text="${empleado.tel}"></td>
 							<td th:text="${#temporals.format(empleado.fnac, 'dd-MM-yyyy')}"></td>
-							<td>
-                 			<a th:href="@{/seleccionar/}+${empleado.dni}" class="btn btn-warning">Seleccionar</a>
-							</td>
+							
 						</tr>
 					</tbody>
 				</table>
