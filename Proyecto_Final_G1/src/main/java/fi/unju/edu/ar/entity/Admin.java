@@ -8,8 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+/**
+ * Nombre de la tabla en la BD
+ *
+ */
 @Table(name="admin")
 public class Admin {
+	/**
+	 * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "emp_id")

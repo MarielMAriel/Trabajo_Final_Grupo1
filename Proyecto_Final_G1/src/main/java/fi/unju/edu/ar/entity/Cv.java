@@ -13,12 +13,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "cv")
 public class Cv {
-
+	/**
+	 * El id se genera automaticamente desde el sistema, en el no se aplican validaciones 
+	 */
 @Id
+/**
+ * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+ */
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 @Column(name = "cv_id")
 private Long id;
-
+/**
+ * OnetoOne especifica una asociación de un solo valor con otra entidad que tiene una multiplicidad de uno a uno. 
+ */
 @OneToOne (mappedBy = "cv",fetch = FetchType.LAZY )
 private Empleado empleado;
 
@@ -61,7 +68,21 @@ private Empleado empleado;
 	public Cv() {
 		// TODO Auto-generated constructor stub
 	}
-
+/**
+ * Constructor del objeto CV
+ * @param id
+ * @param nombre
+ * @param apellido
+ * @param dni
+ * @param telefono
+ * @param nacimiento
+ * @param laboral
+ * @param educacion
+ * @param idiomas
+ * @param informatica
+ * @param complementaria
+ * @param adicionales
+ */
 
 	public Cv(Long id, String nombre, String apellido, String dni, String telefono, String nacimiento,
 			String laboral, String educacion, String idiomas, String informatica, String complementaria,

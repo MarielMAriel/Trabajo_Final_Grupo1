@@ -1,0 +1,48 @@
+<DOCTYPE html>
+	<html xmlns:th="http://thymeleaf.org">
+
+	<head th:insert="/layout/head::head">
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+
+	<body>
+
+		<div>
+			<section>
+				<h1>Perfiles Aprobados</h1>
+				<table class="table">
+					<tbody>
+						<thead>
+							<tr>
+								<th>DNI</th>
+								<th>N TRAMITE</th>
+								<th>EMAIL</th>
+								<th>ESTADO CIVIL</th>
+								<th>PROVINCIA</th>
+								<th>PROFECION</th>
+								<th>TELEFONO</th>
+								<th>FECHA NACIMIEMTO</th>
+							</tr>
+						</thead>
+					<tbody>
+						<tr th:each="empleado:${empleados}">
+							<td th:text="${empleado.dni}"></td>
+							<td th:text="${empleado.nTramite}"> </td>
+							<td th:text="${empleado.email}"></td>
+							<td th:text="${empleado.eCivil}"></td>
+							<td th:text="${empleado.provincia}"></td>
+							<td th:text="${empleado.profecion}"></td>
+							<td th:text="${empleado.tel}"></td>
+							<td th:text="${#temporals.format(empleado.fnac, 'dd-MM-yyyy')}"></td>
+							
+						</tr>
+					</tbody>
+				</table>
+
+			</section>
+		</div>
+		<footer th:fragment="footer"> </footer>
+	</body>
+
+	</html>
