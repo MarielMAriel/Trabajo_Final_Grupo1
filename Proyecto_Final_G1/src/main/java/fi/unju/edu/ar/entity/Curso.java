@@ -6,11 +6,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+/**
+ * Nombre de la tabla en la BD
+ *
+ */
 @Table(name="cursos")
 public class Curso {
 	@Id
 	@Column(name = "curso_nombre")
-	private String nombreC;//nombre del curso
+	private String nombreC;
 	@Column(name = "curso_duracion")
 	private int duracion;
 	@Column(name = "curso_fechaI")
@@ -18,10 +22,18 @@ public class Curso {
 	@Column(name = "curso_fechaF")
 	private int fechaFin;
 	@Column(name = "curso_categoriaC")
-	private String categoriaC;//categoria del curso(informatica,contable ,administrativa)
+	private String categoriaC;
 	public Curso() {
 		// TODO Auto-generated constructor stub
 	}
+	/**
+	 * Constructor del objeto Curso
+	 * @param nombreC
+	 * @param duracion
+	 * @param fechaInicio
+	 * @param fechaFin
+	 * @param categoriaC
+	 */
 	public Curso(String nombreC, int duracion, int fechaInicio, int fechaFin, String categoriaC) {
 		super();
 		this.nombreC = nombreC;

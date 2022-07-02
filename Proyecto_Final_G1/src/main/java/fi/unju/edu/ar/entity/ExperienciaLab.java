@@ -3,13 +3,21 @@ package fi.unju.edu.ar.entity;
 public class ExperienciaLab {
 
 	private String nombreEmp;
-	private int inicioAct;//inicio de actividad
-	private int finAct;//fin de actividad
+	private int inicioAct;
+	private int finAct;
 	private String labor;
-	private String motivoS;//motivo de Salida(razon o motivo por el cual dejo el trabajo)
+	private String motivoS;
 public ExperienciaLab() {
 	// TODO Auto-generated constructor stub
 }
+/**
+ * Constructor del objeto ExperienciaLab
+ * @param nombreEmp
+ * @param inicioAct
+ * @param finAct
+ * @param labor
+ * @param motivoS
+ */
 public ExperienciaLab(String nombreEmp, int inicioAct, int finAct, String labor, String motivoS) {
 	super();
 	this.nombreEmp = nombreEmp;

@@ -10,12 +10,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 public class Usuario {
+	
+	/**
+	 * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@Id
+	/**
+	 * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "usu_id")
 	private Long id;
 	@Column(name="usu_identificador")
-	private String identificador;//puede tomar el valor de cuit o dni depenndiendo del tipo de usuario
+	private String identificador;
 	@Column(name="usu_tipo")
 	private String tipo;
 	@Column(name="usu_contrasenia")
@@ -25,7 +32,12 @@ public class Usuario {
 		
 	}
 	 
-	
+	/**
+	 * Constructor del objeto Usuario
+	 * @param identificador
+	 * @param tipo
+	 * @param contrasenia
+	 */
 	public Usuario( String identificador, String tipo, String contrasenia) {
 		super();
 		this.identificador = identificador;

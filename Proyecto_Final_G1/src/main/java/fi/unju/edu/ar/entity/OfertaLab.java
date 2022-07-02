@@ -22,23 +22,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @Entity
+/**
+ * Nombre de la tabla en la BD
+ */
 @Table(name="ofertas")
 public class OfertaLab {
+	/**
+	 * El id se genera automaticamente desde el sistema, en el no se aplican validaciones 
+	 */
 	@Id
+	/**
+	 * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ofe_id")
 	private Long id;
 	
 	@Autowired
+	/**
+	 * ManytoOne especifica una asociación de un solo valor con otra clase de entidad que tiene una multiplicidad de muchos a uno.
+	 */
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="empr_id")
 	private Empresa empresa;
-	//agrego la relacion entre empleado y oferta laboral
 	
+	/**
+	 * ManytoMany specifica una asociación de muchos valores con multiplicidad de muchos a muchos.
+	 */
 	@ManyToMany(fetch = FetchType.EAGER)
+	/** 
+	 * Jointable hace referencia a la columna que es clave externa en la tabla y que se encarga de definir la relación
+	 */
 	@JoinTable(name="ofertas_empleados", joinColumns=@JoinColumn(referencedColumnName = "ofe_id"),
 				inverseJoinColumns=@JoinColumn(referencedColumnName = "emp_id"))
 	private List<Empleado> postulados=new ArrayList<Empleado>();
+	/**
+	 * Validacion Size permite especificar la cantidad de caracteres que puede contener.
+	 */
+	/**
+	 *Validacion NotEmpty no deja que el campo quede vacio, Email verifica si la cadena alfanumerica es un e-mail.
+	 */
 	@NotNull
 	@Column(name="ofe_vacante")
 	private int cantidadVac;//cantidad de vacantes
@@ -89,7 +112,23 @@ public class OfertaLab {
 	}
 
 	
-
+/**
+ * Constructor del objeto OfertaLab
+ * @param id
+ * @param empresa
+ * @param postulados
+ * @param cantidadVac
+ * @param puestoReq
+ * @param resumenPuesto
+ * @param disponibilidadH
+ * @param tareasPrin
+ * @param datosContac
+ * @param jornada
+ * @param requisitos
+ * @param salario
+ * @param beneficio
+ * @param disponible
+ */
 	public OfertaLab(Long id, Empresa empresa, List<Empleado> postulados, @NotNull int cantidadVac,
 			@NotNull String puestoReq, @NotNull String resumenPuesto, @NotNull String disponibilidadH,
 			@NotNull String tareasPrin, @NotNull String datosContac, @NotNull int jornada, @NotNull String requisitos,

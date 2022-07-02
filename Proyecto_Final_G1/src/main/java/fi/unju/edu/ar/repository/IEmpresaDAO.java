@@ -14,7 +14,11 @@ import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.entity.Empresa;
 @Repository
 public interface IEmpresaDAO extends CrudRepository<Empresa, Long >{//puede ser jpaRepository o CrudRepository
-	//metodo que se usa para buscar la empresa que se esta logueando 1er agr
+	/**
+	 * Metodo que se usa para buscar la empresa por cuit
+	 * @param cuit
+	 */
+	
 	public Empresa findByCuit(String cuit);
 	@Query("from Empresa e order by e.cuit")
 	public List<Empresa> obtenerEmpresa();

@@ -22,29 +22,43 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 //import org.springframework.format.annotation.DateTimeFormat;
 @Entity
+/**
+ * Nombre de la tabla en la BD
+ */
 @Table(name="empleados")
 public class Empleado {
-	//NOTA HERNAN DEBO AGREGAR UN ATRIBUTO CON EL NOMBRE DEL EMPLEADO
+
 	@Id
+	/** 
+	 *  Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	//REVISAR JOINCOLUMN EN CV.JAVA
+
 	@Column(name = "emp_id")
 	private Long id;
-	
+	/**
+	 * Cada usuario puede tener un solo CV a publicar
+	 */
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cv_id")
 	private Cv cv;
 
-	//Size permite especificar la cantidad de caracteres que puede tomar un dni
-	//
+	/**
+	 * Validacion Size permite especificar la cantidad de caracteres que puede contener.
+	 */
+	/**
+	 *Validacion NotEmpty no deja que el campo quede vacio, Email verifica si la cadena alfanumerica es un e-mail.
+	 */
 	@Size(min =7,max = 9,message="El empleado debe ingresar el dni ej:12000800")
 	@Column(name = "emp_dni" )
 	 private String dni;
-	
+	/**
+	 * Validacion Size permite especificar la cantidad de caracteres que puede tener el num. de tramite.
+	 */
 	@Size(min=10 ,max=13,message = "El Nro. de Tramite debe ser mayor a 1.000.000.000")
 	@Column(name = "emp_ntramite" )
 	 private String nTramite;
-	
+
 	@NotEmpty@Email (message = "Ingrese un e-mail valido")
 	@Column(name = "emp_email" )
 	 private String email;
@@ -52,7 +66,7 @@ public class Empleado {
 	@NotEmpty(message = "Su estado civil debe estar completo")
 	@Column(name = "emp_eCivil" )
 	 private String eCivil;
-	// CONSULTAR PROVINCIA EN VALIDACION
+
 	@NotEmpty(message = "Provincia no puede estar vacio")
 	@Column(name = "emp_provincia" )
 	 private String provincia;
@@ -81,18 +95,28 @@ public class Empleado {
 	
 	@Column(name="emp_sel")
 	private boolean sel;
-//	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL)
-//	private List<OfertaLab> ofertas;
-//	
+
 	
 public Empleado() {
 	// TODO Auto-generated constructor stub
 	this.tipo="empleado";
 }
-
-
-
-
+/**
+ * Constructor del objeto Empleado
+ * @param id
+ * @param dni
+ * @param nTramite
+ * @param email
+ * @param eCivil
+ * @param provincia
+ * @param tel
+ * @param fnac
+ * @param contrasenia
+ * @param tipo
+ * @param cv
+ * @param profecion
+ * @param sel
+ */
 public Empleado(Long id, @Size(min = 7, max = 9, message = "El empleado debe ingresar el dni ej:12000800") String dni,
 		@Size(min = 10, max = 13, message = "El Nro. de Tramite debe ser mayor a 1.000.000.000") String nTramite,
 		@NotEmpty @Email(message = "Ingrese un e-mail valido") String email,

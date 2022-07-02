@@ -23,16 +23,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
+/**
+ * Nombre de la tabla en la BD
+ */
 @Table(name = "empresa")
 public class Empresa {
-	//el id se genera automaticamente desde el sistema 
-	//en el no se aplican validaciones 
+	/**
+	 * El id se genera automaticamente desde el sistema, en el no se aplican validaciones 
+	 */
 	@Id
+	/**
+	 * Se aplica al campo de clave principal de una entidad  con la anotación Id.
+	 */
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "empr_id")
 	private Long id;
-	
-	// el identificador de la tabla
+	/**
+	 * Validacion Size permite especificar la cantidad de caracteres que puede contener.
+	 */
+	/**
+	 *Validacion NotEmpty no deja que el campo quede vacio, Email verifica si la cadena alfanumerica es un e-mail.
+	 */
 	@Size(min=7,message = "Su contraseña de almenos 7 caracteres")
 	@Column(name = "empr_contrasenia")
 	private String contrasenia;
@@ -50,7 +61,7 @@ public class Empresa {
 	private String nombre;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
-	@NotNull @Past (message = "Debe ingresar su fecha de inicio de actividad")//consultar si tambien ponemos fin de activiadad	
+	@NotNull @Past (message = "Debe ingresar su fecha de inicio de actividad")
 	@Column(name = "empr_finicio")
 	private LocalDate finicio;
 	
@@ -60,11 +71,10 @@ public class Empresa {
 	@Size(min=7,max=10,message = "Su numero de telefono celular debe ser correcto")
 	@Column(name = "empr_telefono")
 	private String telefono;
-	// ciudad barrio calle y num
+
 	@NotEmpty
 	@Column(name = "empr_domicilio")
 	private String domicilio;
-	// CONSULTAR PROVINCIA EN VALIDACION
 	
 	@NotEmpty(message = "Debe elegir su provincia")
 	@Column(name = "empr_provincia")
@@ -79,7 +89,9 @@ public class Empresa {
 	@Column(name ="empr_tipo")
 	private String tipo;
 	
-	
+	/**
+	 * OnetoOne especifica una asociación de un solo valor con otra entidad que tiene una multiplicidad de uno a uno. 
+	 */
 	@OneToMany(mappedBy = "empresa", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private List<OfertaLab> ofertas=new ArrayList<OfertaLab>();
 	
@@ -91,6 +103,20 @@ public class Empresa {
 		// TODO Auto-generated constructor stub
 		this.setTipo("empresa");
 	}
+	/**
+	 * Constructor del objeto Empresa
+	 * @param cuit
+	 * @param contrasenia
+	 * @param razonSocial
+	 * @param nombre
+	 * @param finicio
+	 * @param email
+	 * @param telefono
+	 * @param domicilio
+	 * @param provincia
+	 * @param pagina
+	 * @param descripcion
+	 */
 
 	public Empresa(String cuit, String contrasenia, String razonSocial, String nombre, LocalDate finicio, String email,
 			String telefono, String domicilio, String provincia, String pagina, String descripcion) {
