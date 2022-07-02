@@ -314,6 +314,7 @@ public class EmpresaController {
 		 */
 	@GetMapping("/listaAprobados")
 	public ModelAndView getAprobados() {
+//	intentar implementar el arraylist en el service
 				List<OfertaLab> ofer=activoEmpresa.getOfertas();
 		List<Empleado> emps=new ArrayList<>();
 		List<Empleado> apr=new ArrayList<>();

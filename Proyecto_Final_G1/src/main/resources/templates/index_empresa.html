@@ -26,6 +26,7 @@
 				</div>
 				<div class="col-4">
 					<div>
+
 						<h1 class="display-5">Crear oferta laboral</h1>
 						<p>Armá tu CV: carga tus estudios, experiencia laboral,
 							idiomas, cursos. Podés editarlo, modificarlo la cantidad de veces
@@ -33,11 +34,12 @@
 					</div>
 				</div>
 				<div class="col-3 align-self-center">
-					<button type="button" class="btn btn-outline-danger w-100">Continuar</button>
+				<a th:href="@{/nuevaOferta}">
+					<button type="button" class="btn btn-outline-danger w-100" >Continuar</button>
+					</a>
 				</div>
 			</div>
-
-			<div class="row justify-content-center mb-4">
+--		<div class="row justify-content-center mb-4">
 				<div class="col-1 position-relative">
 					<img src="https://portalempleo.gob.ar/images/svg/lupa.svg" alt=""
 						width="100" height="100" />
@@ -49,7 +51,9 @@
 					</div>
 				</div>
 				<div class="col-3 align-self-center">
+				<a th:href="@{/listaPostulantes}">
 					<button type="button" class="btn btn-outline-danger  w-100">Buscar</button>
+					</a>
 				</div>
 			</div>
 		</div>
