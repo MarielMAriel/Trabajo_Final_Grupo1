@@ -31,6 +31,10 @@ public class Empleado {
 	@Column(name = "emp_id")
 	private Long id;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "cv_id")
+	private Cv cv;
+
 	//Size permite especificar la cantidad de caracteres que puede tomar un dni
 	//
 	@Size(min =7,max = 9,message="El empleado debe ingresar el dni ej:12000800")
@@ -69,9 +73,7 @@ public class Empleado {
 	
 	@Column(name = "emp_tipo" )
 	 private String tipo;
-	@OneToOne
-	@JoinColumn(name = "emp_cv")
-	private Cv cv;
+	
 	
 	@NotEmpty
 	@Column(name="emp_profecion")
