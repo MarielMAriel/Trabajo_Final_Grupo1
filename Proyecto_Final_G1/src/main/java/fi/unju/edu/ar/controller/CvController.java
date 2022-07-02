@@ -17,15 +17,25 @@ import fi.unju.edu.ar.serviceImp.CvServiceImp;
 public class CvController {
 	
 	private static final Log LOGGER = LogFactory.getLog(CvController.class);
+	/**
+	 * Controller del Curriculum Vitae, redirecciona al index del empleado
+	 */
 	
 	@Autowired CvServiceImp curriculum;
-
+/**
+ * Muestra el index del empleado	
+ * @return index_empleado
+ */
 	@GetMapping("/empleado")
 	public String  getIndexCv()  {
 		LOGGER.info("muestra index empleado");
 		return "index_empleado";
 
 	}
+	/**
+	 * Se muestra la vista del formulario de CV
+	 * @return nuevo_cv
+	 */
 	
 	@GetMapping("/nuevoCv")
 	public ModelAndView getNuevoCv()  {
@@ -34,7 +44,13 @@ public class CvController {
 		mav.addObject("cv", new Cv() );
 		return mav;
 	}
-	
+	/**
+	 * Respuesta a la carga del cv, si este esta correcto redirecciona al menu
+	 * Si este mismo no redirecciona se debe llenar nuevamente
+	 * @param cv
+	 * @param bindingResult
+	 * @return empleado 
+	 */
 	@PostMapping("/empleado/registrarCV")
 	public ModelAndView guardarCV(@Validated @ModelAttribute Cv cv, BindingResult bindingResult) {
 		LOGGER.info(bindingResult.getAllErrors());
@@ -48,12 +64,11 @@ public class CvController {
 		ModelAndView mav=new  ModelAndView("redirect:/empleado");
 		return mav;
 	}
-	
-//	@GetMapping("/empleado/descargar")
-//	public String getDescargar() {
-//		//REDIRECCIONA AL FORMULARIO CV DE EMMANUEL
-//		return "";
-//	}
+
+	/**
+	 * Busqueda de lista de ofertas de trabajo en el menu de empleados 
+	 * @return lista_ofertas
+	 */
 	
 	@GetMapping("/empleado/buscar")
 	public String getBuscar() {

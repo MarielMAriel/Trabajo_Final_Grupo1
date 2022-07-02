@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:include="/layout/head::head">
+<meta charset="UTF-8" />
+<title>Cv</title>
+
+</head>
+
+<body>
+	<form th:action="@{/empleado/registrarCV}" th:object="${cv}"
+		method="post" class=registro>
+		
+	  <input th:field="*{nombre}" class="editTxt" type="text" name="nombreCi" placeholder="Ingrese su Nombre/s"> 
+
+<!-- 		<label for="nombreCi" class="form-label">nombre</label> -->
+
+			<input th:field="*{apellido}"  class="editTxt" type="text" name="apellidoCi" placeholder="Ingrese su Apellido/s"> 
+			<input th:field="*{dni}"  class="editTxt" type="number" name="dniCi" placeholder="Ingrese su DNI">
+			 <input th:field="*{telefono}"  class="editTxt"type="tel" name="celCi" placeholder="Ingrese su telefono*">
+			 
+		<div>
+			<p>
+				Fecha de Nacimiento <input th:field="*{nacimiento}" class="editTxt" type="date"
+					name="nacimientoCi">
+			</p>
+		</div>
+		
+			<input th:field="*{laboral}"  class="editTxt" type="text" name="experienciaCi"
+				placeholder="Ingrese su experiencia laboral"> 
+				
+			<input th:field="*{educacion}"  class="editTxt" type="text" name="educaionCi"
+				placeholder="Ingrese sus nieveles cursados"> 
+				
+			<input th:field="*{idiomas}"  class="editTxt" type="text" name="idiomasCi"
+				placeholder="Ingrese idiomas que maneja"> 
+			
+			<input th:field="*{informatica}" class="editTxt" type="text" name="informaticaCi"
+				placeholder="¿Tiene conocimientos en informaticas? Escribrir cuales"> 
+							
+			
+			<input th:field="*{complementaria}"  class="editTxt"
+			type="text" name="informacionCi"
+			placeholder="Ingrese informacion complementaria "> 
+			
+			<input th:field="*{adicionales}" 
+			class="editTxt" type="text" name="datosCi"
+			placeholder="Ingrese datos adicionales"> 
+			
+			<input class="btn bg-white" type="submit" value="Enviar"> 
+			
+			<input class="btn bg-white" type="reset" value="Borrar">
+	</form>
+</body>
+
+</html>

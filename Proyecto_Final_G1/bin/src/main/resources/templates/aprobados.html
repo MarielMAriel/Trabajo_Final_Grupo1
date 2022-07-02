@@ -10,12 +10,7 @@
 
 		<div>
 			<section>
-				<h1>Perfiles de Ciudadanos registrados en la pagina</h1>
-
-				<form th:action="@{/listaPostulantes}" th:object="${busqueda}" method="post"  class="d-flex" role="search">
-					<input name="valor" class="form-control me-2" type="search" placeholder="ingrese una palabra indicando el perfil que buscas" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
+				<h1>Perfiles Aprobados</h1>
 				<table class="table">
 					<tbody>
 						<thead>
@@ -40,7 +35,7 @@
 							<td th:text="${empleado.profecion}"></td>
 							<td th:text="${empleado.tel}"></td>
 							<td th:text="${#temporals.format(empleado.fnac, 'dd-MM-yyyy')}"></td>
-
+							
 						</tr>
 					</tbody>
 				</table>
