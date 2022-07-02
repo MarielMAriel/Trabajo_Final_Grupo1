@@ -2,21 +2,26 @@ package fi.unju.edu.ar.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name = "cv")
 public class Cv {
+
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
+@Column(name = "cv_id")
 private Long id;
 
+@OneToOne (mappedBy = "cv",fetch = FetchType.LAZY )
+private Empleado empleado;
 
-	
 	
 	 @Column (name = "cv_nombre")
 		private String nombre;	
