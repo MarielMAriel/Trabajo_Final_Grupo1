@@ -9,7 +9,7 @@
 
 <body>
 	<form th:action="@{/empleado/registrarCV}" th:object="${cv}"
-		method="post" class=registro>
+		method="post" class=registroCv>
 		
 	  <input th:field="*{nombre}" class="editTxt" type="text" name="nombreCi" placeholder="Ingrese su Nombre/s"> 
 
@@ -47,9 +47,9 @@
 			class="editTxt" type="text" name="datosCi"
 			placeholder="Ingrese datos adicionales"> 
 			
-			<input class="btn bg-white" type="submit" value="Enviar"> 
-			
-			<input class="btn bg-white" type="reset" value="Borrar">
+			<input class="btn btn-success" type="submit" value="Enviar"> 
+	
+			<input class="btn btn-danger" type="reset" value="Borrar">
 	</form>
 </body>
 
