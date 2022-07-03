@@ -84,6 +84,17 @@ margin: auto;
     box-shadow: 7px 13px 37px #000;   
 }
 
+.registroCv {
+    width: 450px;
+    background: #ffc107;
+    padding: 30px;
+    margin: auto;
+    margin-top: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    color: black;
+    box-shadow: 7px 13px 37px #000;   
+}
 
 .registroEmp {
     width: 450px;
@@ -99,7 +110,7 @@ margin: auto;
 
 
 
-.registroCi .editTxt , .registroEmp .editTxt{
+.registroCi .editTxt , .registroEmp .editTxt , .registroCv .editTxt{
     width: 95%;
     padding: 10px;
     border-radius: 4px;
@@ -111,7 +122,7 @@ margin: auto;
 
 
 
-.registroCi .btn , .registroEmp .btn{
+.registroCi .btn , .registroEmp .btn , .registroCv .btn{
     width: 95%;
     border: 1px solid black;
     font-family: 'Raleway', sans-serif; 
