@@ -1,6 +1,7 @@
 package fi.unju.edu.ar.controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -8,6 +9,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -148,6 +150,11 @@ public class EmpleadoController {
 		ofertaService.guardar(off);
 		ModelAndView mav = new ModelAndView("index_empleado");
 		return mav;
+	}
+	
+	@GetMapping("/indexEmpl/cursos")
+	public String getCursos(Model model){
+		return ("cursos"); 
 	}
 	
 }
