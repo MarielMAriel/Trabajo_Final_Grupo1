@@ -7,14 +7,22 @@
 </head>
 
 <body class="bg-dark">
-	<header th:insert="/layout/header_empresa::header_empresa"></header>
+	
 	
 	<div>
 		<div class="row bg-danger">
-			<h1 class="display-2">
-				<img src="https://portalempleo.gob.ar/images/ciudadanos.svg" alt=""
+		<div class="col-10">
+		<h1 class="display-2">
+			<img src="https://portalempleo.gob.ar/images/ciudadanos.svg" alt=""
 					width="90" height="90" /> Empleadoras/es
 			</h1>
+		</div>
+
+				<div class="col-2 text-end align-self-center">
+			    <a th:href="@{/logEmpr?error=true}">
+			     <button type="button" class="btn btn-danger btn-lg">Salir</button>
+			    </a>
+				   </div>
 		</div>
 
 		<div class="container bg-white mt-5">

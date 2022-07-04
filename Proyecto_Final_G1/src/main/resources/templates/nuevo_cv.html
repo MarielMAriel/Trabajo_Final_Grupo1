@@ -8,6 +8,7 @@
 </head>
 
 <body>
+	<header th:insert="/layout/header_empleado::header"> </header>
 	<form th:action="@{/empleado/registrarCV}" th:object="${cv}"
 		method="post" class=registroCv>
 		

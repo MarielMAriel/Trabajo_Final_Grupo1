@@ -1,4 +1,4 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 	<html xmlns:th="http://thymeleaf.org">
 
 	<head th:insert="/layout/head::head">
@@ -8,7 +8,7 @@
 
 	<body >
 		<!-- CONSULTAR HEADER A EMPRESA O HEADER EMPRESA A HEADER EMPRESA-->
-		<header th:insert="/layout/header_empresa::header_empresa"> </header>
+		<header th:insert="/layout/header_empresa::header_empresa"></header>
 		<form th:action="@{/guardarOferta}" th:object="${ofertaLab}" method="post" class="row g-3">
 			<div class="col-md-6">
 				<label for="vacante" class="form-label">VACANTES</label>
@@ -81,8 +81,9 @@
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary">ENVIAR</button>
 				</div>
+		      </div>
 		</form>
-		</div>
+
 	</body>
 
 	</html>
