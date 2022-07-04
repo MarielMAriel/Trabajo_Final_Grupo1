@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.entity.Empresa;
+import fi.unju.edu.ar.entity.Institucion;
 import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.repository.IUsuarioDao;
 
@@ -58,6 +59,16 @@ public class IUsuarioServiceImp implements IUsuarioService{
 		usu.setTipo(empleado.getTipo());
 		LOGGER.info("Se extraen los parametros de empleado para crear un nuevo usuarios "+empleado);
 
+		return usu;
+	}
+
+	@Override
+	public Usuario setearUsuario2(Institucion institucion) {
+		Usuario usu = new Usuario();
+		usu.setIdentificador(institucion.getCuit());
+		usu.setContrasenia(institucion.getContrasenia());
+		usu.setTipo(institucion.getTipo());
+		
 		return usu;
 	}
 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:insert="/layout/head::head">
+<meta charset="UTF-8" />
+<title>Empleadores</title>
+</head>
+
+<body class="bg-dark">
+	
+	
+	<div>
+		<div class="row bg-danger">
+		<div class="col-10">
+		<h1 class="display-2">
+			<img src="https://portalempleo.gob.ar/images/ciudadanos.svg" alt=""
+					width="90" height="90" /> Institucion
+			</h1>
+		</div>
+
+				<div class="col-2 text-end align-self-center">
+			    <a th:href="@{/logEmpr?error=true}">
+			     <button type="button" class="btn btn-danger btn-lg bi bi-box-arrow-left"> Salir</button>
+			    </a>
+				   </div>
+		</div>
+
+		<div class="container bg-white mt-5">
+
+			<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+				 
+				 <i class="bi bi-briefcase" style="font-size: 5rem;"></i>
+				 
+				</div>
+				<div class="col-4">
+					<div>
+
+						<h1 class="display-5">Crear Curso</h1>
+						<p>Carga los datos del curso que tu institucion dicta y permite que los usuario de la plataforma se registren a el</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+				<a th:href="@{/nuevaOferta}">
+					<button type="button" class="btn btn-outline-danger w-100" >Continuar</button>
+					</a>
+				</div>
+			</div>
+--		<div class="row justify-content-center mb-4">
+				<div class="col-1 position-relative">
+				
+					<i class="bi bi-search" style="font-size: 5rem;"></i>	
+					
+				</div>
+				<div class="col-4">
+					<div>
+						<h1 class="display-5">Ver lista de inscriptos</h1>
+						<p>Aqui podra ver los  postulantes a los cursos.</p>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+				<a th:href="@{/listaPostulantes}">
+					<button type="button" class="btn btn-outline-danger  w-100">Buscar</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
