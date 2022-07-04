@@ -10,6 +10,7 @@
 		<!-- CONSULTAR HEADER A EMPRESA O HEADER EMPRESA A HEADER EMPRESA-->
 		<header th:insert="/layout/header_empresa::header_empresa"></header>
 		<form th:action="@{/guardarOferta}" th:object="${ofertaLab}" method="post" class="row g-3">
+						
 			<div class="col-md-6">
 				<label for="vacante" class="form-label">VACANTES</label>
 				<input th:field="*{id}" type="hidden">
@@ -77,11 +78,13 @@
 					<input th:field="*{beneficio}" type="text" class="form-control" id="beneficio" required>
 					<div class="text-danger" th:if="${#fields.hasErrors('beneficio')}" th:errors="*{beneficio}"></div>
 				</div>
-
+					
+				<br>
 				<div class="col-12">
 					<button type="submit" class="btn btn-primary">ENVIAR</button>
 				</div>
 		      </div>
+
 		</form>
 
 	</body>

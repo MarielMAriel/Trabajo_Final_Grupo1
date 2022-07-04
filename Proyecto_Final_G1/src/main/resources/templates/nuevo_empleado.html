@@ -7,10 +7,18 @@
 </head>
 
 <body class="bg-dark">
-	<header th:insert="/layout/header::header"> </header>
-
 	<form th:action="@{/guardarEmp}" th:object="${empleado}" method="post" class="registroCi">
 	
+	<div class="text-end">
+	<a th:href="@{/logEmpr?error=true}">
+		<i class="bi bi-x-square-fill" style="font-size: 2rem; color: Black;"></i>
+	</a>
+
+	</div>
+		 <div class="text-center">
+	 	 <i class="bi bi-person-plus" style="font-size: 6rem; color: #ffd700;"></i>
+	     </div>
+	 
 	<input th:field="*{dni}" class="editTxt" type="number" name="dniCi" placeholder="Ingrese su DNI">
 	<div class="form-text text-danger" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
 	

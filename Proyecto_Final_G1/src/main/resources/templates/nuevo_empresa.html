@@ -7,9 +7,18 @@
 </head>
 
 <body class="bg-dark">
-	<header th:insert="/layout/header::header"> </header>
 	<form th:action="@{/guardarEmpresa}" th:object="${empresa}" method="post" class="registroEmp">
-		
+	 
+	 <div class="text-end">
+	<a th:href="@{/logEmpr?error=true}">
+		<i class="bi bi-x-square-fill" style="font-size: 2rem; color: Black;"></i>
+	</a>
+	</div>
+	
+	 <div class="text-center">
+	 	 <i class="bi bi-building" style="font-size: 6rem; color: red;"></i>
+	 </div>
+
     <input th:field="*{id}" type="hidden" >
     
     <input th:field="*{nombre}" type="text" class="editTxt" name="nombreEmp" placeholder="Ingrese Nombre de la empresa">
