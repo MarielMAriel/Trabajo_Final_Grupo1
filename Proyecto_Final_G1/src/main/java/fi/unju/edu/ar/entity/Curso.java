@@ -171,7 +171,7 @@ public void setInscriptos(List<Empleado> inscriptos) {
 
 @Override
 public String toString() {
-	return "Curso [id=" + id + ", institucion=" + institucion + ", inscriptos=" + inscriptos + ", nombre=" + nombre
+	return "Curso [id=" + id + ", institucion=" + institucion + ", nombre=" + nombre
 			+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", categoriaC=" + categoriaC + "]";
 }
 

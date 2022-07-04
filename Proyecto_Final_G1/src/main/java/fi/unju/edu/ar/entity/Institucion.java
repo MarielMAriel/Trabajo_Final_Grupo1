@@ -171,7 +171,7 @@ public class Institucion {
 	@Override
 	public String toString() {
 		return "Institucion [id=" + id + ", cuit=" + cuit + ", nombre=" + nombre + ", contrasenia=" + contrasenia
-				+ ", tipo=" + tipo + ", cursos=" + cursos + "]";
+				+ ", tipo=" + tipo + ",]";
 	}
 
 

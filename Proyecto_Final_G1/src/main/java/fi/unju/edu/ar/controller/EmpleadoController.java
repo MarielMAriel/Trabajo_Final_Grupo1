@@ -177,12 +177,12 @@ public class EmpleadoController {
 		//curso seleccionado por el usuario
 		
 		Curso cur=cursoServiceImp.buscarCurso(id);
-		
+		LOGGER.info(cur);
 		cur.getInscriptos().add(activoEmpleado);
 		activoEmpleado.setCurso(cur);
 		Institucion institucion = cur.getInstitucion();
 		institucionService.guardar(institucion);
-		empleadoService.guardarEmplado(activoEmpleado);
+		LOGGER.info(institucion);
 		ModelAndView mav = new ModelAndView("redirect:/indexEmpl");
 		return mav;
 	}
