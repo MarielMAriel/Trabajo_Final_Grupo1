@@ -19,12 +19,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import fi.unju.edu.ar.entity.Curso;
 import fi.unju.edu.ar.entity.Empleado;
+import fi.unju.edu.ar.entity.Empresa;
+import fi.unju.edu.ar.entity.Institucion;
 import fi.unju.edu.ar.entity.OfertaLab;
 import fi.unju.edu.ar.entity.Usuario;
 import fi.unju.edu.ar.service.IEmpleadoService;
+import fi.unju.edu.ar.service.IEmpresaService;
 import fi.unju.edu.ar.service.IOfertaService;
 import fi.unju.edu.ar.service.IUsuarioService;
+import fi.unju.edu.ar.service.InstitucionService;
+import fi.unju.edu.ar.serviceImp.ICursoServiceImp;
 
 @Controller
 public class EmpleadoController {
@@ -56,6 +63,12 @@ public class EmpleadoController {
 	 */
 	@Autowired
 	private IOfertaService ofertaService;
+	
+	@Autowired
+	private ICursoServiceImp cursoServiceImp;
+	
+	@Autowired
+	private InstitucionService institucionService;
 
 	/**
 	 * creacion de un nuevo objeto
@@ -152,9 +165,26 @@ public class EmpleadoController {
 		return mav;
 	}
 	
-	@GetMapping("/indexEmpl/cursos")
-	public String getCursos(Model model){
-		return ("cursos"); 
+	@GetMapping("/cursos")
+	public ModelAndView getCursos(Model model){
+		ModelAndView mav=new ModelAndView("cursos");
+		mav.addObject("cursos", cursoServiceImp.listaCursos());
+		return mav; 
+	}
+	
+	@GetMapping("/inscripto/{id}")
+	public ModelAndView getInscripcion(@PathVariable Long id) {
+		//curso seleccionado por el usuario
+		
+		Curso cur=cursoServiceImp.buscarCurso(id);
+		
+		cur.getInscriptos().add(activoEmpleado);
+		activoEmpleado.setCurso(cur);
+		Institucion institucion = cur.getInstitucion();
+		institucionService.guardar(institucion);
+		empleadoService.guardarEmplado(activoEmpleado);
+		ModelAndView mav = new ModelAndView("redirect:/indexEmpl");
+		return mav;
 	}
 	
 }
