@@ -1,64 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
+
 <head th:insert="/layout/head::head">
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
 
 <body class="bg-dark">
-    <div class="container col-12 m-5">
-        <h4 class="display-4 text-white">¿Buscas trabajo en Argentina? Registrate y aplica a los empleos desde hoy de manera fácil, rápida y gratis. Nuevas ofertas cada dia!</h4>
+	<div class="container col-12 m-1">
+		<a th:href="@{/logEmpr?error=true}" id="editarCurso" class="btn btn-warning float-end">Ingresar a mi cuenta</a>
+		<h2 class="display-6 text-white text-center">¿Buscas trabajo en Argentina?</h2>
+		<h2 class="display-6 text-white text-center"> Registrate y aplica a los empleos desde hoy de manera fácil,
+			rápida y gratis. Nuevas ofertas cada dia!</h2>
+	</div>
 
-    </div>
-    
-    
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://st3.depositphotos.com/1720162/16989/v/450/depositphotos_169899260-stock-illustration-flat-design-style-web-banner.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <p class="fs-4">Cursos</p> 
-          <p class="fs-4">Accede nuestras clases en vivo y al material adicional de estudio a través de nuestra plataforma virtual.</p> 
-      </div>
-    </div>
-    <div class="carousel-item">
-<!--       <img src="https://st3.depositphotos.com/10654668/16122/i/450/depositphotos_161226858-stock-photo-business-people-having-discussion.jpg" class="d-block w-100" alt="..."> -->
-            <img src="https://static8.depositphotos.com/1364311/837/i/450/depositphotos_8370502-stock-photo-briefcase.jpg" class="d-block w-100" alt="...">
-      
-      <div class="carousel-caption d-none d-md-block">
-        <p class="fs-4">Empleado</p> 
-         <p class="fs-4"> Te ayudaremos a encontrar grandes oportunidades.</p> 
-	 <p class="fs-4">Reciba sus mejores coincidencias de nuevos trabajos directamente en su bandeja de entrada.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-<!--       <img src="https://st3.depositphotos.com/1000423/13121/i/450/depositphotos_131218272-stock-photo-new-technologies-for-business-mixed.jpg" class="d-block w-100" alt="..."> -->
-          <img src="https://st.depositphotos.com/1907633/2378/i/450/depositphotos_23783565-stock-photo-businessman-hand-working-with-new.jpg" class="d-block w-100" alt="...">
-      <div class="carousel-caption d-none d-md-block">
-        <p class="fs-4">Empresa</p> 
-       <p class="fs-4">Descubra cómo una solución de recursos humanos conectado puede impulsar el éxito de su gente y su negocio.</p>
 
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-  
-        <a th:href="@{/logEmpr?error=true}" id="editarCurso" class="btn btn-warning">Ingresar a mi cuenta</a>
-    <footer th:fragment="footer"> </footer>
+	<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+				aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+				aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+				aria-label="Slide 3"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="https://st3.depositphotos.com/1720162/16989/v/450/depositphotos_169899260-stock-illustration-flat-design-style-web-banner.jpg"
+					class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<p class="fs-4">Cursos</p>
+					<p class="fs-4">Accede nuestras clases en vivo y al material adicional de estudio a través de
+						nuestra plataforma virtual.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<!--       <img src="https://st3.depositphotos.com/10654668/16122/i/450/depositphotos_161226858-stock-photo-business-people-having-discussion.jpg" class="d-block w-100" alt="..."> -->
+				<img src="https://static8.depositphotos.com/1364311/837/i/450/depositphotos_8370502-stock-photo-briefcase.jpg"
+					class="d-block w-100" alt="...">
+
+				<div class="carousel-caption d-none d-md-block">
+					<p class="fs-4">Empleado</p>
+					<p class="fs-4"> Te ayudaremos a encontrar grandes oportunidades.</p>
+					<p class="fs-4">Reciba sus mejores coincidencias de nuevos trabajos directamente en su bandeja de
+						entrada.</p>
+				</div>
+			</div>
+			<div class="carousel-item">
+				<!--       <img src="https://st3.depositphotos.com/1000423/13121/i/450/depositphotos_131218272-stock-photo-new-technologies-for-business-mixed.jpg" class="d-block w-100" alt="..."> -->
+				<img src="https://st.depositphotos.com/1907633/2378/i/450/depositphotos_23783565-stock-photo-businessman-hand-working-with-new.jpg"
+					class="d-block w-100" alt="...">
+				<div class="carousel-caption d-none d-md-block">
+					<p class="fs-4">Empresa</p>
+					<p class="fs-4">Descubra cómo una solución de recursos humanos conectado puede impulsar el éxito de
+						su gente y su negocio.</p>
+
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+			data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+			data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+	</div>
+
+
+	<footer th:fragment="footer"> </footer>
 </body>
-</html>
-    
 
+</html>

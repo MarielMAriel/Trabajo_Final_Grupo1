@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:insert="/layout/head::head">
+	<meta charset="UTF-8">
+	<title>institucion</title>
+</head>
+
+<body class="bg-dark">
+	<form th:action="@{/guardarInstitucion}" th:object="${institucion}" method="post" class="registroEmp">
+	 
+	 <div class="text-end">
+	<a th:href="@{/logEmpr?error=true}">
+		<i class="bi bi-x-square-fill" style="font-size: 2rem; color: Black;"></i>
+	</a>
+	</div>
+	
+	 <div class="text-center">
+	 	 <i class="bi bi-building" style="font-size: 6rem; color: red;"></i>
+	 </div>
+
+    <input th:field="*{id}" type="hidden" >
+    
+    <input th:field="*{nombre}" type="text" class="editTxt" name="nombreEmp" placeholder="Ingrese Nombre de la institucion">
+			 <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+    
+    <input th:field="*{cuit}" class="editTxt " type="number" name="cuitEmp" placeholder="Ingrese CUIT">
+    <div class="text-danger" th:if="${#fields.hasErrors('cuit')}" th:errors="*{cuit}"></div>
+    
+    
+    <input th:field="*{contrasenia}" class="editTxt" type="password" name="passwordEmp" placeholder="Contraseña">
+    <div class="text-danger" th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"></div>
+    
+         
+
+    <!-- Botones -->
+    <input class="btn btn-success" type="submit" value="Enviar">
+    <input class="btn btn-danger" type="reset" value="Borrar">
+		
+	</form>
+	<footer th:insert="/layout/footer::footer"></footer>
+	</body>
+
+</html>

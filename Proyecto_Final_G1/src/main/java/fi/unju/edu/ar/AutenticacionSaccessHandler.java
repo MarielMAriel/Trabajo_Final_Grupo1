@@ -26,6 +26,7 @@ public class AutenticacionSaccessHandler implements AuthenticationSuccessHandler
 			Authentication authentication) throws IOException, ServletException {
 		boolean tipoEmpresa=false;
 		boolean tipoEmpledo=false;
+		boolean tipoInstitucion=false;
 		Collection<? extends GrantedAuthority> authorities=authentication.getAuthorities();
 		for (GrantedAuthority grantedAuthority : authorities) {
 			if (grantedAuthority.getAuthority().equals("empresa")) {
@@ -35,6 +36,11 @@ public class AutenticacionSaccessHandler implements AuthenticationSuccessHandler
 				if(grantedAuthority.getAuthority().equals("empleado")) {
 					tipoEmpledo=true;
 					break;
+				}else {
+					if(grantedAuthority.getAuthority().equals("institucion")) {
+						tipoInstitucion=true;
+						break;
+					}
 				}
 			}
 			
@@ -44,6 +50,10 @@ public class AutenticacionSaccessHandler implements AuthenticationSuccessHandler
 		}else {
 			if(tipoEmpledo) {
 				redirectStrategy.sendRedirect(request, response,"/indexEmpl" );
+			}else {
+				if (tipoInstitucion) {
+					redirectStrategy.sendRedirect(request, response, "/sitioInstitucion");
+				}
 			}
 		}
 	
