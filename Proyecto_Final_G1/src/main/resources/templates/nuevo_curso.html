@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:include="/layout/head::head">
+<meta charset="UTF-8" />
+<title>Cv</title>
+
+</head>
+
+<body>
+	<header th:insert="/layout/header_empleado::header"> </header>
+	<form th:action="@{/guardarCurso}" th:object="${curso}"
+		method="post" class=registroCv>
+
+			<input th:field="*{nombre}"  class="editTxt" type="text" name="nombre" placeholder="Ingrese el Nombre del curso">
+			<input th:field="*{fechaInicio}" th:value="*{fechaInicio}" class="editTxt" type="date"name="fechaInicio" placeholder="Ingrese cuando inicia">
+			<input th:field="*{fechaFin}"  th:value="*{fechaFin}" class="editTxt" type="date" name="fechaFin" placeholder="Ingrese cuando finaliza">
+			<input th:field="*{categoriaC}"  class="editTxt" type="text" name="categoriaC" placeholder="ingrese orientacion del curso">
+			
+			<input class="btn btn-success" type="submit" value="Enviar"> 
+	
+			<input class="btn btn-danger" type="reset" value="Borrar">
+	</form>
+</body>
+
+</html>

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import fi.unju.edu.ar.entity.Curso;
 import fi.unju.edu.ar.entity.Institucion;
 import fi.unju.edu.ar.entity.Usuario;
+import fi.unju.edu.ar.serviceImp.ICursoServiceImp;
 import fi.unju.edu.ar.serviceImp.IUsuarioServiceImp;
 import fi.unju.edu.ar.serviceImp.InstitucionServiceImp;
 
@@ -25,6 +27,9 @@ public class InstitucionController {
 	
 	@Autowired 
 	IUsuarioServiceImp iUsuarioServiceImp;
+	
+	@Autowired
+	ICursoServiceImp cursoServiceImp;
 	
 	Institucion institucion = new Institucion();
 	
@@ -42,7 +47,7 @@ public class InstitucionController {
 			ModelAndView mav= new ModelAndView("redirect:/nuevoInstitucion");
 			return mav;
 		}
-		ModelAndView mav =  new ModelAndView("redirect:/logEmp");
+		ModelAndView mav =  new ModelAndView("redirect:/logEmpr");
 		Usuario usureg=iUsuarioServiceImp.setearUsuario2(institucion);
 		institucionServiceImp.guardar(institucion);
 		iUsuarioServiceImp.crear(usureg);
@@ -54,6 +59,29 @@ public class InstitucionController {
 		institucion=institucionServiceImp.buscarInstitucion(authentication.getName());
 		ModelAndView mav = new ModelAndView("indexInst");
 		return mav;
+	}
+	@GetMapping("/nuevoCurso")
+	public ModelAndView formCurso() {
+		ModelAndView mav = new ModelAndView("nuevo_curso");
+		mav.addObject("curso", cursoServiceImp.nuevoCurso());
+		return mav;
+	}
+	
+	
+	@PostMapping("/guardarCurso")
+	public ModelAndView guardarCurso(@ModelAttribute Curso curso) {
 		
+		curso.setInstitucion(institucion);
+		institucion.getCursos().add(curso);
+		institucionServiceImp.guardar(institucion);
+		ModelAndView mav = new ModelAndView("indexInst");
+		return mav;
+	}
+	@GetMapping("/listaInscriptos")
+	public ModelAndView getListaInscriptos() {
+		ModelAndView mav=new ModelAndView("inscriptos");
+		
+		mav.addObject("cursos", institucion.getCursos());
+		return mav;
 	}
 }

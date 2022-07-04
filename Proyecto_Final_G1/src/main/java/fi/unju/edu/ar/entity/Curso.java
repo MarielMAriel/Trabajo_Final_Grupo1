@@ -1,5 +1,10 @@
 package fi.unju.edu.ar.entity;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,29 +39,40 @@ public class Curso {
 	Institucion institucion;
 	
 	
+	@OneToMany(mappedBy = "curso",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	List<Empleado> inscriptos=new ArrayList<Empleado>();
+	
 	@Column(name = "curso_nombre")
 	private String nombre;
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "cur_fechaI")
-	private int fechaInicio;
+	private LocalDate fechaInicio;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(name = "cur_fechaF")
-	private int fechaFin;
+	private LocalDate fechaFin;
 	@Column(name = "cur_categoriaC")
 	private String categoriaC;
 public Curso() {
 	// TODO Auto-generated constructor stub
 }
-public Curso(String nombre, Long id, Institucion institucion, int fechaInicio, int fechaFin, String categoriaC) {
+
+
+
+
+public Curso(Long id, Institucion institucion, List<Empleado> inscriptos, String nombre, LocalDate fechaInicio, LocalDate fechaFin,
+		String categoriaC) {
 	super();
-	this.nombre = nombre;
 	this.id = id;
 	this.institucion = institucion;
+	this.inscriptos = inscriptos;
+	this.nombre = nombre;
 	this.fechaInicio = fechaInicio;
 	this.fechaFin = fechaFin;
 	this.categoriaC = categoriaC;
 }
+
+
 /**
  * @return the nombre
  */
@@ -95,25 +112,25 @@ public void setInstitucion(Institucion institucion) {
 /**
  * @return the fechaInicio
  */
-public int getFechaInicio() {
+public LocalDate getFechaInicio() {
 	return fechaInicio;
 }
 /**
  * @param fechaInicio the fechaInicio to set
  */
-public void setFechaInicio(int fechaInicio) {
+public void setFechaInicio(LocalDate fechaInicio) {
 	this.fechaInicio = fechaInicio;
 }
 /**
  * @return the fechaFin
  */
-public int getFechaFin() {
+public LocalDate getFechaFin() {
 	return fechaFin;
 }
 /**
  * @param fechaFin the fechaFin to set
  */
-public void setFechaFin(int fechaFin) {
+public void setFechaFin(LocalDate fechaFin) {
 	this.fechaFin = fechaFin;
 }
 /**
@@ -128,11 +145,37 @@ public String getCategoriaC() {
 public void setCategoriaC(String categoriaC) {
 	this.categoriaC = categoriaC;
 }
+
+
+
+
+/**
+ * @return the inscriptos
+ */
+public List<Empleado> getInscriptos() {
+	return inscriptos;
+}
+
+
+
+
+/**
+ * @param inscriptos the inscriptos to set
+ */
+public void setInscriptos(List<Empleado> inscriptos) {
+	this.inscriptos = inscriptos;
+}
+
+
+
+
 @Override
 public String toString() {
-	return "Curso [nombre=" + nombre + ", id=" + id + ", institucion=" + institucion + ", fechaInicio=" + fechaInicio
-			+ ", fechaFin=" + fechaFin + ", categoriaC=" + categoriaC + "]";
+	return "Curso [id=" + id + ", institucion=" + institucion + ", inscriptos=" + inscriptos + ", nombre=" + nombre
+			+ ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + ", categoriaC=" + categoriaC + "]";
 }
+
+
 
 
 }

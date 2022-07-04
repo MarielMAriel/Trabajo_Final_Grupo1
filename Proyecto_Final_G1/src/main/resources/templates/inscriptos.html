@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://thymeleaf.org">
+
+	<head th:insert="/layout/head::head">
+	</head>
+
+	<body>
+		<div>
+			<section>
+				<h1>INSCRIPTOS A MIS CURSOS</h1>
+				<table class="table">
+					<tbody>
+						<thead>
+							<tr>
+								<th>CURSO</th>
+								<th>DNI del inscripto</th>
+								
+							</tr>
+						</thead>
+					<tbody>
+						<tr th:each="curso:${cursos}">
+							<td th:text="${curso.nombre}"></td>
+							<td th:text="${curso.inscriptos.dni}"> </td>
+						</tr>
+					</tbody>
+				</table>
+
+			</section>
+		</div>
+		<footer th:fragment="footer"> </footer>
+	</body>
+
+	</html>

@@ -5,10 +5,10 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-
+import org.springframework.stereotype.Repository;
 
 import fi.unju.edu.ar.entity.OfertaLab;
-
+@Repository
 public interface IOfertaDao extends CrudRepository<OfertaLab, Long>{
 	@Query("from OfertaLab e order by e.puestoReq")
 	public List<OfertaLab> ofertasEmpr();
