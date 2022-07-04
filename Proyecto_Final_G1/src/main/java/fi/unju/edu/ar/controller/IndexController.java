@@ -7,8 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import fi.unju.edu.ar.serviceImp.LoginServiceImp;
-import fi.unju.edu.ar.serviceImp.IUsuarioServiceImp;
 
 
 
@@ -18,13 +16,13 @@ public class IndexController {
 	 * Inyecto de la instancia del Service en usuarioService
 	 */
 	@Autowired
-	private IUsuarioServiceImp usuarioService;
+
 	
 	/**
 	 * Devuelve el index principal
 	 */
 	@RequestMapping("/home")
-	public String main(Model model) {
+	public String main() {
 		return "index";
 	}
 	/**

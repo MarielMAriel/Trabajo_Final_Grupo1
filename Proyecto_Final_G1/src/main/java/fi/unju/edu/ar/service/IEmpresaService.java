@@ -2,8 +2,6 @@ package fi.unju.edu.ar.service;
 
 
 import java.util.List;
-
-import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.entity.Empresa;
 
 public interface IEmpresaService {

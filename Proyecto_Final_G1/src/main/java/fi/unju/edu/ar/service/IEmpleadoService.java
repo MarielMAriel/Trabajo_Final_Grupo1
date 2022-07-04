@@ -1,7 +1,6 @@
 package fi.unju.edu.ar.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import fi.unju.edu.ar.entity.Empleado;
 

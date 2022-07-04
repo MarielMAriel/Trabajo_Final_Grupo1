@@ -1,14 +1,12 @@
 package fi.unju.edu.ar.serviceImp;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import fi.unju.edu.ar.entity.Empleado;
 import fi.unju.edu.ar.repository.IEmpleadoDAO;
 import fi.unju.edu.ar.service.IEmpleadoService;
